@@ -2,8 +2,53 @@ grammar no.sintef.xtext.dsl.operator.Realop with org.eclipse.xtext.common.Termin
 
 generate realop "http://www.sintef.no/xtext/dsl/operator/Realop"
 
-Model:
-	greetings+=Greeting*;
+Realop:
+	operator+=Operator*;
 	
-Greeting:
-	'Hello' name=ID '!';
+Operator:
+	OP_TOKEN name=ID OPEN_OP_TOKEN 
+			PRE_TOKEN COND_ST_TOKEN expr_pre=Expression  COND_END_TOKEN 
+			POST_TOKEN COND_ST_TOKEN exp_post=Expression COND_END_TOKEN 
+		CLOSE_OP_TOKEN
+	;
+
+Expression:
+	lhs=Predicate (rhs=TerminalExpression)?
+	;
+
+
+TerminalExpression:
+	op=Logic rhs=Expression
+;
+
+	
+Logic :
+	AND_TOKEN | OR_TOKEN | XOR_TOKEN
+	;
+	
+Predicate : 
+	negate?=NOT_TOKEN? predicate=Predicates '(' name=ID ')'
+	;
+	
+Predicates :
+	PRED_REALISED_TOKEN | PRED_POSITIVE_TOKEN | PRED_NEGATIVE_TOKEN
+	;
+
+
+NOT_TOKEN : 'not';
+
+AND_TOKEN : 'and';
+OR_TOKEN : 'or';
+XOR_TOKEN: 'xor';
+
+PRED_REALISED_TOKEN : 'realised';
+PRED_POSITIVE_TOKEN : 'positive';
+PRED_NEGATIVE_TOKEN : 'negative';
+
+OP_TOKEN : 'operator';
+OPEN_OP_TOKEN : '{';
+CLOSE_OP_TOKEN : '}';
+PRE_TOKEN : 'pre';
+POST_TOKEN : 'post';
+COND_ST_TOKEN : ':';
+COND_END_TOKEN : ';';
