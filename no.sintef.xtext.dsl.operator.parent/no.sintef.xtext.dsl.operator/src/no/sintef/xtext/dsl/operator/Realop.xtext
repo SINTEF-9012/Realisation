@@ -7,7 +7,7 @@ Realop:
 	
 Operator:
 	OP_TOKEN name=ID OPEN_OP_TOKEN 
-			PRE_TOKEN COND_ST_TOKEN expr_pre=Expression  COND_END_TOKEN 
+			PRE_TOKEN COND_ST_TOKEN exp_pre=Expression  COND_END_TOKEN 
 			POST_TOKEN COND_ST_TOKEN exp_post=Expression COND_END_TOKEN 
 		CLOSE_OP_TOKEN
 	;

@@ -12,7 +12,5 @@
 hs_err_pid*
 
 #Eclispe related
-.classpath
-.project
-build.properties
 .settings
+target
