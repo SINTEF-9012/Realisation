@@ -27,5 +27,6 @@
     <modules>
         <module>no.sintef.autorealspl.converter</module>
         <module>no.sintef.autorealspl.converter.interfaces</module>
+		<module>no.sintef.autorealspl.converter.test</module>
     </modules>
 </project>

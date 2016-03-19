@@ -1,4 +1,4 @@
-package no.sintef.autorealspl.converter;
+package no.sintef.autorealspl.no.sintef.autorealspl.converter.test;
 
 import static org.junit.Assert.*;
 
