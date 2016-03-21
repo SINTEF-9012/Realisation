@@ -4,4 +4,6 @@ public interface IFeature {
 
 	
 	public IFeatureStatus getStatus();
+
+	public String getName();
 }

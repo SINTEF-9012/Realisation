@@ -4,24 +4,45 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import bvr.BVRModel;
+import bvr.BvrPackage;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeatureStatus;
+import no.sintef.autorealspl.converter.interfaces.parser.IParserStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
+import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
+import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 
 public class BVROperatorTest {
 
 	IVariabilityModelParser parser;
+	String path_to_model = "src/main/resources/testparsing.bvr";
 	
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
+		
+		BvrPackage.eINSTANCE.eClass();
+		Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
+		registry.getExtensionToFactoryMap().put("bvr", new XMIResourceFactoryImpl());
+		
+		ResourceSet resourceSet = new ResourceSetImpl();
+		Resource resource = resourceSet.getResource(URI.createURI(path_to_model), true);
+		assertNotNull("can not load bvr resource", resource);
+		
+		BVRModel bvr_model = (BVRModel) resource.getContents().get(0);
+		assertNotNull("cannot find bvr model", bvr_model);
+		
+		IParserStrategy parser_strategy = new BVRModelParserStrategy(bvr_model);
+		parser = new VariabiltiyModelParser(parser_strategy);
 	}
 
 	@Test
@@ -35,8 +56,10 @@ public class BVROperatorTest {
 	@Test
 	public void testParsedFeaturesPositiveStatus() {
 		List<IFeature> features = parser.parse();
+		assertNotNull(features);
 		
-		IFeature positive = features.get(0);
+		IFeature positive = getFeatureByName(features, "positive");
+		assertNotNull(positive);
 		
 		assertEquals(IFeatureStatus.TRUE, positive.getStatus().getValue());
 		
@@ -49,28 +72,42 @@ public class BVROperatorTest {
 	@Test
 	public void testParsedFeaturesNegativeStatus() {
 		List<IFeature> features = parser.parse();
+		assertNotNull(features);
 		
-		IFeature positive = features.get(0);
+		IFeature feauture = getFeatureByName(features, "negative");
+		assertNotNull(feauture);
 		
-		assertEquals(IFeatureStatus.FALSE, positive.getStatus().getValue());
+		assertEquals(IFeatureStatus.FALSE, feauture.getStatus().getValue());
 		
-		assertEquals(false, positive.getStatus().isPosResolved());
-		assertEquals(true, positive.getStatus().isNegResolved());
-		assertEquals(false, positive.getStatus().isNotResolved());
+		assertEquals(false, feauture.getStatus().isPosResolved());
+		assertEquals(true, feauture.getStatus().isNegResolved());
+		assertEquals(false, feauture.getStatus().isNotResolved());
 		
 	}
 	
 	@Test
 	public void testParsedFeaturesNotStatus() {
 		List<IFeature> features = parser.parse();
+		assertNotNull(features);
 		
-		IFeature positive = features.get(0);
+		IFeature feauture = getFeatureByName(features, "notresolved");
+		assertNotNull(feauture);
 		
-		assertEquals(IFeatureStatus.NR, positive.getStatus().getValue());
+		assertEquals(IFeatureStatus.NR, feauture.getStatus().getValue());
 		
-		assertEquals(false, positive.getStatus().isPosResolved());
-		assertEquals(false, positive.getStatus().isNegResolved());
-		assertEquals(true, positive.getStatus().isNotResolved());
+		assertEquals(false, feauture.getStatus().isPosResolved());
+		assertEquals(false, feauture.getStatus().isNegResolved());
+		assertEquals(true, feauture.getStatus().isNotResolved());
+	}
+	
+	
+	private IFeature getFeatureByName(List<IFeature> features, String name) {
+		
+		for(IFeature feature : features) {
+			if(feature.getName().equals(name))
+				return feature;
+		}
+		return null;	
 	}
 
 }
