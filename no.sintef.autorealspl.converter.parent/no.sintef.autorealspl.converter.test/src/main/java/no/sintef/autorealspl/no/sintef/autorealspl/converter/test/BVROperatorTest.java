@@ -41,7 +41,7 @@ public class BVROperatorTest {
 		BVRModel bvr_model = (BVRModel) resource.getContents().get(0);
 		assertNotNull("cannot find bvr model", bvr_model);
 		
-		IParserStrategy parser_strategy = new BVRModelParserStrategy(bvr_model);
+		IParserStrategy parser_strategy = new BVRModelParserStrategy(bvr_model, 0);
 		parser = new VariabiltiyModelParser(parser_strategy);
 	}
 
