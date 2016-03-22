@@ -121,13 +121,46 @@ public class BVROperatorTest {
 		Operator operator = positiveConveter.convertIFeatureToOperator(positive);
 		assertNotNull(operator);
 		
-		Expression pre_expression = operator.getExp_pre();
-		Predicate lhs = pre_expression.getLhs();
+		Expression pre_exp = operator.getExp_pre();
+		Predicate lhs = pre_exp.getLhs();
 		
 		assertTrue("should be negated", lhs.isNegated());
 		assertTrue("should be realised predicate", lhs.getPredicate().isRealised());
 		assertEquals("SPpositive", lhs.getName());
 		
+		Expression post_exp = operator.getExp_post();
+		lhs = post_exp.getLhs();
+		
+		assertFalse("should not be negated", lhs.isNegated());
+		assertTrue("should be positive predicate", lhs.getPredicate().isPositive());
+		assertEquals("SPpositive", lhs.getName());
+	}
+	
+	@Test
+	public void testNegativeOperatorConverter() {
+		List<IFeature> features = parser.parse();
+		assertNotNull(features);
+		
+		IFeature positive = getFeatureByName(features, "SPpositive");
+		assertNotNull(positive);
+		
+		
+		Operator operator = negativeConverer.convertIFeatureToOperator(positive);
+		assertNotNull(operator);
+		
+		Expression pre_exp = operator.getExp_pre();
+		Predicate lhs = pre_exp.getLhs();
+		
+		assertTrue("should be negated", lhs.isNegated());
+		assertTrue("should be realised predicate", lhs.getPredicate().isRealised());
+		assertEquals("SPpositive", lhs.getName());
+		
+		Expression post_exp = operator.getExp_post();
+		lhs = post_exp.getLhs();
+		
+		assertFalse("should not be negated", lhs.isNegated());
+		assertTrue("should be positive predicate", lhs.getPredicate().isNegative());
+		assertEquals("SPpositive", lhs.getName());
 	}
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
