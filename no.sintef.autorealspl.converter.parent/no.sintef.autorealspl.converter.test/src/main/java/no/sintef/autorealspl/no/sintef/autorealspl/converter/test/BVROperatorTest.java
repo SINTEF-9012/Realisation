@@ -23,6 +23,8 @@ import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser
 import no.sintef.autorealspl.converter.main.BVREcoreVarModelToOperatorConverter;
 import no.sintef.autorealspl.converter.main.IConverter;
 import no.sintef.autorealspl.converter.operconverter.FeatureOperatorConvertor;
+import no.sintef.autorealspl.converter.operconverter.NegativeOperatorConverter;
+import no.sintef.autorealspl.converter.operconverter.PositiveOperatorConverter;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.Expression;
@@ -57,6 +59,11 @@ public class BVROperatorTest {
 		((BVRModelParserStrategy) parser_strategy).setResolution(bvr_model.getResolutionModels().get(0));
 		
 		parser = new VariabiltiyModelParser(parser_strategy);
+		
+		positiveConveterStrategy = new PositiveOperatorConverter();
+		negativeConvererStrategy = new NegativeOperatorConverter();
+		
+		featureConverter = new FeatureOperatorConvertor();
 	}
 
 	@Test
