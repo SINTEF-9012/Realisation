@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtext.impl.XtextFactoryImpl;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 
 import bvr.BVRModel;
 import bvr.BvrPackage;
@@ -59,12 +61,16 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 	}
 
 	public void writeOperatorsToFile(String str) {
-		RealopPackage.eINSTANCE.eClass();
-		Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
-		registry.getExtensionToFactoryMap().put("realop", new XtextResource());
+		//RealopPackage.eINSTANCE.eClass();
 		
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource resource = resourceSet.createResource(URI.createURI(str));
+		//Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
+		//registry.getExtensionToFactoryMap().put("realop", new XtextFactoryImpl());
+		
+		//XtextResourceSet resourceSet = new XtextResourceSet();
+		//ResourceSet resourceSet = new ResourceSetImpl();
+		//Resource resource = resourceSet.createResource(URI.createURI(str));
+		XtextResource resource = new XtextResource(URI.createURI(str));
+		resource.getContents().addAll(operators);
 		
 		Map<Object, Object> options = new HashMap<Object, Object>();
 		options.put(XtextResource.OPTION_ENCODING, "UTF-8");
