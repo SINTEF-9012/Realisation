@@ -9,23 +9,29 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import bvr.BVRModel;
 import bvr.BvrPackage;
+import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverterStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeatureStatus;
 import no.sintef.autorealspl.converter.interfaces.parser.IParserStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
+import no.sintef.xtext.dsl.operator.realop.Expression;
+import no.sintef.xtext.dsl.operator.realop.Operator;
+import no.sintef.xtext.dsl.operator.realop.Predicate;
 
 public class BVROperatorTest {
 
 	IVariabilityModelParser parser;
 	String path_to_model = "src/main/resources/testparsing.bvr";
+	
+	IFeatureOperatorConverterStrategy positiveConveter;
+	IFeatureOperatorConverterStrategy negativeConverer;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -58,7 +64,7 @@ public class BVROperatorTest {
 		List<IFeature> features = parser.parse();
 		assertNotNull(features);
 		
-		IFeature positive = getFeatureByName(features, "positive");
+		IFeature positive = getFeatureByName(features, "SPpositive");
 		assertNotNull(positive);
 		
 		assertEquals(IFeatureStatus.TRUE, positive.getStatus().getValue());
@@ -74,7 +80,7 @@ public class BVROperatorTest {
 		List<IFeature> features = parser.parse();
 		assertNotNull(features);
 		
-		IFeature feauture = getFeatureByName(features, "negative");
+		IFeature feauture = getFeatureByName(features, "SPnegative");
 		assertNotNull(feauture);
 		
 		assertEquals(IFeatureStatus.FALSE, feauture.getStatus().getValue());
@@ -90,7 +96,7 @@ public class BVROperatorTest {
 		List<IFeature> features = parser.parse();
 		assertNotNull(features);
 		
-		IFeature feauture = getFeatureByName(features, "notresolved");
+		IFeature feauture = getFeatureByName(features, "SPnotresolved");
 		assertNotNull(feauture);
 		
 		assertEquals(IFeatureStatus.NR, feauture.getStatus().getValue());
@@ -98,8 +104,31 @@ public class BVROperatorTest {
 		assertEquals(false, feauture.getStatus().isPosResolved());
 		assertEquals(false, feauture.getStatus().isNegResolved());
 		assertEquals(true, feauture.getStatus().isNotResolved());
+		
+		
 	}
 	
+	
+	@Test
+	public void testPositiveOperatorConverter() {
+		List<IFeature> features = parser.parse();
+		assertNotNull(features);
+		
+		IFeature positive = getFeatureByName(features, "SPpositive");
+		assertNotNull(positive);
+		
+		
+		Operator operator = positiveConveter.convertIFeatureToOperator(positive);
+		assertNotNull(operator);
+		
+		Expression pre_expression = operator.getExp_pre();
+		Predicate lhs = pre_expression.getLhs();
+		
+		assertTrue("should be negated", lhs.isNegated());
+		assertTrue("should be realised predicate", lhs.getPredicate().isRealised());
+		assertEquals("SPpositive", lhs.getName());
+		
+	}
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
 		

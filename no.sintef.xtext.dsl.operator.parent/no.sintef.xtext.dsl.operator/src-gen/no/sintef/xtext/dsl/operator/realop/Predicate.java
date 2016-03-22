@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link no.sintef.xtext.dsl.operator.realop.Predicate#isNegate <em>Negate</em>}</li>
+ *   <li>{@link no.sintef.xtext.dsl.operator.realop.Predicate#isNegated <em>Negated</em>}</li>
  *   <li>{@link no.sintef.xtext.dsl.operator.realop.Predicate#getPredicate <em>Predicate</em>}</li>
  *   <li>{@link no.sintef.xtext.dsl.operator.realop.Predicate#getName <em>Name</em>}</li>
  * </ul>
@@ -26,56 +26,56 @@ import org.eclipse.emf.ecore.EObject;
 public interface Predicate extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Negate</b></em>' attribute.
+   * Returns the value of the '<em><b>Negated</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Negate</em>' attribute isn't clear,
+   * If the meaning of the '<em>Negated</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Negate</em>' attribute.
-   * @see #setNegate(boolean)
-   * @see no.sintef.xtext.dsl.operator.realop.RealopPackage#getPredicate_Negate()
+   * @return the value of the '<em>Negated</em>' attribute.
+   * @see #setNegated(boolean)
+   * @see no.sintef.xtext.dsl.operator.realop.RealopPackage#getPredicate_Negated()
    * @model
    * @generated
    */
-  boolean isNegate();
+  boolean isNegated();
 
   /**
-   * Sets the value of the '{@link no.sintef.xtext.dsl.operator.realop.Predicate#isNegate <em>Negate</em>}' attribute.
+   * Sets the value of the '{@link no.sintef.xtext.dsl.operator.realop.Predicate#isNegated <em>Negated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Negate</em>' attribute.
-   * @see #isNegate()
+   * @param value the new value of the '<em>Negated</em>' attribute.
+   * @see #isNegated()
    * @generated
    */
-  void setNegate(boolean value);
+  void setNegated(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Predicate</b></em>' attribute.
+   * Returns the value of the '<em><b>Predicate</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Predicate</em>' attribute isn't clear,
+   * If the meaning of the '<em>Predicate</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Predicate</em>' attribute.
-   * @see #setPredicate(String)
+   * @return the value of the '<em>Predicate</em>' containment reference.
+   * @see #setPredicate(Predicates)
    * @see no.sintef.xtext.dsl.operator.realop.RealopPackage#getPredicate_Predicate()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getPredicate();
+  Predicates getPredicate();
 
   /**
-   * Sets the value of the '{@link no.sintef.xtext.dsl.operator.realop.Predicate#getPredicate <em>Predicate</em>}' attribute.
+   * Sets the value of the '{@link no.sintef.xtext.dsl.operator.realop.Predicate#getPredicate <em>Predicate</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Predicate</em>' attribute.
+   * @param value the new value of the '<em>Predicate</em>' containment reference.
    * @see #getPredicate()
    * @generated
    */
-  void setPredicate(String value);
+  void setPredicate(Predicates value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

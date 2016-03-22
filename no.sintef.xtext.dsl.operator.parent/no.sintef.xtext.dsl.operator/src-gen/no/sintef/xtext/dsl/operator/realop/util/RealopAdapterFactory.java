@@ -96,9 +96,19 @@ public class RealopAdapterFactory extends AdapterFactoryImpl
         return createTerminalExpressionAdapter();
       }
       @Override
+      public Adapter caseLogic(Logic object)
+      {
+        return createLogicAdapter();
+      }
+      @Override
       public Adapter casePredicate(Predicate object)
       {
         return createPredicateAdapter();
+      }
+      @Override
+      public Adapter casePredicates(Predicates object)
+      {
+        return createPredicatesAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -183,6 +193,21 @@ public class RealopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link no.sintef.xtext.dsl.operator.realop.Logic <em>Logic</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see no.sintef.xtext.dsl.operator.realop.Logic
+   * @generated
+   */
+  public Adapter createLogicAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link no.sintef.xtext.dsl.operator.realop.Predicate <em>Predicate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -193,6 +218,21 @@ public class RealopAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPredicateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link no.sintef.xtext.dsl.operator.realop.Predicates <em>Predicates</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see no.sintef.xtext.dsl.operator.realop.Predicates
+   * @generated
+   */
+  public Adapter createPredicatesAdapter()
   {
     return null;
   }

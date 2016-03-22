@@ -1580,13 +1580,13 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Logic__Alternatives"
-    // InternalRealop.g:577:1: rule__Logic__Alternatives : ( ( ruleAND_TOKEN ) | ( ruleOR_TOKEN ) | ( ruleXOR_TOKEN ) );
+    // InternalRealop.g:577:1: rule__Logic__Alternatives : ( ( ( rule__Logic__AndAssignment_0 ) ) | ( ( rule__Logic__OrAssignment_1 ) ) | ( ( rule__Logic__XorAssignment_2 ) ) );
     public final void rule__Logic__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRealop.g:581:1: ( ( ruleAND_TOKEN ) | ( ruleOR_TOKEN ) | ( ruleXOR_TOKEN ) )
+            // InternalRealop.g:581:1: ( ( ( rule__Logic__AndAssignment_0 ) ) | ( ( rule__Logic__OrAssignment_1 ) ) | ( ( rule__Logic__XorAssignment_2 ) ) )
             int alt2=3;
             switch ( input.LA(1) ) {
             case 12:
@@ -1613,18 +1613,24 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
             switch (alt2) {
                 case 1 :
-                    // InternalRealop.g:582:2: ( ruleAND_TOKEN )
+                    // InternalRealop.g:582:2: ( ( rule__Logic__AndAssignment_0 ) )
                     {
-                    // InternalRealop.g:582:2: ( ruleAND_TOKEN )
-                    // InternalRealop.g:583:3: ruleAND_TOKEN
+                    // InternalRealop.g:582:2: ( ( rule__Logic__AndAssignment_0 ) )
+                    // InternalRealop.g:583:3: ( rule__Logic__AndAssignment_0 )
                     {
-                     before(grammarAccess.getLogicAccess().getAND_TOKENParserRuleCall_0()); 
+                     before(grammarAccess.getLogicAccess().getAndAssignment_0()); 
+                    // InternalRealop.g:584:3: ( rule__Logic__AndAssignment_0 )
+                    // InternalRealop.g:584:4: rule__Logic__AndAssignment_0
+                    {
                     pushFollow(FOLLOW_2);
-                    ruleAND_TOKEN();
+                    rule__Logic__AndAssignment_0();
 
                     state._fsp--;
 
-                     after(grammarAccess.getLogicAccess().getAND_TOKENParserRuleCall_0()); 
+
+                    }
+
+                     after(grammarAccess.getLogicAccess().getAndAssignment_0()); 
 
                     }
 
@@ -1632,18 +1638,24 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalRealop.g:588:2: ( ruleOR_TOKEN )
+                    // InternalRealop.g:588:2: ( ( rule__Logic__OrAssignment_1 ) )
                     {
-                    // InternalRealop.g:588:2: ( ruleOR_TOKEN )
-                    // InternalRealop.g:589:3: ruleOR_TOKEN
+                    // InternalRealop.g:588:2: ( ( rule__Logic__OrAssignment_1 ) )
+                    // InternalRealop.g:589:3: ( rule__Logic__OrAssignment_1 )
                     {
-                     before(grammarAccess.getLogicAccess().getOR_TOKENParserRuleCall_1()); 
+                     before(grammarAccess.getLogicAccess().getOrAssignment_1()); 
+                    // InternalRealop.g:590:3: ( rule__Logic__OrAssignment_1 )
+                    // InternalRealop.g:590:4: rule__Logic__OrAssignment_1
+                    {
                     pushFollow(FOLLOW_2);
-                    ruleOR_TOKEN();
+                    rule__Logic__OrAssignment_1();
 
                     state._fsp--;
 
-                     after(grammarAccess.getLogicAccess().getOR_TOKENParserRuleCall_1()); 
+
+                    }
+
+                     after(grammarAccess.getLogicAccess().getOrAssignment_1()); 
 
                     }
 
@@ -1651,18 +1663,24 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalRealop.g:594:2: ( ruleXOR_TOKEN )
+                    // InternalRealop.g:594:2: ( ( rule__Logic__XorAssignment_2 ) )
                     {
-                    // InternalRealop.g:594:2: ( ruleXOR_TOKEN )
-                    // InternalRealop.g:595:3: ruleXOR_TOKEN
+                    // InternalRealop.g:594:2: ( ( rule__Logic__XorAssignment_2 ) )
+                    // InternalRealop.g:595:3: ( rule__Logic__XorAssignment_2 )
                     {
-                     before(grammarAccess.getLogicAccess().getXOR_TOKENParserRuleCall_2()); 
+                     before(grammarAccess.getLogicAccess().getXorAssignment_2()); 
+                    // InternalRealop.g:596:3: ( rule__Logic__XorAssignment_2 )
+                    // InternalRealop.g:596:4: rule__Logic__XorAssignment_2
+                    {
                     pushFollow(FOLLOW_2);
-                    ruleXOR_TOKEN();
+                    rule__Logic__XorAssignment_2();
 
                     state._fsp--;
 
-                     after(grammarAccess.getLogicAccess().getXOR_TOKENParserRuleCall_2()); 
+
+                    }
+
+                     after(grammarAccess.getLogicAccess().getXorAssignment_2()); 
 
                     }
 
@@ -1687,13 +1705,13 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Predicates__Alternatives"
-    // InternalRealop.g:604:1: rule__Predicates__Alternatives : ( ( rulePRED_REALISED_TOKEN ) | ( rulePRED_POSITIVE_TOKEN ) | ( rulePRED_NEGATIVE_TOKEN ) );
+    // InternalRealop.g:604:1: rule__Predicates__Alternatives : ( ( ( rule__Predicates__RealisedAssignment_0 ) ) | ( ( rule__Predicates__PositiveAssignment_1 ) ) | ( ( rule__Predicates__NegativeAssignment_2 ) ) );
     public final void rule__Predicates__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRealop.g:608:1: ( ( rulePRED_REALISED_TOKEN ) | ( rulePRED_POSITIVE_TOKEN ) | ( rulePRED_NEGATIVE_TOKEN ) )
+            // InternalRealop.g:608:1: ( ( ( rule__Predicates__RealisedAssignment_0 ) ) | ( ( rule__Predicates__PositiveAssignment_1 ) ) | ( ( rule__Predicates__NegativeAssignment_2 ) ) )
             int alt3=3;
             switch ( input.LA(1) ) {
             case 15:
@@ -1720,18 +1738,24 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
             switch (alt3) {
                 case 1 :
-                    // InternalRealop.g:609:2: ( rulePRED_REALISED_TOKEN )
+                    // InternalRealop.g:609:2: ( ( rule__Predicates__RealisedAssignment_0 ) )
                     {
-                    // InternalRealop.g:609:2: ( rulePRED_REALISED_TOKEN )
-                    // InternalRealop.g:610:3: rulePRED_REALISED_TOKEN
+                    // InternalRealop.g:609:2: ( ( rule__Predicates__RealisedAssignment_0 ) )
+                    // InternalRealop.g:610:3: ( rule__Predicates__RealisedAssignment_0 )
                     {
-                     before(grammarAccess.getPredicatesAccess().getPRED_REALISED_TOKENParserRuleCall_0()); 
+                     before(grammarAccess.getPredicatesAccess().getRealisedAssignment_0()); 
+                    // InternalRealop.g:611:3: ( rule__Predicates__RealisedAssignment_0 )
+                    // InternalRealop.g:611:4: rule__Predicates__RealisedAssignment_0
+                    {
                     pushFollow(FOLLOW_2);
-                    rulePRED_REALISED_TOKEN();
+                    rule__Predicates__RealisedAssignment_0();
 
                     state._fsp--;
 
-                     after(grammarAccess.getPredicatesAccess().getPRED_REALISED_TOKENParserRuleCall_0()); 
+
+                    }
+
+                     after(grammarAccess.getPredicatesAccess().getRealisedAssignment_0()); 
 
                     }
 
@@ -1739,18 +1763,24 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalRealop.g:615:2: ( rulePRED_POSITIVE_TOKEN )
+                    // InternalRealop.g:615:2: ( ( rule__Predicates__PositiveAssignment_1 ) )
                     {
-                    // InternalRealop.g:615:2: ( rulePRED_POSITIVE_TOKEN )
-                    // InternalRealop.g:616:3: rulePRED_POSITIVE_TOKEN
+                    // InternalRealop.g:615:2: ( ( rule__Predicates__PositiveAssignment_1 ) )
+                    // InternalRealop.g:616:3: ( rule__Predicates__PositiveAssignment_1 )
                     {
-                     before(grammarAccess.getPredicatesAccess().getPRED_POSITIVE_TOKENParserRuleCall_1()); 
+                     before(grammarAccess.getPredicatesAccess().getPositiveAssignment_1()); 
+                    // InternalRealop.g:617:3: ( rule__Predicates__PositiveAssignment_1 )
+                    // InternalRealop.g:617:4: rule__Predicates__PositiveAssignment_1
+                    {
                     pushFollow(FOLLOW_2);
-                    rulePRED_POSITIVE_TOKEN();
+                    rule__Predicates__PositiveAssignment_1();
 
                     state._fsp--;
 
-                     after(grammarAccess.getPredicatesAccess().getPRED_POSITIVE_TOKENParserRuleCall_1()); 
+
+                    }
+
+                     after(grammarAccess.getPredicatesAccess().getPositiveAssignment_1()); 
 
                     }
 
@@ -1758,18 +1788,24 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalRealop.g:621:2: ( rulePRED_NEGATIVE_TOKEN )
+                    // InternalRealop.g:621:2: ( ( rule__Predicates__NegativeAssignment_2 ) )
                     {
-                    // InternalRealop.g:621:2: ( rulePRED_NEGATIVE_TOKEN )
-                    // InternalRealop.g:622:3: rulePRED_NEGATIVE_TOKEN
+                    // InternalRealop.g:621:2: ( ( rule__Predicates__NegativeAssignment_2 ) )
+                    // InternalRealop.g:622:3: ( rule__Predicates__NegativeAssignment_2 )
                     {
-                     before(grammarAccess.getPredicatesAccess().getPRED_NEGATIVE_TOKENParserRuleCall_2()); 
+                     before(grammarAccess.getPredicatesAccess().getNegativeAssignment_2()); 
+                    // InternalRealop.g:623:3: ( rule__Predicates__NegativeAssignment_2 )
+                    // InternalRealop.g:623:4: rule__Predicates__NegativeAssignment_2
+                    {
                     pushFollow(FOLLOW_2);
-                    rulePRED_NEGATIVE_TOKEN();
+                    rule__Predicates__NegativeAssignment_2();
 
                     state._fsp--;
 
-                     after(grammarAccess.getPredicatesAccess().getPRED_NEGATIVE_TOKENParserRuleCall_2()); 
+
+                    }
+
+                     after(grammarAccess.getPredicatesAccess().getNegativeAssignment_2()); 
 
                     }
 
@@ -3134,20 +3170,20 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Predicate__Group__0__Impl"
-    // InternalRealop.g:1075:1: rule__Predicate__Group__0__Impl : ( ( rule__Predicate__NegateAssignment_0 )? ) ;
+    // InternalRealop.g:1075:1: rule__Predicate__Group__0__Impl : ( ( rule__Predicate__NegatedAssignment_0 )? ) ;
     public final void rule__Predicate__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRealop.g:1079:1: ( ( ( rule__Predicate__NegateAssignment_0 )? ) )
-            // InternalRealop.g:1080:1: ( ( rule__Predicate__NegateAssignment_0 )? )
+            // InternalRealop.g:1079:1: ( ( ( rule__Predicate__NegatedAssignment_0 )? ) )
+            // InternalRealop.g:1080:1: ( ( rule__Predicate__NegatedAssignment_0 )? )
             {
-            // InternalRealop.g:1080:1: ( ( rule__Predicate__NegateAssignment_0 )? )
-            // InternalRealop.g:1081:2: ( rule__Predicate__NegateAssignment_0 )?
+            // InternalRealop.g:1080:1: ( ( rule__Predicate__NegatedAssignment_0 )? )
+            // InternalRealop.g:1081:2: ( rule__Predicate__NegatedAssignment_0 )?
             {
-             before(grammarAccess.getPredicateAccess().getNegateAssignment_0()); 
-            // InternalRealop.g:1082:2: ( rule__Predicate__NegateAssignment_0 )?
+             before(grammarAccess.getPredicateAccess().getNegatedAssignment_0()); 
+            // InternalRealop.g:1082:2: ( rule__Predicate__NegatedAssignment_0 )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -3156,10 +3192,10 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalRealop.g:1082:3: rule__Predicate__NegateAssignment_0
+                    // InternalRealop.g:1082:3: rule__Predicate__NegatedAssignment_0
                     {
                     pushFollow(FOLLOW_2);
-                    rule__Predicate__NegateAssignment_0();
+                    rule__Predicate__NegatedAssignment_0();
 
                     state._fsp--;
 
@@ -3169,7 +3205,7 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
             }
 
-             after(grammarAccess.getPredicateAccess().getNegateAssignment_0()); 
+             after(grammarAccess.getPredicateAccess().getNegatedAssignment_0()); 
 
             }
 
@@ -3830,26 +3866,26 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TerminalExpression__RhsAssignment_1"
 
 
-    // $ANTLR start "rule__Predicate__NegateAssignment_0"
-    // InternalRealop.g:1318:1: rule__Predicate__NegateAssignment_0 : ( ruleNOT_TOKEN ) ;
-    public final void rule__Predicate__NegateAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__Logic__AndAssignment_0"
+    // InternalRealop.g:1318:1: rule__Logic__AndAssignment_0 : ( ruleAND_TOKEN ) ;
+    public final void rule__Logic__AndAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRealop.g:1322:1: ( ( ruleNOT_TOKEN ) )
-            // InternalRealop.g:1323:2: ( ruleNOT_TOKEN )
+            // InternalRealop.g:1322:1: ( ( ruleAND_TOKEN ) )
+            // InternalRealop.g:1323:2: ( ruleAND_TOKEN )
             {
-            // InternalRealop.g:1323:2: ( ruleNOT_TOKEN )
-            // InternalRealop.g:1324:3: ruleNOT_TOKEN
+            // InternalRealop.g:1323:2: ( ruleAND_TOKEN )
+            // InternalRealop.g:1324:3: ruleAND_TOKEN
             {
-             before(grammarAccess.getPredicateAccess().getNegateNOT_TOKENParserRuleCall_0_0()); 
+             before(grammarAccess.getLogicAccess().getAndAND_TOKENParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
-            ruleNOT_TOKEN();
+            ruleAND_TOKEN();
 
             state._fsp--;
 
-             after(grammarAccess.getPredicateAccess().getNegateNOT_TOKENParserRuleCall_0_0()); 
+             after(grammarAccess.getLogicAccess().getAndAND_TOKENParserRuleCall_0_0()); 
 
             }
 
@@ -3868,21 +3904,144 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Predicate__NegateAssignment_0"
+    // $ANTLR end "rule__Logic__AndAssignment_0"
+
+
+    // $ANTLR start "rule__Logic__OrAssignment_1"
+    // InternalRealop.g:1333:1: rule__Logic__OrAssignment_1 : ( ruleOR_TOKEN ) ;
+    public final void rule__Logic__OrAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalRealop.g:1337:1: ( ( ruleOR_TOKEN ) )
+            // InternalRealop.g:1338:2: ( ruleOR_TOKEN )
+            {
+            // InternalRealop.g:1338:2: ( ruleOR_TOKEN )
+            // InternalRealop.g:1339:3: ruleOR_TOKEN
+            {
+             before(grammarAccess.getLogicAccess().getOrOR_TOKENParserRuleCall_1_0()); 
+            pushFollow(FOLLOW_2);
+            ruleOR_TOKEN();
+
+            state._fsp--;
+
+             after(grammarAccess.getLogicAccess().getOrOR_TOKENParserRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Logic__OrAssignment_1"
+
+
+    // $ANTLR start "rule__Logic__XorAssignment_2"
+    // InternalRealop.g:1348:1: rule__Logic__XorAssignment_2 : ( ruleXOR_TOKEN ) ;
+    public final void rule__Logic__XorAssignment_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalRealop.g:1352:1: ( ( ruleXOR_TOKEN ) )
+            // InternalRealop.g:1353:2: ( ruleXOR_TOKEN )
+            {
+            // InternalRealop.g:1353:2: ( ruleXOR_TOKEN )
+            // InternalRealop.g:1354:3: ruleXOR_TOKEN
+            {
+             before(grammarAccess.getLogicAccess().getXorXOR_TOKENParserRuleCall_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleXOR_TOKEN();
+
+            state._fsp--;
+
+             after(grammarAccess.getLogicAccess().getXorXOR_TOKENParserRuleCall_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Logic__XorAssignment_2"
+
+
+    // $ANTLR start "rule__Predicate__NegatedAssignment_0"
+    // InternalRealop.g:1363:1: rule__Predicate__NegatedAssignment_0 : ( ruleNOT_TOKEN ) ;
+    public final void rule__Predicate__NegatedAssignment_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalRealop.g:1367:1: ( ( ruleNOT_TOKEN ) )
+            // InternalRealop.g:1368:2: ( ruleNOT_TOKEN )
+            {
+            // InternalRealop.g:1368:2: ( ruleNOT_TOKEN )
+            // InternalRealop.g:1369:3: ruleNOT_TOKEN
+            {
+             before(grammarAccess.getPredicateAccess().getNegatedNOT_TOKENParserRuleCall_0_0()); 
+            pushFollow(FOLLOW_2);
+            ruleNOT_TOKEN();
+
+            state._fsp--;
+
+             after(grammarAccess.getPredicateAccess().getNegatedNOT_TOKENParserRuleCall_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Predicate__NegatedAssignment_0"
 
 
     // $ANTLR start "rule__Predicate__PredicateAssignment_1"
-    // InternalRealop.g:1333:1: rule__Predicate__PredicateAssignment_1 : ( rulePredicates ) ;
+    // InternalRealop.g:1378:1: rule__Predicate__PredicateAssignment_1 : ( rulePredicates ) ;
     public final void rule__Predicate__PredicateAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRealop.g:1337:1: ( ( rulePredicates ) )
-            // InternalRealop.g:1338:2: ( rulePredicates )
+            // InternalRealop.g:1382:1: ( ( rulePredicates ) )
+            // InternalRealop.g:1383:2: ( rulePredicates )
             {
-            // InternalRealop.g:1338:2: ( rulePredicates )
-            // InternalRealop.g:1339:3: rulePredicates
+            // InternalRealop.g:1383:2: ( rulePredicates )
+            // InternalRealop.g:1384:3: rulePredicates
             {
              before(grammarAccess.getPredicateAccess().getPredicatePredicatesParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -3913,17 +4072,17 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Predicate__NameAssignment_3"
-    // InternalRealop.g:1348:1: rule__Predicate__NameAssignment_3 : ( RULE_ID ) ;
+    // InternalRealop.g:1393:1: rule__Predicate__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__Predicate__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRealop.g:1352:1: ( ( RULE_ID ) )
-            // InternalRealop.g:1353:2: ( RULE_ID )
+            // InternalRealop.g:1397:1: ( ( RULE_ID ) )
+            // InternalRealop.g:1398:2: ( RULE_ID )
             {
-            // InternalRealop.g:1353:2: ( RULE_ID )
-            // InternalRealop.g:1354:3: RULE_ID
+            // InternalRealop.g:1398:2: ( RULE_ID )
+            // InternalRealop.g:1399:3: RULE_ID
             {
              before(grammarAccess.getPredicateAccess().getNameIDTerminalRuleCall_3_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -3947,6 +4106,129 @@ public class InternalRealopParser extends AbstractInternalContentAssistParser {
         return ;
     }
     // $ANTLR end "rule__Predicate__NameAssignment_3"
+
+
+    // $ANTLR start "rule__Predicates__RealisedAssignment_0"
+    // InternalRealop.g:1408:1: rule__Predicates__RealisedAssignment_0 : ( rulePRED_REALISED_TOKEN ) ;
+    public final void rule__Predicates__RealisedAssignment_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalRealop.g:1412:1: ( ( rulePRED_REALISED_TOKEN ) )
+            // InternalRealop.g:1413:2: ( rulePRED_REALISED_TOKEN )
+            {
+            // InternalRealop.g:1413:2: ( rulePRED_REALISED_TOKEN )
+            // InternalRealop.g:1414:3: rulePRED_REALISED_TOKEN
+            {
+             before(grammarAccess.getPredicatesAccess().getRealisedPRED_REALISED_TOKENParserRuleCall_0_0()); 
+            pushFollow(FOLLOW_2);
+            rulePRED_REALISED_TOKEN();
+
+            state._fsp--;
+
+             after(grammarAccess.getPredicatesAccess().getRealisedPRED_REALISED_TOKENParserRuleCall_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Predicates__RealisedAssignment_0"
+
+
+    // $ANTLR start "rule__Predicates__PositiveAssignment_1"
+    // InternalRealop.g:1423:1: rule__Predicates__PositiveAssignment_1 : ( rulePRED_POSITIVE_TOKEN ) ;
+    public final void rule__Predicates__PositiveAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalRealop.g:1427:1: ( ( rulePRED_POSITIVE_TOKEN ) )
+            // InternalRealop.g:1428:2: ( rulePRED_POSITIVE_TOKEN )
+            {
+            // InternalRealop.g:1428:2: ( rulePRED_POSITIVE_TOKEN )
+            // InternalRealop.g:1429:3: rulePRED_POSITIVE_TOKEN
+            {
+             before(grammarAccess.getPredicatesAccess().getPositivePRED_POSITIVE_TOKENParserRuleCall_1_0()); 
+            pushFollow(FOLLOW_2);
+            rulePRED_POSITIVE_TOKEN();
+
+            state._fsp--;
+
+             after(grammarAccess.getPredicatesAccess().getPositivePRED_POSITIVE_TOKENParserRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Predicates__PositiveAssignment_1"
+
+
+    // $ANTLR start "rule__Predicates__NegativeAssignment_2"
+    // InternalRealop.g:1438:1: rule__Predicates__NegativeAssignment_2 : ( rulePRED_NEGATIVE_TOKEN ) ;
+    public final void rule__Predicates__NegativeAssignment_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalRealop.g:1442:1: ( ( rulePRED_NEGATIVE_TOKEN ) )
+            // InternalRealop.g:1443:2: ( rulePRED_NEGATIVE_TOKEN )
+            {
+            // InternalRealop.g:1443:2: ( rulePRED_NEGATIVE_TOKEN )
+            // InternalRealop.g:1444:3: rulePRED_NEGATIVE_TOKEN
+            {
+             before(grammarAccess.getPredicatesAccess().getNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0()); 
+            pushFollow(FOLLOW_2);
+            rulePRED_NEGATIVE_TOKEN();
+
+            state._fsp--;
+
+             after(grammarAccess.getPredicatesAccess().getNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Predicates__NegativeAssignment_2"
 
     // Delegated rules
 

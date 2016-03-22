@@ -4,6 +4,7 @@
 package no.sintef.xtext.dsl.operator.realop.impl;
 
 import no.sintef.xtext.dsl.operator.realop.Expression;
+import no.sintef.xtext.dsl.operator.realop.Logic;
 import no.sintef.xtext.dsl.operator.realop.RealopPackage;
 import no.sintef.xtext.dsl.operator.realop.TerminalExpression;
 
@@ -33,24 +34,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class TerminalExpressionImpl extends MinimalEObjectImpl.Container implements TerminalExpression
 {
   /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOp()
    * @generated
    * @ordered
    */
-  protected static final String OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected String op = OP_EDEFAULT;
+  protected Logic op;
 
   /**
    * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference.
@@ -88,7 +79,7 @@ public class TerminalExpressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOp()
+  public Logic getOp()
   {
     return op;
   }
@@ -98,12 +89,37 @@ public class TerminalExpressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOp(String newOp)
+  public NotificationChain basicSetOp(Logic newOp, NotificationChain msgs)
   {
-    String oldOp = op;
+    Logic oldOp = op;
     op = newOp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RealopPackage.TERMINAL_EXPRESSION__OP, oldOp, op));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealopPackage.TERMINAL_EXPRESSION__OP, oldOp, newOp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(Logic newOp)
+  {
+    if (newOp != op)
+    {
+      NotificationChain msgs = null;
+      if (op != null)
+        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealopPackage.TERMINAL_EXPRESSION__OP, null, msgs);
+      if (newOp != null)
+        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealopPackage.TERMINAL_EXPRESSION__OP, null, msgs);
+      msgs = basicSetOp(newOp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RealopPackage.TERMINAL_EXPRESSION__OP, newOp, newOp));
   }
 
   /**
@@ -164,6 +180,8 @@ public class TerminalExpressionImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
+      case RealopPackage.TERMINAL_EXPRESSION__OP:
+        return basicSetOp(null, msgs);
       case RealopPackage.TERMINAL_EXPRESSION__RHS:
         return basicSetRhs(null, msgs);
     }
@@ -199,7 +217,7 @@ public class TerminalExpressionImpl extends MinimalEObjectImpl.Container impleme
     switch (featureID)
     {
       case RealopPackage.TERMINAL_EXPRESSION__OP:
-        setOp((String)newValue);
+        setOp((Logic)newValue);
         return;
       case RealopPackage.TERMINAL_EXPRESSION__RHS:
         setRhs((Expression)newValue);
@@ -219,7 +237,7 @@ public class TerminalExpressionImpl extends MinimalEObjectImpl.Container impleme
     switch (featureID)
     {
       case RealopPackage.TERMINAL_EXPRESSION__OP:
-        setOp(OP_EDEFAULT);
+        setOp((Logic)null);
         return;
       case RealopPackage.TERMINAL_EXPRESSION__RHS:
         setRhs((Expression)null);
@@ -239,28 +257,11 @@ public class TerminalExpressionImpl extends MinimalEObjectImpl.Container impleme
     switch (featureID)
     {
       case RealopPackage.TERMINAL_EXPRESSION__OP:
-        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
+        return op != null;
       case RealopPackage.TERMINAL_EXPRESSION__RHS:
         return rhs != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (op: ");
-    result.append(op);
-    result.append(')');
-    return result.toString();
   }
 
 } //TerminalExpressionImpl

@@ -12,13 +12,21 @@
         <relativePath>..</relativePath>
     </parent>  
 
-  <name>no.sintef.autorealspl.converter.interfaces</name>
-  <url>http://maven.apache.org</url>
+  	<name>no.sintef.autorealspl.converter.interfaces</name>
+  	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  	<properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	</properties>
 
+
+	<dependencies>
+	    <dependency>
+	      <groupId>no.sintef.xtext.dsl.operator</groupId>
+	      <artifactId>no.sintef.xtext.dsl.operator</artifactId>
+	      <version>1.0.0-SNAPSHOT</version>
+	    </dependency>
+	</dependencies>
 
     <build>
         <sourceDirectory>src</sourceDirectory>

@@ -167,31 +167,43 @@ public class RealopGrammarAccess extends AbstractGrammarElementFinder {
 	public class LogicElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "no.sintef.xtext.dsl.operator.Realop.Logic");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAND_TOKENParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cOR_TOKENParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cXOR_TOKENParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Assignment cAndAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cAndAND_TOKENParserRuleCall_0_0 = (RuleCall)cAndAssignment_0.eContents().get(0);
+		private final Assignment cOrAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cOrOR_TOKENParserRuleCall_1_0 = (RuleCall)cOrAssignment_1.eContents().get(0);
+		private final Assignment cXorAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cXorXOR_TOKENParserRuleCall_2_0 = (RuleCall)cXorAssignment_2.eContents().get(0);
 		
 		//Logic:
-		//	AND_TOKEN | OR_TOKEN | XOR_TOKEN;
+		//	and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AND_TOKEN | OR_TOKEN | XOR_TOKEN
+		//and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//and?=AND_TOKEN
+		public Assignment getAndAssignment_0() { return cAndAssignment_0; }
+		
 		//AND_TOKEN
-		public RuleCall getAND_TOKENParserRuleCall_0() { return cAND_TOKENParserRuleCall_0; }
+		public RuleCall getAndAND_TOKENParserRuleCall_0_0() { return cAndAND_TOKENParserRuleCall_0_0; }
+		
+		//or?=OR_TOKEN
+		public Assignment getOrAssignment_1() { return cOrAssignment_1; }
 		
 		//OR_TOKEN
-		public RuleCall getOR_TOKENParserRuleCall_1() { return cOR_TOKENParserRuleCall_1; }
+		public RuleCall getOrOR_TOKENParserRuleCall_1_0() { return cOrOR_TOKENParserRuleCall_1_0; }
+		
+		//xor?=XOR_TOKEN
+		public Assignment getXorAssignment_2() { return cXorAssignment_2; }
 		
 		//XOR_TOKEN
-		public RuleCall getXOR_TOKENParserRuleCall_2() { return cXOR_TOKENParserRuleCall_2; }
+		public RuleCall getXorXOR_TOKENParserRuleCall_2_0() { return cXorXOR_TOKENParserRuleCall_2_0; }
 	}
 	public class PredicateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "no.sintef.xtext.dsl.operator.Realop.Predicate");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNegateAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNegateNOT_TOKENParserRuleCall_0_0 = (RuleCall)cNegateAssignment_0.eContents().get(0);
+		private final Assignment cNegatedAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNegatedNOT_TOKENParserRuleCall_0_0 = (RuleCall)cNegatedAssignment_0.eContents().get(0);
 		private final Assignment cPredicateAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cPredicatePredicatesParserRuleCall_1_0 = (RuleCall)cPredicateAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -200,17 +212,17 @@ public class RealopGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Predicate:
-		//	negate?=NOT_TOKEN? predicate=Predicates '(' name=ID ')';
+		//	negated?=NOT_TOKEN? predicate=Predicates '(' name=ID ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//negate?=NOT_TOKEN? predicate=Predicates '(' name=ID ')'
+		//negated?=NOT_TOKEN? predicate=Predicates '(' name=ID ')'
 		public Group getGroup() { return cGroup; }
 		
-		//negate?=NOT_TOKEN?
-		public Assignment getNegateAssignment_0() { return cNegateAssignment_0; }
+		//negated?=NOT_TOKEN?
+		public Assignment getNegatedAssignment_0() { return cNegatedAssignment_0; }
 		
 		//NOT_TOKEN
-		public RuleCall getNegateNOT_TOKENParserRuleCall_0_0() { return cNegateNOT_TOKENParserRuleCall_0_0; }
+		public RuleCall getNegatedNOT_TOKENParserRuleCall_0_0() { return cNegatedNOT_TOKENParserRuleCall_0_0; }
 		
 		//predicate=Predicates
 		public Assignment getPredicateAssignment_1() { return cPredicateAssignment_1; }
@@ -233,25 +245,37 @@ public class RealopGrammarAccess extends AbstractGrammarElementFinder {
 	public class PredicatesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "no.sintef.xtext.dsl.operator.Realop.Predicates");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cPRED_REALISED_TOKENParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPRED_POSITIVE_TOKENParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cPRED_NEGATIVE_TOKENParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Assignment cRealisedAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cRealisedPRED_REALISED_TOKENParserRuleCall_0_0 = (RuleCall)cRealisedAssignment_0.eContents().get(0);
+		private final Assignment cPositiveAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cPositivePRED_POSITIVE_TOKENParserRuleCall_1_0 = (RuleCall)cPositiveAssignment_1.eContents().get(0);
+		private final Assignment cNegativeAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0 = (RuleCall)cNegativeAssignment_2.eContents().get(0);
 		
 		//Predicates:
-		//	PRED_REALISED_TOKEN | PRED_POSITIVE_TOKEN | PRED_NEGATIVE_TOKEN;
+		//	realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//PRED_REALISED_TOKEN | PRED_POSITIVE_TOKEN | PRED_NEGATIVE_TOKEN
+		//realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//realised?=PRED_REALISED_TOKEN
+		public Assignment getRealisedAssignment_0() { return cRealisedAssignment_0; }
+		
 		//PRED_REALISED_TOKEN
-		public RuleCall getPRED_REALISED_TOKENParserRuleCall_0() { return cPRED_REALISED_TOKENParserRuleCall_0; }
+		public RuleCall getRealisedPRED_REALISED_TOKENParserRuleCall_0_0() { return cRealisedPRED_REALISED_TOKENParserRuleCall_0_0; }
+		
+		//positive?=PRED_POSITIVE_TOKEN
+		public Assignment getPositiveAssignment_1() { return cPositiveAssignment_1; }
 		
 		//PRED_POSITIVE_TOKEN
-		public RuleCall getPRED_POSITIVE_TOKENParserRuleCall_1() { return cPRED_POSITIVE_TOKENParserRuleCall_1; }
+		public RuleCall getPositivePRED_POSITIVE_TOKENParserRuleCall_1_0() { return cPositivePRED_POSITIVE_TOKENParserRuleCall_1_0; }
+		
+		//negative?=PRED_NEGATIVE_TOKEN
+		public Assignment getNegativeAssignment_2() { return cNegativeAssignment_2; }
 		
 		//PRED_NEGATIVE_TOKEN
-		public RuleCall getPRED_NEGATIVE_TOKENParserRuleCall_2() { return cPRED_NEGATIVE_TOKENParserRuleCall_2; }
+		public RuleCall getNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0() { return cNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0; }
 	}
 	public class NOT_TOKENElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "no.sintef.xtext.dsl.operator.Realop.NOT_TOKEN");
@@ -532,7 +556,7 @@ public class RealopGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Logic:
-	//	AND_TOKEN | OR_TOKEN | XOR_TOKEN;
+	//	and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN;
 	public LogicElements getLogicAccess() {
 		return pLogic;
 	}
@@ -542,7 +566,7 @@ public class RealopGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Predicate:
-	//	negate?=NOT_TOKEN? predicate=Predicates '(' name=ID ')';
+	//	negated?=NOT_TOKEN? predicate=Predicates '(' name=ID ')';
 	public PredicateElements getPredicateAccess() {
 		return pPredicate;
 	}
@@ -552,7 +576,7 @@ public class RealopGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Predicates:
-	//	PRED_REALISED_TOKEN | PRED_POSITIVE_TOKEN | PRED_NEGATIVE_TOKEN;
+	//	realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN;
 	public PredicatesElements getPredicatesAccess() {
 		return pPredicates;
 	}

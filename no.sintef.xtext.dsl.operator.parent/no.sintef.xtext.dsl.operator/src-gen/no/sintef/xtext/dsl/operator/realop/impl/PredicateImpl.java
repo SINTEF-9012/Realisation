@@ -4,11 +4,14 @@
 package no.sintef.xtext.dsl.operator.realop.impl;
 
 import no.sintef.xtext.dsl.operator.realop.Predicate;
+import no.sintef.xtext.dsl.operator.realop.Predicates;
 import no.sintef.xtext.dsl.operator.realop.RealopPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -21,7 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link no.sintef.xtext.dsl.operator.realop.impl.PredicateImpl#isNegate <em>Negate</em>}</li>
+ *   <li>{@link no.sintef.xtext.dsl.operator.realop.impl.PredicateImpl#isNegated <em>Negated</em>}</li>
  *   <li>{@link no.sintef.xtext.dsl.operator.realop.impl.PredicateImpl#getPredicate <em>Predicate</em>}</li>
  *   <li>{@link no.sintef.xtext.dsl.operator.realop.impl.PredicateImpl#getName <em>Name</em>}</li>
  * </ul>
@@ -31,44 +34,34 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class PredicateImpl extends MinimalEObjectImpl.Container implements Predicate
 {
   /**
-   * The default value of the '{@link #isNegate() <em>Negate</em>}' attribute.
+   * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNegate()
+   * @see #isNegated()
    * @generated
    * @ordered
    */
-  protected static final boolean NEGATE_EDEFAULT = false;
+  protected static final boolean NEGATED_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isNegate() <em>Negate</em>}' attribute.
+   * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNegate()
+   * @see #isNegated()
    * @generated
    * @ordered
    */
-  protected boolean negate = NEGATE_EDEFAULT;
+  protected boolean negated = NEGATED_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getPredicate() <em>Predicate</em>}' attribute.
+   * The cached value of the '{@link #getPredicate() <em>Predicate</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPredicate()
    * @generated
    * @ordered
    */
-  protected static final String PREDICATE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPredicate() <em>Predicate</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPredicate()
-   * @generated
-   * @ordered
-   */
-  protected String predicate = PREDICATE_EDEFAULT;
+  protected Predicates predicate;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -116,9 +109,9 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isNegate()
+  public boolean isNegated()
   {
-    return negate;
+    return negated;
   }
 
   /**
@@ -126,12 +119,12 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNegate(boolean newNegate)
+  public void setNegated(boolean newNegated)
   {
-    boolean oldNegate = negate;
-    negate = newNegate;
+    boolean oldNegated = negated;
+    negated = newNegated;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RealopPackage.PREDICATE__NEGATE, oldNegate, negate));
+      eNotify(new ENotificationImpl(this, Notification.SET, RealopPackage.PREDICATE__NEGATED, oldNegated, negated));
   }
 
   /**
@@ -139,7 +132,7 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPredicate()
+  public Predicates getPredicate()
   {
     return predicate;
   }
@@ -149,12 +142,37 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPredicate(String newPredicate)
+  public NotificationChain basicSetPredicate(Predicates newPredicate, NotificationChain msgs)
   {
-    String oldPredicate = predicate;
+    Predicates oldPredicate = predicate;
     predicate = newPredicate;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RealopPackage.PREDICATE__PREDICATE, oldPredicate, predicate));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RealopPackage.PREDICATE__PREDICATE, oldPredicate, newPredicate);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPredicate(Predicates newPredicate)
+  {
+    if (newPredicate != predicate)
+    {
+      NotificationChain msgs = null;
+      if (predicate != null)
+        msgs = ((InternalEObject)predicate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RealopPackage.PREDICATE__PREDICATE, null, msgs);
+      if (newPredicate != null)
+        msgs = ((InternalEObject)newPredicate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RealopPackage.PREDICATE__PREDICATE, null, msgs);
+      msgs = basicSetPredicate(newPredicate, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RealopPackage.PREDICATE__PREDICATE, newPredicate, newPredicate));
   }
 
   /**
@@ -186,12 +204,28 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case RealopPackage.PREDICATE__PREDICATE:
+        return basicSetPredicate(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case RealopPackage.PREDICATE__NEGATE:
-        return isNegate();
+      case RealopPackage.PREDICATE__NEGATED:
+        return isNegated();
       case RealopPackage.PREDICATE__PREDICATE:
         return getPredicate();
       case RealopPackage.PREDICATE__NAME:
@@ -210,11 +244,11 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
   {
     switch (featureID)
     {
-      case RealopPackage.PREDICATE__NEGATE:
-        setNegate((Boolean)newValue);
+      case RealopPackage.PREDICATE__NEGATED:
+        setNegated((Boolean)newValue);
         return;
       case RealopPackage.PREDICATE__PREDICATE:
-        setPredicate((String)newValue);
+        setPredicate((Predicates)newValue);
         return;
       case RealopPackage.PREDICATE__NAME:
         setName((String)newValue);
@@ -233,11 +267,11 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
   {
     switch (featureID)
     {
-      case RealopPackage.PREDICATE__NEGATE:
-        setNegate(NEGATE_EDEFAULT);
+      case RealopPackage.PREDICATE__NEGATED:
+        setNegated(NEGATED_EDEFAULT);
         return;
       case RealopPackage.PREDICATE__PREDICATE:
-        setPredicate(PREDICATE_EDEFAULT);
+        setPredicate((Predicates)null);
         return;
       case RealopPackage.PREDICATE__NAME:
         setName(NAME_EDEFAULT);
@@ -256,10 +290,10 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
   {
     switch (featureID)
     {
-      case RealopPackage.PREDICATE__NEGATE:
-        return negate != NEGATE_EDEFAULT;
+      case RealopPackage.PREDICATE__NEGATED:
+        return negated != NEGATED_EDEFAULT;
       case RealopPackage.PREDICATE__PREDICATE:
-        return PREDICATE_EDEFAULT == null ? predicate != null : !PREDICATE_EDEFAULT.equals(predicate);
+        return predicate != null;
       case RealopPackage.PREDICATE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
@@ -277,10 +311,8 @@ public class PredicateImpl extends MinimalEObjectImpl.Container implements Predi
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (negate: ");
-    result.append(negate);
-    result.append(", predicate: ");
-    result.append(predicate);
+    result.append(" (negated: ");
+    result.append(negated);
     result.append(", name: ");
     result.append(name);
     result.append(')');

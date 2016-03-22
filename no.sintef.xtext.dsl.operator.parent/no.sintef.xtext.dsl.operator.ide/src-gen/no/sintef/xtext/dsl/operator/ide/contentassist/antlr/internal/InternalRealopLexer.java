@@ -385,10 +385,10 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1363:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalRealop.g:1363:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalRealop.g:1453:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalRealop.g:1453:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalRealop.g:1363:11: ( '^' )?
+            // InternalRealop.g:1453:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -397,7 +397,7 @@ public class InternalRealopLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalRealop.g:1363:11: '^'
+                    // InternalRealop.g:1453:11: '^'
                     {
                     match('^'); 
 
@@ -415,7 +415,7 @@ public class InternalRealopLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalRealop.g:1363:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalRealop.g:1453:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -464,10 +464,10 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1365:10: ( ( '0' .. '9' )+ )
-            // InternalRealop.g:1365:12: ( '0' .. '9' )+
+            // InternalRealop.g:1455:10: ( ( '0' .. '9' )+ )
+            // InternalRealop.g:1455:12: ( '0' .. '9' )+
             {
-            // InternalRealop.g:1365:12: ( '0' .. '9' )+
+            // InternalRealop.g:1455:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -481,7 +481,7 @@ public class InternalRealopLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalRealop.g:1365:13: '0' .. '9'
+            	    // InternalRealop.g:1455:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -513,10 +513,10 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1367:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalRealop.g:1367:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalRealop.g:1457:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalRealop.g:1457:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalRealop.g:1367:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalRealop.g:1457:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -534,10 +534,10 @@ public class InternalRealopLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalRealop.g:1367:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalRealop.g:1457:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalRealop.g:1367:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalRealop.g:1457:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -553,7 +553,7 @@ public class InternalRealopLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalRealop.g:1367:21: '\\\\' .
+                    	    // InternalRealop.g:1457:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -561,7 +561,7 @@ public class InternalRealopLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalRealop.g:1367:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalRealop.g:1457:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -586,10 +586,10 @@ public class InternalRealopLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalRealop.g:1367:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalRealop.g:1457:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalRealop.g:1367:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalRealop.g:1457:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -605,7 +605,7 @@ public class InternalRealopLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalRealop.g:1367:54: '\\\\' .
+                    	    // InternalRealop.g:1457:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -613,7 +613,7 @@ public class InternalRealopLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalRealop.g:1367:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalRealop.g:1457:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -656,12 +656,12 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1369:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalRealop.g:1369:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalRealop.g:1459:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalRealop.g:1459:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalRealop.g:1369:24: ( options {greedy=false; } : . )*
+            // InternalRealop.g:1459:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -686,7 +686,7 @@ public class InternalRealopLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalRealop.g:1369:52: .
+            	    // InternalRealop.g:1459:52: .
             	    {
             	    matchAny(); 
 
@@ -716,12 +716,12 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1371:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalRealop.g:1371:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalRealop.g:1461:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalRealop.g:1461:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalRealop.g:1371:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalRealop.g:1461:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -734,7 +734,7 @@ public class InternalRealopLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalRealop.g:1371:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalRealop.g:1461:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -754,7 +754,7 @@ public class InternalRealopLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalRealop.g:1371:40: ( ( '\\r' )? '\\n' )?
+            // InternalRealop.g:1461:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -763,9 +763,9 @@ public class InternalRealopLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalRealop.g:1371:41: ( '\\r' )? '\\n'
+                    // InternalRealop.g:1461:41: ( '\\r' )? '\\n'
                     {
-                    // InternalRealop.g:1371:41: ( '\\r' )?
+                    // InternalRealop.g:1461:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -774,7 +774,7 @@ public class InternalRealopLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalRealop.g:1371:41: '\\r'
+                            // InternalRealop.g:1461:41: '\\r'
                             {
                             match('\r'); 
 
@@ -806,10 +806,10 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1373:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalRealop.g:1373:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalRealop.g:1463:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalRealop.g:1463:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalRealop.g:1373:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalRealop.g:1463:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -863,8 +863,8 @@ public class InternalRealopLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRealop.g:1375:16: ( . )
-            // InternalRealop.g:1375:18: .
+            // InternalRealop.g:1465:16: ( . )
+            // InternalRealop.g:1465:18: .
             {
             matchAny(); 
 

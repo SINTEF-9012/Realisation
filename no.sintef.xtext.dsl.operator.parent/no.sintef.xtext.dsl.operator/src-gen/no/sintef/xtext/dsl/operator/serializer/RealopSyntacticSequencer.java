@@ -26,7 +26,9 @@ public class RealopSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getCLOSE_OP_TOKENRule())
+		if (ruleCall.getRule() == grammarAccess.getAND_TOKENRule())
+			return getAND_TOKENToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getCLOSE_OP_TOKENRule())
 			return getCLOSE_OP_TOKENToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getCOND_END_TOKENRule())
 			return getCOND_END_TOKENToken(semanticObject, ruleCall, node);
@@ -38,11 +40,30 @@ public class RealopSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getOPEN_OP_TOKENToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOP_TOKENRule())
 			return getOP_TOKENToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getOR_TOKENRule())
+			return getOR_TOKENToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPOST_TOKENRule())
 			return getPOST_TOKENToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPRED_NEGATIVE_TOKENRule())
+			return getPRED_NEGATIVE_TOKENToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPRED_POSITIVE_TOKENRule())
+			return getPRED_POSITIVE_TOKENToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPRED_REALISED_TOKENRule())
+			return getPRED_REALISED_TOKENToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPRE_TOKENRule())
 			return getPRE_TOKENToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getXOR_TOKENRule())
+			return getXOR_TOKENToken(semanticObject, ruleCall, node);
 		return "";
+	}
+	
+	/**
+	 * AND_TOKEN : 'and';
+	 */
+	protected String getAND_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "and";
 	}
 	
 	/**
@@ -100,6 +121,15 @@ public class RealopSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
+	 * OR_TOKEN : 'or';
+	 */
+	protected String getOR_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "or";
+	}
+	
+	/**
 	 * POST_TOKEN : 'post';
 	 */
 	protected String getPOST_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -109,12 +139,48 @@ public class RealopSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
+	 * PRED_NEGATIVE_TOKEN : 'negative';
+	 */
+	protected String getPRED_NEGATIVE_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "negative";
+	}
+	
+	/**
+	 * PRED_POSITIVE_TOKEN : 'positive';
+	 */
+	protected String getPRED_POSITIVE_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "positive";
+	}
+	
+	/**
+	 * PRED_REALISED_TOKEN : 'realised';
+	 */
+	protected String getPRED_REALISED_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "realised";
+	}
+	
+	/**
 	 * PRE_TOKEN : 'pre';
 	 */
 	protected String getPRE_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "pre";
+	}
+	
+	/**
+	 * XOR_TOKEN: 'xor';
+	 */
+	protected String getXOR_TOKENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "xor";
 	}
 	
 	@Override

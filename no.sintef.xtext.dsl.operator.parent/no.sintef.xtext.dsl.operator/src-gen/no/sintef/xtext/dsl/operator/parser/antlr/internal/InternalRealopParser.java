@@ -664,7 +664,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
     public final EObject ruleTerminalExpression() throws RecognitionException {
         EObject current = null;
 
-        AntlrDatatypeRuleToken lv_op_0_0 = null;
+        EObject lv_op_0_0 = null;
 
         EObject lv_rhs_1_0 = null;
 
@@ -764,15 +764,15 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogic"
-    // InternalRealop.g:352:1: entryRuleLogic returns [String current=null] : iv_ruleLogic= ruleLogic EOF ;
-    public final String entryRuleLogic() throws RecognitionException {
-        String current = null;
+    // InternalRealop.g:352:1: entryRuleLogic returns [EObject current=null] : iv_ruleLogic= ruleLogic EOF ;
+    public final EObject entryRuleLogic() throws RecognitionException {
+        EObject current = null;
 
-        AntlrDatatypeRuleToken iv_ruleLogic = null;
+        EObject iv_ruleLogic = null;
 
 
         try {
-            // InternalRealop.g:352:45: (iv_ruleLogic= ruleLogic EOF )
+            // InternalRealop.g:352:46: (iv_ruleLogic= ruleLogic EOF )
             // InternalRealop.g:353:2: iv_ruleLogic= ruleLogic EOF
             {
              newCompositeNode(grammarAccess.getLogicRule()); 
@@ -781,7 +781,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
             state._fsp--;
 
-             current =iv_ruleLogic.getText(); 
+             current =iv_ruleLogic; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -800,25 +800,25 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogic"
-    // InternalRealop.g:359:1: ruleLogic returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_AND_TOKEN_0= ruleAND_TOKEN | this_OR_TOKEN_1= ruleOR_TOKEN | this_XOR_TOKEN_2= ruleXOR_TOKEN ) ;
-    public final AntlrDatatypeRuleToken ruleLogic() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+    // InternalRealop.g:359:1: ruleLogic returns [EObject current=null] : ( ( (lv_and_0_0= ruleAND_TOKEN ) ) | ( (lv_or_1_0= ruleOR_TOKEN ) ) | ( (lv_xor_2_0= ruleXOR_TOKEN ) ) ) ;
+    public final EObject ruleLogic() throws RecognitionException {
+        EObject current = null;
 
-        AntlrDatatypeRuleToken this_AND_TOKEN_0 = null;
+        AntlrDatatypeRuleToken lv_and_0_0 = null;
 
-        AntlrDatatypeRuleToken this_OR_TOKEN_1 = null;
+        AntlrDatatypeRuleToken lv_or_1_0 = null;
 
-        AntlrDatatypeRuleToken this_XOR_TOKEN_2 = null;
+        AntlrDatatypeRuleToken lv_xor_2_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalRealop.g:365:2: ( (this_AND_TOKEN_0= ruleAND_TOKEN | this_OR_TOKEN_1= ruleOR_TOKEN | this_XOR_TOKEN_2= ruleXOR_TOKEN ) )
-            // InternalRealop.g:366:2: (this_AND_TOKEN_0= ruleAND_TOKEN | this_OR_TOKEN_1= ruleOR_TOKEN | this_XOR_TOKEN_2= ruleXOR_TOKEN )
+            // InternalRealop.g:365:2: ( ( ( (lv_and_0_0= ruleAND_TOKEN ) ) | ( (lv_or_1_0= ruleOR_TOKEN ) ) | ( (lv_xor_2_0= ruleXOR_TOKEN ) ) ) )
+            // InternalRealop.g:366:2: ( ( (lv_and_0_0= ruleAND_TOKEN ) ) | ( (lv_or_1_0= ruleOR_TOKEN ) ) | ( (lv_xor_2_0= ruleXOR_TOKEN ) ) )
             {
-            // InternalRealop.g:366:2: (this_AND_TOKEN_0= ruleAND_TOKEN | this_OR_TOKEN_1= ruleOR_TOKEN | this_XOR_TOKEN_2= ruleXOR_TOKEN )
+            // InternalRealop.g:366:2: ( ( (lv_and_0_0= ruleAND_TOKEN ) ) | ( (lv_or_1_0= ruleOR_TOKEN ) ) | ( (lv_xor_2_0= ruleXOR_TOKEN ) ) )
             int alt3=3;
             switch ( input.LA(1) ) {
             case 14:
@@ -845,62 +845,113 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
             switch (alt3) {
                 case 1 :
-                    // InternalRealop.g:367:3: this_AND_TOKEN_0= ruleAND_TOKEN
+                    // InternalRealop.g:367:3: ( (lv_and_0_0= ruleAND_TOKEN ) )
+                    {
+                    // InternalRealop.g:367:3: ( (lv_and_0_0= ruleAND_TOKEN ) )
+                    // InternalRealop.g:368:4: (lv_and_0_0= ruleAND_TOKEN )
+                    {
+                    // InternalRealop.g:368:4: (lv_and_0_0= ruleAND_TOKEN )
+                    // InternalRealop.g:369:5: lv_and_0_0= ruleAND_TOKEN
                     {
 
-                    			newCompositeNode(grammarAccess.getLogicAccess().getAND_TOKENParserRuleCall_0());
-                    		
+                    					newCompositeNode(grammarAccess.getLogicAccess().getAndAND_TOKENParserRuleCall_0_0());
+                    				
                     pushFollow(FOLLOW_2);
-                    this_AND_TOKEN_0=ruleAND_TOKEN();
+                    lv_and_0_0=ruleAND_TOKEN();
 
                     state._fsp--;
 
 
-                    			current.merge(this_AND_TOKEN_0);
-                    		
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getLogicRule());
+                    					}
+                    					set(
+                    						current,
+                    						"and",
+                    						true,
+                    						"no.sintef.xtext.dsl.operator.Realop.AND_TOKEN");
+                    					afterParserOrEnumRuleCall();
+                    				
 
-                    			afterParserOrEnumRuleCall();
-                    		
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 2 :
-                    // InternalRealop.g:378:3: this_OR_TOKEN_1= ruleOR_TOKEN
+                    // InternalRealop.g:387:3: ( (lv_or_1_0= ruleOR_TOKEN ) )
+                    {
+                    // InternalRealop.g:387:3: ( (lv_or_1_0= ruleOR_TOKEN ) )
+                    // InternalRealop.g:388:4: (lv_or_1_0= ruleOR_TOKEN )
+                    {
+                    // InternalRealop.g:388:4: (lv_or_1_0= ruleOR_TOKEN )
+                    // InternalRealop.g:389:5: lv_or_1_0= ruleOR_TOKEN
                     {
 
-                    			newCompositeNode(grammarAccess.getLogicAccess().getOR_TOKENParserRuleCall_1());
-                    		
+                    					newCompositeNode(grammarAccess.getLogicAccess().getOrOR_TOKENParserRuleCall_1_0());
+                    				
                     pushFollow(FOLLOW_2);
-                    this_OR_TOKEN_1=ruleOR_TOKEN();
+                    lv_or_1_0=ruleOR_TOKEN();
 
                     state._fsp--;
 
 
-                    			current.merge(this_OR_TOKEN_1);
-                    		
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getLogicRule());
+                    					}
+                    					set(
+                    						current,
+                    						"or",
+                    						true,
+                    						"no.sintef.xtext.dsl.operator.Realop.OR_TOKEN");
+                    					afterParserOrEnumRuleCall();
+                    				
 
-                    			afterParserOrEnumRuleCall();
-                    		
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 3 :
-                    // InternalRealop.g:389:3: this_XOR_TOKEN_2= ruleXOR_TOKEN
+                    // InternalRealop.g:407:3: ( (lv_xor_2_0= ruleXOR_TOKEN ) )
+                    {
+                    // InternalRealop.g:407:3: ( (lv_xor_2_0= ruleXOR_TOKEN ) )
+                    // InternalRealop.g:408:4: (lv_xor_2_0= ruleXOR_TOKEN )
+                    {
+                    // InternalRealop.g:408:4: (lv_xor_2_0= ruleXOR_TOKEN )
+                    // InternalRealop.g:409:5: lv_xor_2_0= ruleXOR_TOKEN
                     {
 
-                    			newCompositeNode(grammarAccess.getLogicAccess().getXOR_TOKENParserRuleCall_2());
-                    		
+                    					newCompositeNode(grammarAccess.getLogicAccess().getXorXOR_TOKENParserRuleCall_2_0());
+                    				
                     pushFollow(FOLLOW_2);
-                    this_XOR_TOKEN_2=ruleXOR_TOKEN();
+                    lv_xor_2_0=ruleXOR_TOKEN();
 
                     state._fsp--;
 
 
-                    			current.merge(this_XOR_TOKEN_2);
-                    		
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getLogicRule());
+                    					}
+                    					set(
+                    						current,
+                    						"xor",
+                    						true,
+                    						"no.sintef.xtext.dsl.operator.Realop.XOR_TOKEN");
+                    					afterParserOrEnumRuleCall();
+                    				
 
-                    			afterParserOrEnumRuleCall();
-                    		
+                    }
+
+
+                    }
+
 
                     }
                     break;
@@ -927,7 +978,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePredicate"
-    // InternalRealop.g:403:1: entryRulePredicate returns [EObject current=null] : iv_rulePredicate= rulePredicate EOF ;
+    // InternalRealop.g:430:1: entryRulePredicate returns [EObject current=null] : iv_rulePredicate= rulePredicate EOF ;
     public final EObject entryRulePredicate() throws RecognitionException {
         EObject current = null;
 
@@ -935,8 +986,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:403:50: (iv_rulePredicate= rulePredicate EOF )
-            // InternalRealop.g:404:2: iv_rulePredicate= rulePredicate EOF
+            // InternalRealop.g:430:50: (iv_rulePredicate= rulePredicate EOF )
+            // InternalRealop.g:431:2: iv_rulePredicate= rulePredicate EOF
             {
              newCompositeNode(grammarAccess.getPredicateRule()); 
             pushFollow(FOLLOW_1);
@@ -963,29 +1014,29 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePredicate"
-    // InternalRealop.g:410:1: rulePredicate returns [EObject current=null] : ( ( (lv_negate_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' ) ;
+    // InternalRealop.g:437:1: rulePredicate returns [EObject current=null] : ( ( (lv_negated_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' ) ;
     public final EObject rulePredicate() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_2=null;
         Token lv_name_3_0=null;
         Token otherlv_4=null;
-        AntlrDatatypeRuleToken lv_negate_0_0 = null;
+        AntlrDatatypeRuleToken lv_negated_0_0 = null;
 
-        AntlrDatatypeRuleToken lv_predicate_1_0 = null;
+        EObject lv_predicate_1_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalRealop.g:416:2: ( ( ( (lv_negate_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' ) )
-            // InternalRealop.g:417:2: ( ( (lv_negate_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' )
+            // InternalRealop.g:443:2: ( ( ( (lv_negated_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' ) )
+            // InternalRealop.g:444:2: ( ( (lv_negated_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' )
             {
-            // InternalRealop.g:417:2: ( ( (lv_negate_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' )
-            // InternalRealop.g:418:3: ( (lv_negate_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')'
+            // InternalRealop.g:444:2: ( ( (lv_negated_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')' )
+            // InternalRealop.g:445:3: ( (lv_negated_0_0= ruleNOT_TOKEN ) )? ( (lv_predicate_1_0= rulePredicates ) ) otherlv_2= '(' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= ')'
             {
-            // InternalRealop.g:418:3: ( (lv_negate_0_0= ruleNOT_TOKEN ) )?
+            // InternalRealop.g:445:3: ( (lv_negated_0_0= ruleNOT_TOKEN ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -994,16 +1045,16 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
             }
             switch (alt4) {
                 case 1 :
-                    // InternalRealop.g:419:4: (lv_negate_0_0= ruleNOT_TOKEN )
+                    // InternalRealop.g:446:4: (lv_negated_0_0= ruleNOT_TOKEN )
                     {
-                    // InternalRealop.g:419:4: (lv_negate_0_0= ruleNOT_TOKEN )
-                    // InternalRealop.g:420:5: lv_negate_0_0= ruleNOT_TOKEN
+                    // InternalRealop.g:446:4: (lv_negated_0_0= ruleNOT_TOKEN )
+                    // InternalRealop.g:447:5: lv_negated_0_0= ruleNOT_TOKEN
                     {
 
-                    					newCompositeNode(grammarAccess.getPredicateAccess().getNegateNOT_TOKENParserRuleCall_0_0());
+                    					newCompositeNode(grammarAccess.getPredicateAccess().getNegatedNOT_TOKENParserRuleCall_0_0());
                     				
                     pushFollow(FOLLOW_8);
-                    lv_negate_0_0=ruleNOT_TOKEN();
+                    lv_negated_0_0=ruleNOT_TOKEN();
 
                     state._fsp--;
 
@@ -1013,7 +1064,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
                     					}
                     					set(
                     						current,
-                    						"negate",
+                    						"negated",
                     						true,
                     						"no.sintef.xtext.dsl.operator.Realop.NOT_TOKEN");
                     					afterParserOrEnumRuleCall();
@@ -1027,11 +1078,11 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalRealop.g:437:3: ( (lv_predicate_1_0= rulePredicates ) )
-            // InternalRealop.g:438:4: (lv_predicate_1_0= rulePredicates )
+            // InternalRealop.g:464:3: ( (lv_predicate_1_0= rulePredicates ) )
+            // InternalRealop.g:465:4: (lv_predicate_1_0= rulePredicates )
             {
-            // InternalRealop.g:438:4: (lv_predicate_1_0= rulePredicates )
-            // InternalRealop.g:439:5: lv_predicate_1_0= rulePredicates
+            // InternalRealop.g:465:4: (lv_predicate_1_0= rulePredicates )
+            // InternalRealop.g:466:5: lv_predicate_1_0= rulePredicates
             {
 
             					newCompositeNode(grammarAccess.getPredicateAccess().getPredicatePredicatesParserRuleCall_1_0());
@@ -1062,11 +1113,11 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getPredicateAccess().getLeftParenthesisKeyword_2());
             		
-            // InternalRealop.g:460:3: ( (lv_name_3_0= RULE_ID ) )
-            // InternalRealop.g:461:4: (lv_name_3_0= RULE_ID )
+            // InternalRealop.g:487:3: ( (lv_name_3_0= RULE_ID ) )
+            // InternalRealop.g:488:4: (lv_name_3_0= RULE_ID )
             {
-            // InternalRealop.g:461:4: (lv_name_3_0= RULE_ID )
-            // InternalRealop.g:462:5: lv_name_3_0= RULE_ID
+            // InternalRealop.g:488:4: (lv_name_3_0= RULE_ID )
+            // InternalRealop.g:489:5: lv_name_3_0= RULE_ID
             {
             lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_14); 
 
@@ -1115,16 +1166,16 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePredicates"
-    // InternalRealop.g:486:1: entryRulePredicates returns [String current=null] : iv_rulePredicates= rulePredicates EOF ;
-    public final String entryRulePredicates() throws RecognitionException {
-        String current = null;
+    // InternalRealop.g:513:1: entryRulePredicates returns [EObject current=null] : iv_rulePredicates= rulePredicates EOF ;
+    public final EObject entryRulePredicates() throws RecognitionException {
+        EObject current = null;
 
-        AntlrDatatypeRuleToken iv_rulePredicates = null;
+        EObject iv_rulePredicates = null;
 
 
         try {
-            // InternalRealop.g:486:50: (iv_rulePredicates= rulePredicates EOF )
-            // InternalRealop.g:487:2: iv_rulePredicates= rulePredicates EOF
+            // InternalRealop.g:513:51: (iv_rulePredicates= rulePredicates EOF )
+            // InternalRealop.g:514:2: iv_rulePredicates= rulePredicates EOF
             {
              newCompositeNode(grammarAccess.getPredicatesRule()); 
             pushFollow(FOLLOW_1);
@@ -1132,7 +1183,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
             state._fsp--;
 
-             current =iv_rulePredicates.getText(); 
+             current =iv_rulePredicates; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -1151,25 +1202,25 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePredicates"
-    // InternalRealop.g:493:1: rulePredicates returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_PRED_REALISED_TOKEN_0= rulePRED_REALISED_TOKEN | this_PRED_POSITIVE_TOKEN_1= rulePRED_POSITIVE_TOKEN | this_PRED_NEGATIVE_TOKEN_2= rulePRED_NEGATIVE_TOKEN ) ;
-    public final AntlrDatatypeRuleToken rulePredicates() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+    // InternalRealop.g:520:1: rulePredicates returns [EObject current=null] : ( ( (lv_realised_0_0= rulePRED_REALISED_TOKEN ) ) | ( (lv_positive_1_0= rulePRED_POSITIVE_TOKEN ) ) | ( (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN ) ) ) ;
+    public final EObject rulePredicates() throws RecognitionException {
+        EObject current = null;
 
-        AntlrDatatypeRuleToken this_PRED_REALISED_TOKEN_0 = null;
+        AntlrDatatypeRuleToken lv_realised_0_0 = null;
 
-        AntlrDatatypeRuleToken this_PRED_POSITIVE_TOKEN_1 = null;
+        AntlrDatatypeRuleToken lv_positive_1_0 = null;
 
-        AntlrDatatypeRuleToken this_PRED_NEGATIVE_TOKEN_2 = null;
+        AntlrDatatypeRuleToken lv_negative_2_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalRealop.g:499:2: ( (this_PRED_REALISED_TOKEN_0= rulePRED_REALISED_TOKEN | this_PRED_POSITIVE_TOKEN_1= rulePRED_POSITIVE_TOKEN | this_PRED_NEGATIVE_TOKEN_2= rulePRED_NEGATIVE_TOKEN ) )
-            // InternalRealop.g:500:2: (this_PRED_REALISED_TOKEN_0= rulePRED_REALISED_TOKEN | this_PRED_POSITIVE_TOKEN_1= rulePRED_POSITIVE_TOKEN | this_PRED_NEGATIVE_TOKEN_2= rulePRED_NEGATIVE_TOKEN )
+            // InternalRealop.g:526:2: ( ( ( (lv_realised_0_0= rulePRED_REALISED_TOKEN ) ) | ( (lv_positive_1_0= rulePRED_POSITIVE_TOKEN ) ) | ( (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN ) ) ) )
+            // InternalRealop.g:527:2: ( ( (lv_realised_0_0= rulePRED_REALISED_TOKEN ) ) | ( (lv_positive_1_0= rulePRED_POSITIVE_TOKEN ) ) | ( (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN ) ) )
             {
-            // InternalRealop.g:500:2: (this_PRED_REALISED_TOKEN_0= rulePRED_REALISED_TOKEN | this_PRED_POSITIVE_TOKEN_1= rulePRED_POSITIVE_TOKEN | this_PRED_NEGATIVE_TOKEN_2= rulePRED_NEGATIVE_TOKEN )
+            // InternalRealop.g:527:2: ( ( (lv_realised_0_0= rulePRED_REALISED_TOKEN ) ) | ( (lv_positive_1_0= rulePRED_POSITIVE_TOKEN ) ) | ( (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN ) ) )
             int alt5=3;
             switch ( input.LA(1) ) {
             case 17:
@@ -1196,62 +1247,113 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
             switch (alt5) {
                 case 1 :
-                    // InternalRealop.g:501:3: this_PRED_REALISED_TOKEN_0= rulePRED_REALISED_TOKEN
+                    // InternalRealop.g:528:3: ( (lv_realised_0_0= rulePRED_REALISED_TOKEN ) )
+                    {
+                    // InternalRealop.g:528:3: ( (lv_realised_0_0= rulePRED_REALISED_TOKEN ) )
+                    // InternalRealop.g:529:4: (lv_realised_0_0= rulePRED_REALISED_TOKEN )
+                    {
+                    // InternalRealop.g:529:4: (lv_realised_0_0= rulePRED_REALISED_TOKEN )
+                    // InternalRealop.g:530:5: lv_realised_0_0= rulePRED_REALISED_TOKEN
                     {
 
-                    			newCompositeNode(grammarAccess.getPredicatesAccess().getPRED_REALISED_TOKENParserRuleCall_0());
-                    		
+                    					newCompositeNode(grammarAccess.getPredicatesAccess().getRealisedPRED_REALISED_TOKENParserRuleCall_0_0());
+                    				
                     pushFollow(FOLLOW_2);
-                    this_PRED_REALISED_TOKEN_0=rulePRED_REALISED_TOKEN();
+                    lv_realised_0_0=rulePRED_REALISED_TOKEN();
 
                     state._fsp--;
 
 
-                    			current.merge(this_PRED_REALISED_TOKEN_0);
-                    		
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getPredicatesRule());
+                    					}
+                    					set(
+                    						current,
+                    						"realised",
+                    						true,
+                    						"no.sintef.xtext.dsl.operator.Realop.PRED_REALISED_TOKEN");
+                    					afterParserOrEnumRuleCall();
+                    				
 
-                    			afterParserOrEnumRuleCall();
-                    		
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 2 :
-                    // InternalRealop.g:512:3: this_PRED_POSITIVE_TOKEN_1= rulePRED_POSITIVE_TOKEN
+                    // InternalRealop.g:548:3: ( (lv_positive_1_0= rulePRED_POSITIVE_TOKEN ) )
+                    {
+                    // InternalRealop.g:548:3: ( (lv_positive_1_0= rulePRED_POSITIVE_TOKEN ) )
+                    // InternalRealop.g:549:4: (lv_positive_1_0= rulePRED_POSITIVE_TOKEN )
+                    {
+                    // InternalRealop.g:549:4: (lv_positive_1_0= rulePRED_POSITIVE_TOKEN )
+                    // InternalRealop.g:550:5: lv_positive_1_0= rulePRED_POSITIVE_TOKEN
                     {
 
-                    			newCompositeNode(grammarAccess.getPredicatesAccess().getPRED_POSITIVE_TOKENParserRuleCall_1());
-                    		
+                    					newCompositeNode(grammarAccess.getPredicatesAccess().getPositivePRED_POSITIVE_TOKENParserRuleCall_1_0());
+                    				
                     pushFollow(FOLLOW_2);
-                    this_PRED_POSITIVE_TOKEN_1=rulePRED_POSITIVE_TOKEN();
+                    lv_positive_1_0=rulePRED_POSITIVE_TOKEN();
 
                     state._fsp--;
 
 
-                    			current.merge(this_PRED_POSITIVE_TOKEN_1);
-                    		
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getPredicatesRule());
+                    					}
+                    					set(
+                    						current,
+                    						"positive",
+                    						true,
+                    						"no.sintef.xtext.dsl.operator.Realop.PRED_POSITIVE_TOKEN");
+                    					afterParserOrEnumRuleCall();
+                    				
 
-                    			afterParserOrEnumRuleCall();
-                    		
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 3 :
-                    // InternalRealop.g:523:3: this_PRED_NEGATIVE_TOKEN_2= rulePRED_NEGATIVE_TOKEN
+                    // InternalRealop.g:568:3: ( (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN ) )
+                    {
+                    // InternalRealop.g:568:3: ( (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN ) )
+                    // InternalRealop.g:569:4: (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN )
+                    {
+                    // InternalRealop.g:569:4: (lv_negative_2_0= rulePRED_NEGATIVE_TOKEN )
+                    // InternalRealop.g:570:5: lv_negative_2_0= rulePRED_NEGATIVE_TOKEN
                     {
 
-                    			newCompositeNode(grammarAccess.getPredicatesAccess().getPRED_NEGATIVE_TOKENParserRuleCall_2());
-                    		
+                    					newCompositeNode(grammarAccess.getPredicatesAccess().getNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0());
+                    				
                     pushFollow(FOLLOW_2);
-                    this_PRED_NEGATIVE_TOKEN_2=rulePRED_NEGATIVE_TOKEN();
+                    lv_negative_2_0=rulePRED_NEGATIVE_TOKEN();
 
                     state._fsp--;
 
 
-                    			current.merge(this_PRED_NEGATIVE_TOKEN_2);
-                    		
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getPredicatesRule());
+                    					}
+                    					set(
+                    						current,
+                    						"negative",
+                    						true,
+                    						"no.sintef.xtext.dsl.operator.Realop.PRED_NEGATIVE_TOKEN");
+                    					afterParserOrEnumRuleCall();
+                    				
 
-                    			afterParserOrEnumRuleCall();
-                    		
+                    }
+
+
+                    }
+
 
                     }
                     break;
@@ -1278,7 +1380,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNOT_TOKEN"
-    // InternalRealop.g:537:1: entryRuleNOT_TOKEN returns [String current=null] : iv_ruleNOT_TOKEN= ruleNOT_TOKEN EOF ;
+    // InternalRealop.g:591:1: entryRuleNOT_TOKEN returns [String current=null] : iv_ruleNOT_TOKEN= ruleNOT_TOKEN EOF ;
     public final String entryRuleNOT_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1286,8 +1388,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:537:49: (iv_ruleNOT_TOKEN= ruleNOT_TOKEN EOF )
-            // InternalRealop.g:538:2: iv_ruleNOT_TOKEN= ruleNOT_TOKEN EOF
+            // InternalRealop.g:591:49: (iv_ruleNOT_TOKEN= ruleNOT_TOKEN EOF )
+            // InternalRealop.g:592:2: iv_ruleNOT_TOKEN= ruleNOT_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getNOT_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1314,7 +1416,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNOT_TOKEN"
-    // InternalRealop.g:544:1: ruleNOT_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'not' ;
+    // InternalRealop.g:598:1: ruleNOT_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'not' ;
     public final AntlrDatatypeRuleToken ruleNOT_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1324,8 +1426,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:550:2: (kw= 'not' )
-            // InternalRealop.g:551:2: kw= 'not'
+            // InternalRealop.g:604:2: (kw= 'not' )
+            // InternalRealop.g:605:2: kw= 'not'
             {
             kw=(Token)match(input,13,FOLLOW_2); 
 
@@ -1352,7 +1454,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAND_TOKEN"
-    // InternalRealop.g:559:1: entryRuleAND_TOKEN returns [String current=null] : iv_ruleAND_TOKEN= ruleAND_TOKEN EOF ;
+    // InternalRealop.g:613:1: entryRuleAND_TOKEN returns [String current=null] : iv_ruleAND_TOKEN= ruleAND_TOKEN EOF ;
     public final String entryRuleAND_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1360,8 +1462,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:559:49: (iv_ruleAND_TOKEN= ruleAND_TOKEN EOF )
-            // InternalRealop.g:560:2: iv_ruleAND_TOKEN= ruleAND_TOKEN EOF
+            // InternalRealop.g:613:49: (iv_ruleAND_TOKEN= ruleAND_TOKEN EOF )
+            // InternalRealop.g:614:2: iv_ruleAND_TOKEN= ruleAND_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getAND_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1388,7 +1490,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAND_TOKEN"
-    // InternalRealop.g:566:1: ruleAND_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'and' ;
+    // InternalRealop.g:620:1: ruleAND_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'and' ;
     public final AntlrDatatypeRuleToken ruleAND_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1398,8 +1500,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:572:2: (kw= 'and' )
-            // InternalRealop.g:573:2: kw= 'and'
+            // InternalRealop.g:626:2: (kw= 'and' )
+            // InternalRealop.g:627:2: kw= 'and'
             {
             kw=(Token)match(input,14,FOLLOW_2); 
 
@@ -1426,7 +1528,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOR_TOKEN"
-    // InternalRealop.g:581:1: entryRuleOR_TOKEN returns [String current=null] : iv_ruleOR_TOKEN= ruleOR_TOKEN EOF ;
+    // InternalRealop.g:635:1: entryRuleOR_TOKEN returns [String current=null] : iv_ruleOR_TOKEN= ruleOR_TOKEN EOF ;
     public final String entryRuleOR_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1434,8 +1536,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:581:48: (iv_ruleOR_TOKEN= ruleOR_TOKEN EOF )
-            // InternalRealop.g:582:2: iv_ruleOR_TOKEN= ruleOR_TOKEN EOF
+            // InternalRealop.g:635:48: (iv_ruleOR_TOKEN= ruleOR_TOKEN EOF )
+            // InternalRealop.g:636:2: iv_ruleOR_TOKEN= ruleOR_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getOR_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1462,7 +1564,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOR_TOKEN"
-    // InternalRealop.g:588:1: ruleOR_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'or' ;
+    // InternalRealop.g:642:1: ruleOR_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'or' ;
     public final AntlrDatatypeRuleToken ruleOR_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1472,8 +1574,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:594:2: (kw= 'or' )
-            // InternalRealop.g:595:2: kw= 'or'
+            // InternalRealop.g:648:2: (kw= 'or' )
+            // InternalRealop.g:649:2: kw= 'or'
             {
             kw=(Token)match(input,15,FOLLOW_2); 
 
@@ -1500,7 +1602,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXOR_TOKEN"
-    // InternalRealop.g:603:1: entryRuleXOR_TOKEN returns [String current=null] : iv_ruleXOR_TOKEN= ruleXOR_TOKEN EOF ;
+    // InternalRealop.g:657:1: entryRuleXOR_TOKEN returns [String current=null] : iv_ruleXOR_TOKEN= ruleXOR_TOKEN EOF ;
     public final String entryRuleXOR_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1508,8 +1610,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:603:49: (iv_ruleXOR_TOKEN= ruleXOR_TOKEN EOF )
-            // InternalRealop.g:604:2: iv_ruleXOR_TOKEN= ruleXOR_TOKEN EOF
+            // InternalRealop.g:657:49: (iv_ruleXOR_TOKEN= ruleXOR_TOKEN EOF )
+            // InternalRealop.g:658:2: iv_ruleXOR_TOKEN= ruleXOR_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getXOR_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1536,7 +1638,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXOR_TOKEN"
-    // InternalRealop.g:610:1: ruleXOR_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'xor' ;
+    // InternalRealop.g:664:1: ruleXOR_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'xor' ;
     public final AntlrDatatypeRuleToken ruleXOR_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1546,8 +1648,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:616:2: (kw= 'xor' )
-            // InternalRealop.g:617:2: kw= 'xor'
+            // InternalRealop.g:670:2: (kw= 'xor' )
+            // InternalRealop.g:671:2: kw= 'xor'
             {
             kw=(Token)match(input,16,FOLLOW_2); 
 
@@ -1574,7 +1676,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePRED_REALISED_TOKEN"
-    // InternalRealop.g:625:1: entryRulePRED_REALISED_TOKEN returns [String current=null] : iv_rulePRED_REALISED_TOKEN= rulePRED_REALISED_TOKEN EOF ;
+    // InternalRealop.g:679:1: entryRulePRED_REALISED_TOKEN returns [String current=null] : iv_rulePRED_REALISED_TOKEN= rulePRED_REALISED_TOKEN EOF ;
     public final String entryRulePRED_REALISED_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1582,8 +1684,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:625:59: (iv_rulePRED_REALISED_TOKEN= rulePRED_REALISED_TOKEN EOF )
-            // InternalRealop.g:626:2: iv_rulePRED_REALISED_TOKEN= rulePRED_REALISED_TOKEN EOF
+            // InternalRealop.g:679:59: (iv_rulePRED_REALISED_TOKEN= rulePRED_REALISED_TOKEN EOF )
+            // InternalRealop.g:680:2: iv_rulePRED_REALISED_TOKEN= rulePRED_REALISED_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getPRED_REALISED_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1610,7 +1712,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePRED_REALISED_TOKEN"
-    // InternalRealop.g:632:1: rulePRED_REALISED_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'realised' ;
+    // InternalRealop.g:686:1: rulePRED_REALISED_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'realised' ;
     public final AntlrDatatypeRuleToken rulePRED_REALISED_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1620,8 +1722,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:638:2: (kw= 'realised' )
-            // InternalRealop.g:639:2: kw= 'realised'
+            // InternalRealop.g:692:2: (kw= 'realised' )
+            // InternalRealop.g:693:2: kw= 'realised'
             {
             kw=(Token)match(input,17,FOLLOW_2); 
 
@@ -1648,7 +1750,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePRED_POSITIVE_TOKEN"
-    // InternalRealop.g:647:1: entryRulePRED_POSITIVE_TOKEN returns [String current=null] : iv_rulePRED_POSITIVE_TOKEN= rulePRED_POSITIVE_TOKEN EOF ;
+    // InternalRealop.g:701:1: entryRulePRED_POSITIVE_TOKEN returns [String current=null] : iv_rulePRED_POSITIVE_TOKEN= rulePRED_POSITIVE_TOKEN EOF ;
     public final String entryRulePRED_POSITIVE_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1656,8 +1758,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:647:59: (iv_rulePRED_POSITIVE_TOKEN= rulePRED_POSITIVE_TOKEN EOF )
-            // InternalRealop.g:648:2: iv_rulePRED_POSITIVE_TOKEN= rulePRED_POSITIVE_TOKEN EOF
+            // InternalRealop.g:701:59: (iv_rulePRED_POSITIVE_TOKEN= rulePRED_POSITIVE_TOKEN EOF )
+            // InternalRealop.g:702:2: iv_rulePRED_POSITIVE_TOKEN= rulePRED_POSITIVE_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getPRED_POSITIVE_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1684,7 +1786,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePRED_POSITIVE_TOKEN"
-    // InternalRealop.g:654:1: rulePRED_POSITIVE_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'positive' ;
+    // InternalRealop.g:708:1: rulePRED_POSITIVE_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'positive' ;
     public final AntlrDatatypeRuleToken rulePRED_POSITIVE_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1694,8 +1796,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:660:2: (kw= 'positive' )
-            // InternalRealop.g:661:2: kw= 'positive'
+            // InternalRealop.g:714:2: (kw= 'positive' )
+            // InternalRealop.g:715:2: kw= 'positive'
             {
             kw=(Token)match(input,18,FOLLOW_2); 
 
@@ -1722,7 +1824,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePRED_NEGATIVE_TOKEN"
-    // InternalRealop.g:669:1: entryRulePRED_NEGATIVE_TOKEN returns [String current=null] : iv_rulePRED_NEGATIVE_TOKEN= rulePRED_NEGATIVE_TOKEN EOF ;
+    // InternalRealop.g:723:1: entryRulePRED_NEGATIVE_TOKEN returns [String current=null] : iv_rulePRED_NEGATIVE_TOKEN= rulePRED_NEGATIVE_TOKEN EOF ;
     public final String entryRulePRED_NEGATIVE_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1730,8 +1832,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:669:59: (iv_rulePRED_NEGATIVE_TOKEN= rulePRED_NEGATIVE_TOKEN EOF )
-            // InternalRealop.g:670:2: iv_rulePRED_NEGATIVE_TOKEN= rulePRED_NEGATIVE_TOKEN EOF
+            // InternalRealop.g:723:59: (iv_rulePRED_NEGATIVE_TOKEN= rulePRED_NEGATIVE_TOKEN EOF )
+            // InternalRealop.g:724:2: iv_rulePRED_NEGATIVE_TOKEN= rulePRED_NEGATIVE_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getPRED_NEGATIVE_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1758,7 +1860,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePRED_NEGATIVE_TOKEN"
-    // InternalRealop.g:676:1: rulePRED_NEGATIVE_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'negative' ;
+    // InternalRealop.g:730:1: rulePRED_NEGATIVE_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'negative' ;
     public final AntlrDatatypeRuleToken rulePRED_NEGATIVE_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1768,8 +1870,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:682:2: (kw= 'negative' )
-            // InternalRealop.g:683:2: kw= 'negative'
+            // InternalRealop.g:736:2: (kw= 'negative' )
+            // InternalRealop.g:737:2: kw= 'negative'
             {
             kw=(Token)match(input,19,FOLLOW_2); 
 
@@ -1796,7 +1898,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOP_TOKEN"
-    // InternalRealop.g:691:1: entryRuleOP_TOKEN returns [String current=null] : iv_ruleOP_TOKEN= ruleOP_TOKEN EOF ;
+    // InternalRealop.g:745:1: entryRuleOP_TOKEN returns [String current=null] : iv_ruleOP_TOKEN= ruleOP_TOKEN EOF ;
     public final String entryRuleOP_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1804,8 +1906,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:691:48: (iv_ruleOP_TOKEN= ruleOP_TOKEN EOF )
-            // InternalRealop.g:692:2: iv_ruleOP_TOKEN= ruleOP_TOKEN EOF
+            // InternalRealop.g:745:48: (iv_ruleOP_TOKEN= ruleOP_TOKEN EOF )
+            // InternalRealop.g:746:2: iv_ruleOP_TOKEN= ruleOP_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getOP_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1832,7 +1934,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOP_TOKEN"
-    // InternalRealop.g:698:1: ruleOP_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'operator' ;
+    // InternalRealop.g:752:1: ruleOP_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'operator' ;
     public final AntlrDatatypeRuleToken ruleOP_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1842,8 +1944,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:704:2: (kw= 'operator' )
-            // InternalRealop.g:705:2: kw= 'operator'
+            // InternalRealop.g:758:2: (kw= 'operator' )
+            // InternalRealop.g:759:2: kw= 'operator'
             {
             kw=(Token)match(input,20,FOLLOW_2); 
 
@@ -1870,7 +1972,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOPEN_OP_TOKEN"
-    // InternalRealop.g:713:1: entryRuleOPEN_OP_TOKEN returns [String current=null] : iv_ruleOPEN_OP_TOKEN= ruleOPEN_OP_TOKEN EOF ;
+    // InternalRealop.g:767:1: entryRuleOPEN_OP_TOKEN returns [String current=null] : iv_ruleOPEN_OP_TOKEN= ruleOPEN_OP_TOKEN EOF ;
     public final String entryRuleOPEN_OP_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1878,8 +1980,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:713:53: (iv_ruleOPEN_OP_TOKEN= ruleOPEN_OP_TOKEN EOF )
-            // InternalRealop.g:714:2: iv_ruleOPEN_OP_TOKEN= ruleOPEN_OP_TOKEN EOF
+            // InternalRealop.g:767:53: (iv_ruleOPEN_OP_TOKEN= ruleOPEN_OP_TOKEN EOF )
+            // InternalRealop.g:768:2: iv_ruleOPEN_OP_TOKEN= ruleOPEN_OP_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getOPEN_OP_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1906,7 +2008,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOPEN_OP_TOKEN"
-    // InternalRealop.g:720:1: ruleOPEN_OP_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= '{' ;
+    // InternalRealop.g:774:1: ruleOPEN_OP_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= '{' ;
     public final AntlrDatatypeRuleToken ruleOPEN_OP_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1916,8 +2018,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:726:2: (kw= '{' )
-            // InternalRealop.g:727:2: kw= '{'
+            // InternalRealop.g:780:2: (kw= '{' )
+            // InternalRealop.g:781:2: kw= '{'
             {
             kw=(Token)match(input,21,FOLLOW_2); 
 
@@ -1944,7 +2046,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCLOSE_OP_TOKEN"
-    // InternalRealop.g:735:1: entryRuleCLOSE_OP_TOKEN returns [String current=null] : iv_ruleCLOSE_OP_TOKEN= ruleCLOSE_OP_TOKEN EOF ;
+    // InternalRealop.g:789:1: entryRuleCLOSE_OP_TOKEN returns [String current=null] : iv_ruleCLOSE_OP_TOKEN= ruleCLOSE_OP_TOKEN EOF ;
     public final String entryRuleCLOSE_OP_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -1952,8 +2054,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:735:54: (iv_ruleCLOSE_OP_TOKEN= ruleCLOSE_OP_TOKEN EOF )
-            // InternalRealop.g:736:2: iv_ruleCLOSE_OP_TOKEN= ruleCLOSE_OP_TOKEN EOF
+            // InternalRealop.g:789:54: (iv_ruleCLOSE_OP_TOKEN= ruleCLOSE_OP_TOKEN EOF )
+            // InternalRealop.g:790:2: iv_ruleCLOSE_OP_TOKEN= ruleCLOSE_OP_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getCLOSE_OP_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -1980,7 +2082,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCLOSE_OP_TOKEN"
-    // InternalRealop.g:742:1: ruleCLOSE_OP_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= '}' ;
+    // InternalRealop.g:796:1: ruleCLOSE_OP_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= '}' ;
     public final AntlrDatatypeRuleToken ruleCLOSE_OP_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1990,8 +2092,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:748:2: (kw= '}' )
-            // InternalRealop.g:749:2: kw= '}'
+            // InternalRealop.g:802:2: (kw= '}' )
+            // InternalRealop.g:803:2: kw= '}'
             {
             kw=(Token)match(input,22,FOLLOW_2); 
 
@@ -2018,7 +2120,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePRE_TOKEN"
-    // InternalRealop.g:757:1: entryRulePRE_TOKEN returns [String current=null] : iv_rulePRE_TOKEN= rulePRE_TOKEN EOF ;
+    // InternalRealop.g:811:1: entryRulePRE_TOKEN returns [String current=null] : iv_rulePRE_TOKEN= rulePRE_TOKEN EOF ;
     public final String entryRulePRE_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -2026,8 +2128,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:757:49: (iv_rulePRE_TOKEN= rulePRE_TOKEN EOF )
-            // InternalRealop.g:758:2: iv_rulePRE_TOKEN= rulePRE_TOKEN EOF
+            // InternalRealop.g:811:49: (iv_rulePRE_TOKEN= rulePRE_TOKEN EOF )
+            // InternalRealop.g:812:2: iv_rulePRE_TOKEN= rulePRE_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getPRE_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -2054,7 +2156,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePRE_TOKEN"
-    // InternalRealop.g:764:1: rulePRE_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'pre' ;
+    // InternalRealop.g:818:1: rulePRE_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'pre' ;
     public final AntlrDatatypeRuleToken rulePRE_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2064,8 +2166,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:770:2: (kw= 'pre' )
-            // InternalRealop.g:771:2: kw= 'pre'
+            // InternalRealop.g:824:2: (kw= 'pre' )
+            // InternalRealop.g:825:2: kw= 'pre'
             {
             kw=(Token)match(input,23,FOLLOW_2); 
 
@@ -2092,7 +2194,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePOST_TOKEN"
-    // InternalRealop.g:779:1: entryRulePOST_TOKEN returns [String current=null] : iv_rulePOST_TOKEN= rulePOST_TOKEN EOF ;
+    // InternalRealop.g:833:1: entryRulePOST_TOKEN returns [String current=null] : iv_rulePOST_TOKEN= rulePOST_TOKEN EOF ;
     public final String entryRulePOST_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -2100,8 +2202,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:779:50: (iv_rulePOST_TOKEN= rulePOST_TOKEN EOF )
-            // InternalRealop.g:780:2: iv_rulePOST_TOKEN= rulePOST_TOKEN EOF
+            // InternalRealop.g:833:50: (iv_rulePOST_TOKEN= rulePOST_TOKEN EOF )
+            // InternalRealop.g:834:2: iv_rulePOST_TOKEN= rulePOST_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getPOST_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -2128,7 +2230,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePOST_TOKEN"
-    // InternalRealop.g:786:1: rulePOST_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'post' ;
+    // InternalRealop.g:840:1: rulePOST_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'post' ;
     public final AntlrDatatypeRuleToken rulePOST_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2138,8 +2240,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:792:2: (kw= 'post' )
-            // InternalRealop.g:793:2: kw= 'post'
+            // InternalRealop.g:846:2: (kw= 'post' )
+            // InternalRealop.g:847:2: kw= 'post'
             {
             kw=(Token)match(input,24,FOLLOW_2); 
 
@@ -2166,7 +2268,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCOND_ST_TOKEN"
-    // InternalRealop.g:801:1: entryRuleCOND_ST_TOKEN returns [String current=null] : iv_ruleCOND_ST_TOKEN= ruleCOND_ST_TOKEN EOF ;
+    // InternalRealop.g:855:1: entryRuleCOND_ST_TOKEN returns [String current=null] : iv_ruleCOND_ST_TOKEN= ruleCOND_ST_TOKEN EOF ;
     public final String entryRuleCOND_ST_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -2174,8 +2276,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:801:53: (iv_ruleCOND_ST_TOKEN= ruleCOND_ST_TOKEN EOF )
-            // InternalRealop.g:802:2: iv_ruleCOND_ST_TOKEN= ruleCOND_ST_TOKEN EOF
+            // InternalRealop.g:855:53: (iv_ruleCOND_ST_TOKEN= ruleCOND_ST_TOKEN EOF )
+            // InternalRealop.g:856:2: iv_ruleCOND_ST_TOKEN= ruleCOND_ST_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getCOND_ST_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -2202,7 +2304,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCOND_ST_TOKEN"
-    // InternalRealop.g:808:1: ruleCOND_ST_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= ':' ;
+    // InternalRealop.g:862:1: ruleCOND_ST_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= ':' ;
     public final AntlrDatatypeRuleToken ruleCOND_ST_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2212,8 +2314,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:814:2: (kw= ':' )
-            // InternalRealop.g:815:2: kw= ':'
+            // InternalRealop.g:868:2: (kw= ':' )
+            // InternalRealop.g:869:2: kw= ':'
             {
             kw=(Token)match(input,25,FOLLOW_2); 
 
@@ -2240,7 +2342,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCOND_END_TOKEN"
-    // InternalRealop.g:823:1: entryRuleCOND_END_TOKEN returns [String current=null] : iv_ruleCOND_END_TOKEN= ruleCOND_END_TOKEN EOF ;
+    // InternalRealop.g:877:1: entryRuleCOND_END_TOKEN returns [String current=null] : iv_ruleCOND_END_TOKEN= ruleCOND_END_TOKEN EOF ;
     public final String entryRuleCOND_END_TOKEN() throws RecognitionException {
         String current = null;
 
@@ -2248,8 +2350,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRealop.g:823:54: (iv_ruleCOND_END_TOKEN= ruleCOND_END_TOKEN EOF )
-            // InternalRealop.g:824:2: iv_ruleCOND_END_TOKEN= ruleCOND_END_TOKEN EOF
+            // InternalRealop.g:877:54: (iv_ruleCOND_END_TOKEN= ruleCOND_END_TOKEN EOF )
+            // InternalRealop.g:878:2: iv_ruleCOND_END_TOKEN= ruleCOND_END_TOKEN EOF
             {
              newCompositeNode(grammarAccess.getCOND_END_TOKENRule()); 
             pushFollow(FOLLOW_1);
@@ -2276,7 +2378,7 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCOND_END_TOKEN"
-    // InternalRealop.g:830:1: ruleCOND_END_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= ';' ;
+    // InternalRealop.g:884:1: ruleCOND_END_TOKEN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= ';' ;
     public final AntlrDatatypeRuleToken ruleCOND_END_TOKEN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2286,8 +2388,8 @@ public class InternalRealopParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRealop.g:836:2: (kw= ';' )
-            // InternalRealop.g:837:2: kw= ';'
+            // InternalRealop.g:890:2: (kw= ';' )
+            // InternalRealop.g:891:2: kw= ';'
             {
             kw=(Token)match(input,26,FOLLOW_2); 
 

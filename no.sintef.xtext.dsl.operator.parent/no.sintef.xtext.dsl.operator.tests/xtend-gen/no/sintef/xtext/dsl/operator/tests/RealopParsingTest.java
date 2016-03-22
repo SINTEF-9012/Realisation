@@ -4,19 +4,11 @@
 package no.sintef.xtext.dsl.operator.tests;
 
 import com.google.inject.Inject;
-import no.sintef.xtext.dsl.operator.realop.Expression;
-import no.sintef.xtext.dsl.operator.realop.Operator;
-import no.sintef.xtext.dsl.operator.realop.Predicate;
 import no.sintef.xtext.dsl.operator.realop.Realop;
-import no.sintef.xtext.dsl.operator.realop.TerminalExpression;
 import no.sintef.xtext.dsl.operator.tests.RealopInjectorProvider;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -29,60 +21,7 @@ public class RealopParsingTest {
   
   @Test
   public void testGrammar() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("operator Name {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("pre : not realised(SPR) or realised(SPR);");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("post : postive(SP) and not negative(SPR1) xor negative(SPR);");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("operator AnotherName {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("pre : realised(SPR);");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("post : postive(SP);");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final Realop result = this.parseHelper.parse(_builder);
-      Assert.assertNotNull(result);
-      EList<Operator> _operator = result.getOperator();
-      int size = _operator.size();
-      Assert.assertEquals("should be 2 operators", 2, size);
-      EList<Operator> _operator_1 = result.getOperator();
-      Operator operator = _operator_1.get(0);
-      String _name = operator.getName();
-      Assert.assertEquals("Name", _name);
-      Expression pre_condition = operator.getExp_post();
-      Expression post_condition = operator.getExp_post();
-      Assert.assertNotNull(pre_condition);
-      Assert.assertNotNull(post_condition);
-      TerminalExpression rhs = post_condition.getRhs();
-      Assert.assertNotNull(rhs);
-      String op = rhs.getOp();
-      Assert.assertEquals("and", op);
-      Expression _rhs = rhs.getRhs();
-      Predicate _lhs = _rhs.getLhs();
-      boolean _isNegate = _lhs.isNegate();
-      Assert.assertEquals(Boolean.valueOf(true), Boolean.valueOf(_isNegate));
-      Expression _rhs_1 = rhs.getRhs();
-      Predicate _lhs_1 = _rhs_1.getLhs();
-      String _predicate = _lhs_1.getPredicate();
-      Assert.assertEquals("negative", _predicate);
-      Expression _rhs_2 = rhs.getRhs();
-      Predicate _lhs_2 = _rhs_2.getLhs();
-      String _name_1 = _lhs_2.getName();
-      Assert.assertEquals("SPR1", _name_1);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field negate is undefined for the type Predicate");
   }
 }

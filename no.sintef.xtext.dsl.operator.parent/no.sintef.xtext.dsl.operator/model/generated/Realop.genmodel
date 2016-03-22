@@ -19,13 +19,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Realop.ecore#//Expression/rhs"/>
     </genClasses>
     <genClasses ecoreClass="Realop.ecore#//TerminalExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//TerminalExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Realop.ecore#//TerminalExpression/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Realop.ecore#//TerminalExpression/rhs"/>
     </genClasses>
+    <genClasses ecoreClass="Realop.ecore#//Logic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Logic/and"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Logic/or"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Logic/xor"/>
+    </genClasses>
     <genClasses ecoreClass="Realop.ecore#//Predicate">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicate/negate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicate/predicate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicate/negated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Realop.ecore#//Predicate/predicate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicate/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Realop.ecore#//Predicates">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicates/realised"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicates/positive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Realop.ecore#//Predicates/negative"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

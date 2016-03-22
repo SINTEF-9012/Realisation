@@ -179,7 +179,7 @@ public interface RealopPackage extends EPackage
   int TERMINAL_EXPRESSION = 3;
 
   /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * The feature id for the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -206,6 +206,52 @@ public interface RealopPackage extends EPackage
   int TERMINAL_EXPRESSION_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link no.sintef.xtext.dsl.operator.realop.impl.LogicImpl <em>Logic</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see no.sintef.xtext.dsl.operator.realop.impl.LogicImpl
+   * @see no.sintef.xtext.dsl.operator.realop.impl.RealopPackageImpl#getLogic()
+   * @generated
+   */
+  int LOGIC = 4;
+
+  /**
+   * The feature id for the '<em><b>And</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC__AND = 0;
+
+  /**
+   * The feature id for the '<em><b>Or</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC__OR = 1;
+
+  /**
+   * The feature id for the '<em><b>Xor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC__XOR = 2;
+
+  /**
+   * The number of structural features of the '<em>Logic</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link no.sintef.xtext.dsl.operator.realop.impl.PredicateImpl <em>Predicate</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -213,19 +259,19 @@ public interface RealopPackage extends EPackage
    * @see no.sintef.xtext.dsl.operator.realop.impl.RealopPackageImpl#getPredicate()
    * @generated
    */
-  int PREDICATE = 4;
+  int PREDICATE = 5;
 
   /**
-   * The feature id for the '<em><b>Negate</b></em>' attribute.
+   * The feature id for the '<em><b>Negated</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PREDICATE__NEGATE = 0;
+  int PREDICATE__NEGATED = 0;
 
   /**
-   * The feature id for the '<em><b>Predicate</b></em>' attribute.
+   * The feature id for the '<em><b>Predicate</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -250,6 +296,52 @@ public interface RealopPackage extends EPackage
    * @ordered
    */
   int PREDICATE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link no.sintef.xtext.dsl.operator.realop.impl.PredicatesImpl <em>Predicates</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see no.sintef.xtext.dsl.operator.realop.impl.PredicatesImpl
+   * @see no.sintef.xtext.dsl.operator.realop.impl.RealopPackageImpl#getPredicates()
+   * @generated
+   */
+  int PREDICATES = 6;
+
+  /**
+   * The feature id for the '<em><b>Realised</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREDICATES__REALISED = 0;
+
+  /**
+   * The feature id for the '<em><b>Positive</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREDICATES__POSITIVE = 1;
+
+  /**
+   * The feature id for the '<em><b>Negative</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREDICATES__NEGATIVE = 2;
+
+  /**
+   * The number of structural features of the '<em>Predicates</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREDICATES_FEATURE_COUNT = 3;
 
 
   /**
@@ -359,15 +451,15 @@ public interface RealopPackage extends EPackage
   EClass getTerminalExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.TerminalExpression#getOp <em>Op</em>}'.
+   * Returns the meta object for the containment reference '{@link no.sintef.xtext.dsl.operator.realop.TerminalExpression#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Op</em>'.
+   * @return the meta object for the containment reference '<em>Op</em>'.
    * @see no.sintef.xtext.dsl.operator.realop.TerminalExpression#getOp()
    * @see #getTerminalExpression()
    * @generated
    */
-  EAttribute getTerminalExpression_Op();
+  EReference getTerminalExpression_Op();
 
   /**
    * Returns the meta object for the containment reference '{@link no.sintef.xtext.dsl.operator.realop.TerminalExpression#getRhs <em>Rhs</em>}'.
@@ -381,6 +473,49 @@ public interface RealopPackage extends EPackage
   EReference getTerminalExpression_Rhs();
 
   /**
+   * Returns the meta object for class '{@link no.sintef.xtext.dsl.operator.realop.Logic <em>Logic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Logic</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Logic
+   * @generated
+   */
+  EClass getLogic();
+
+  /**
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Logic#isAnd <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>And</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Logic#isAnd()
+   * @see #getLogic()
+   * @generated
+   */
+  EAttribute getLogic_And();
+
+  /**
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Logic#isOr <em>Or</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Or</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Logic#isOr()
+   * @see #getLogic()
+   * @generated
+   */
+  EAttribute getLogic_Or();
+
+  /**
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Logic#isXor <em>Xor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Xor</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Logic#isXor()
+   * @see #getLogic()
+   * @generated
+   */
+  EAttribute getLogic_Xor();
+
+  /**
    * Returns the meta object for class '{@link no.sintef.xtext.dsl.operator.realop.Predicate <em>Predicate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -391,26 +526,26 @@ public interface RealopPackage extends EPackage
   EClass getPredicate();
 
   /**
-   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicate#isNegate <em>Negate</em>}'.
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicate#isNegated <em>Negated</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Negate</em>'.
-   * @see no.sintef.xtext.dsl.operator.realop.Predicate#isNegate()
+   * @return the meta object for the attribute '<em>Negated</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Predicate#isNegated()
    * @see #getPredicate()
    * @generated
    */
-  EAttribute getPredicate_Negate();
+  EAttribute getPredicate_Negated();
 
   /**
-   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicate#getPredicate <em>Predicate</em>}'.
+   * Returns the meta object for the containment reference '{@link no.sintef.xtext.dsl.operator.realop.Predicate#getPredicate <em>Predicate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Predicate</em>'.
+   * @return the meta object for the containment reference '<em>Predicate</em>'.
    * @see no.sintef.xtext.dsl.operator.realop.Predicate#getPredicate()
    * @see #getPredicate()
    * @generated
    */
-  EAttribute getPredicate_Predicate();
+  EReference getPredicate_Predicate();
 
   /**
    * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicate#getName <em>Name</em>}'.
@@ -422,6 +557,49 @@ public interface RealopPackage extends EPackage
    * @generated
    */
   EAttribute getPredicate_Name();
+
+  /**
+   * Returns the meta object for class '{@link no.sintef.xtext.dsl.operator.realop.Predicates <em>Predicates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Predicates</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Predicates
+   * @generated
+   */
+  EClass getPredicates();
+
+  /**
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicates#isRealised <em>Realised</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Realised</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Predicates#isRealised()
+   * @see #getPredicates()
+   * @generated
+   */
+  EAttribute getPredicates_Realised();
+
+  /**
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicates#isPositive <em>Positive</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Positive</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Predicates#isPositive()
+   * @see #getPredicates()
+   * @generated
+   */
+  EAttribute getPredicates_Positive();
+
+  /**
+   * Returns the meta object for the attribute '{@link no.sintef.xtext.dsl.operator.realop.Predicates#isNegative <em>Negative</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Negative</em>'.
+   * @see no.sintef.xtext.dsl.operator.realop.Predicates#isNegative()
+   * @see #getPredicates()
+   * @generated
+   */
+  EAttribute getPredicates_Negative();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -535,12 +713,12 @@ public interface RealopPackage extends EPackage
     EClass TERMINAL_EXPRESSION = eINSTANCE.getTerminalExpression();
 
     /**
-     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Op</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TERMINAL_EXPRESSION__OP = eINSTANCE.getTerminalExpression_Op();
+    EReference TERMINAL_EXPRESSION__OP = eINSTANCE.getTerminalExpression_Op();
 
     /**
      * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
@@ -549,6 +727,40 @@ public interface RealopPackage extends EPackage
      * @generated
      */
     EReference TERMINAL_EXPRESSION__RHS = eINSTANCE.getTerminalExpression_Rhs();
+
+    /**
+     * The meta object literal for the '{@link no.sintef.xtext.dsl.operator.realop.impl.LogicImpl <em>Logic</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see no.sintef.xtext.dsl.operator.realop.impl.LogicImpl
+     * @see no.sintef.xtext.dsl.operator.realop.impl.RealopPackageImpl#getLogic()
+     * @generated
+     */
+    EClass LOGIC = eINSTANCE.getLogic();
+
+    /**
+     * The meta object literal for the '<em><b>And</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC__AND = eINSTANCE.getLogic_And();
+
+    /**
+     * The meta object literal for the '<em><b>Or</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC__OR = eINSTANCE.getLogic_Or();
+
+    /**
+     * The meta object literal for the '<em><b>Xor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC__XOR = eINSTANCE.getLogic_Xor();
 
     /**
      * The meta object literal for the '{@link no.sintef.xtext.dsl.operator.realop.impl.PredicateImpl <em>Predicate</em>}' class.
@@ -561,20 +773,20 @@ public interface RealopPackage extends EPackage
     EClass PREDICATE = eINSTANCE.getPredicate();
 
     /**
-     * The meta object literal for the '<em><b>Negate</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PREDICATE__NEGATE = eINSTANCE.getPredicate_Negate();
+    EAttribute PREDICATE__NEGATED = eINSTANCE.getPredicate_Negated();
 
     /**
-     * The meta object literal for the '<em><b>Predicate</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Predicate</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PREDICATE__PREDICATE = eINSTANCE.getPredicate_Predicate();
+    EReference PREDICATE__PREDICATE = eINSTANCE.getPredicate_Predicate();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -583,6 +795,40 @@ public interface RealopPackage extends EPackage
      * @generated
      */
     EAttribute PREDICATE__NAME = eINSTANCE.getPredicate_Name();
+
+    /**
+     * The meta object literal for the '{@link no.sintef.xtext.dsl.operator.realop.impl.PredicatesImpl <em>Predicates</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see no.sintef.xtext.dsl.operator.realop.impl.PredicatesImpl
+     * @see no.sintef.xtext.dsl.operator.realop.impl.RealopPackageImpl#getPredicates()
+     * @generated
+     */
+    EClass PREDICATES = eINSTANCE.getPredicates();
+
+    /**
+     * The meta object literal for the '<em><b>Realised</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PREDICATES__REALISED = eINSTANCE.getPredicates_Realised();
+
+    /**
+     * The meta object literal for the '<em><b>Positive</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PREDICATES__POSITIVE = eINSTANCE.getPredicates_Positive();
+
+    /**
+     * The meta object literal for the '<em><b>Negative</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PREDICATES__NEGATIVE = eINSTANCE.getPredicates_Negative();
 
   }
 

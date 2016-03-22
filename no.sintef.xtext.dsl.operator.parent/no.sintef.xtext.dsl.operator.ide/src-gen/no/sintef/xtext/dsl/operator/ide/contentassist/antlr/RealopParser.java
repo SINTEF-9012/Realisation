@@ -49,9 +49,15 @@ public class RealopParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExpressionAccess().getRhsAssignment_1(), "rule__Expression__RhsAssignment_1");
 					put(grammarAccess.getTerminalExpressionAccess().getOpAssignment_0(), "rule__TerminalExpression__OpAssignment_0");
 					put(grammarAccess.getTerminalExpressionAccess().getRhsAssignment_1(), "rule__TerminalExpression__RhsAssignment_1");
-					put(grammarAccess.getPredicateAccess().getNegateAssignment_0(), "rule__Predicate__NegateAssignment_0");
+					put(grammarAccess.getLogicAccess().getAndAssignment_0(), "rule__Logic__AndAssignment_0");
+					put(grammarAccess.getLogicAccess().getOrAssignment_1(), "rule__Logic__OrAssignment_1");
+					put(grammarAccess.getLogicAccess().getXorAssignment_2(), "rule__Logic__XorAssignment_2");
+					put(grammarAccess.getPredicateAccess().getNegatedAssignment_0(), "rule__Predicate__NegatedAssignment_0");
 					put(grammarAccess.getPredicateAccess().getPredicateAssignment_1(), "rule__Predicate__PredicateAssignment_1");
 					put(grammarAccess.getPredicateAccess().getNameAssignment_3(), "rule__Predicate__NameAssignment_3");
+					put(grammarAccess.getPredicatesAccess().getRealisedAssignment_0(), "rule__Predicates__RealisedAssignment_0");
+					put(grammarAccess.getPredicatesAccess().getPositiveAssignment_1(), "rule__Predicates__PositiveAssignment_1");
+					put(grammarAccess.getPredicatesAccess().getNegativeAssignment_2(), "rule__Predicates__NegativeAssignment_2");
 				}
 			};
 		}

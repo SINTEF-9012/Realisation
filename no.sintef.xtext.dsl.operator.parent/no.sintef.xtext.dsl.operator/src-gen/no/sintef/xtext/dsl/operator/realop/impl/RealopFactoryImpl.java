@@ -69,7 +69,9 @@ public class RealopFactoryImpl extends EFactoryImpl implements RealopFactory
       case RealopPackage.OPERATOR: return createOperator();
       case RealopPackage.EXPRESSION: return createExpression();
       case RealopPackage.TERMINAL_EXPRESSION: return createTerminalExpression();
+      case RealopPackage.LOGIC: return createLogic();
       case RealopPackage.PREDICATE: return createPredicate();
+      case RealopPackage.PREDICATES: return createPredicates();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -124,10 +126,32 @@ public class RealopFactoryImpl extends EFactoryImpl implements RealopFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Logic createLogic()
+  {
+    LogicImpl logic = new LogicImpl();
+    return logic;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Predicate createPredicate()
   {
     PredicateImpl predicate = new PredicateImpl();
     return predicate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Predicates createPredicates()
+  {
+    PredicatesImpl predicates = new PredicatesImpl();
+    return predicates;
   }
 
   /**

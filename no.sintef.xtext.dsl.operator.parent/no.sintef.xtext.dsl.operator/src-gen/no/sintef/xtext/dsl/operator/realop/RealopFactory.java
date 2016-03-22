@@ -60,6 +60,15 @@ public interface RealopFactory extends EFactory
   TerminalExpression createTerminalExpression();
 
   /**
+   * Returns a new object of class '<em>Logic</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Logic</em>'.
+   * @generated
+   */
+  Logic createLogic();
+
+  /**
    * Returns a new object of class '<em>Predicate</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,6 +76,15 @@ public interface RealopFactory extends EFactory
    * @generated
    */
   Predicate createPredicate();
+
+  /**
+   * Returns a new object of class '<em>Predicates</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Predicates</em>'.
+   * @generated
+   */
+  Predicates createPredicates();
 
   /**
    * Returns the package supported by this factory.

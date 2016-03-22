@@ -349,14 +349,14 @@ ruleTerminalExpression returns [EObject current=null]
 ;
 
 // Entry rule entryRuleLogic
-entryRuleLogic returns [String current=null]:
+entryRuleLogic returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getLogicRule()); }
 	iv_ruleLogic=ruleLogic
-	{ $current=$iv_ruleLogic.current.getText(); }
+	{ $current=$iv_ruleLogic.current; }
 	EOF;
 
 // Rule Logic
-ruleLogic returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+ruleLogic returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -364,38 +364,65 @@ ruleLogic returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	leaveRule();
 }:
 	(
-		{
-			newCompositeNode(grammarAccess.getLogicAccess().getAND_TOKENParserRuleCall_0());
-		}
-		this_AND_TOKEN_0=ruleAND_TOKEN
-		{
-			$current.merge(this_AND_TOKEN_0);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLogicAccess().getAndAND_TOKENParserRuleCall_0_0());
+				}
+				lv_and_0_0=ruleAND_TOKEN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLogicRule());
+					}
+					set(
+						$current,
+						"and",
+						true,
+						"no.sintef.xtext.dsl.operator.Realop.AND_TOKEN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getLogicAccess().getOR_TOKENParserRuleCall_1());
-		}
-		this_OR_TOKEN_1=ruleOR_TOKEN
-		{
-			$current.merge(this_OR_TOKEN_1);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLogicAccess().getOrOR_TOKENParserRuleCall_1_0());
+				}
+				lv_or_1_0=ruleOR_TOKEN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLogicRule());
+					}
+					set(
+						$current,
+						"or",
+						true,
+						"no.sintef.xtext.dsl.operator.Realop.OR_TOKEN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getLogicAccess().getXOR_TOKENParserRuleCall_2());
-		}
-		this_XOR_TOKEN_2=ruleXOR_TOKEN
-		{
-			$current.merge(this_XOR_TOKEN_2);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLogicAccess().getXorXOR_TOKENParserRuleCall_2_0());
+				}
+				lv_xor_2_0=ruleXOR_TOKEN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLogicRule());
+					}
+					set(
+						$current,
+						"xor",
+						true,
+						"no.sintef.xtext.dsl.operator.Realop.XOR_TOKEN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -418,16 +445,16 @@ rulePredicate returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPredicateAccess().getNegateNOT_TOKENParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getPredicateAccess().getNegatedNOT_TOKENParserRuleCall_0_0());
 				}
-				lv_negate_0_0=ruleNOT_TOKEN
+				lv_negated_0_0=ruleNOT_TOKEN
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPredicateRule());
 					}
 					set(
 						$current,
-						"negate",
+						"negated",
 						true,
 						"no.sintef.xtext.dsl.operator.Realop.NOT_TOKEN");
 					afterParserOrEnumRuleCall();
@@ -483,14 +510,14 @@ rulePredicate returns [EObject current=null]
 ;
 
 // Entry rule entryRulePredicates
-entryRulePredicates returns [String current=null]:
+entryRulePredicates returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getPredicatesRule()); }
 	iv_rulePredicates=rulePredicates
-	{ $current=$iv_rulePredicates.current.getText(); }
+	{ $current=$iv_rulePredicates.current; }
 	EOF;
 
 // Rule Predicates
-rulePredicates returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+rulePredicates returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -498,38 +525,65 @@ rulePredicates returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToke
 	leaveRule();
 }:
 	(
-		{
-			newCompositeNode(grammarAccess.getPredicatesAccess().getPRED_REALISED_TOKENParserRuleCall_0());
-		}
-		this_PRED_REALISED_TOKEN_0=rulePRED_REALISED_TOKEN
-		{
-			$current.merge(this_PRED_REALISED_TOKEN_0);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPredicatesAccess().getRealisedPRED_REALISED_TOKENParserRuleCall_0_0());
+				}
+				lv_realised_0_0=rulePRED_REALISED_TOKEN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPredicatesRule());
+					}
+					set(
+						$current,
+						"realised",
+						true,
+						"no.sintef.xtext.dsl.operator.Realop.PRED_REALISED_TOKEN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getPredicatesAccess().getPRED_POSITIVE_TOKENParserRuleCall_1());
-		}
-		this_PRED_POSITIVE_TOKEN_1=rulePRED_POSITIVE_TOKEN
-		{
-			$current.merge(this_PRED_POSITIVE_TOKEN_1);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPredicatesAccess().getPositivePRED_POSITIVE_TOKENParserRuleCall_1_0());
+				}
+				lv_positive_1_0=rulePRED_POSITIVE_TOKEN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPredicatesRule());
+					}
+					set(
+						$current,
+						"positive",
+						true,
+						"no.sintef.xtext.dsl.operator.Realop.PRED_POSITIVE_TOKEN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getPredicatesAccess().getPRED_NEGATIVE_TOKENParserRuleCall_2());
-		}
-		this_PRED_NEGATIVE_TOKEN_2=rulePRED_NEGATIVE_TOKEN
-		{
-			$current.merge(this_PRED_NEGATIVE_TOKEN_2);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPredicatesAccess().getNegativePRED_NEGATIVE_TOKENParserRuleCall_2_0());
+				}
+				lv_negative_2_0=rulePRED_NEGATIVE_TOKEN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPredicatesRule());
+					}
+					set(
+						$current,
+						"negative",
+						true,
+						"no.sintef.xtext.dsl.operator.Realop.PRED_NEGATIVE_TOKEN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 

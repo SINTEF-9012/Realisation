@@ -4,8 +4,10 @@
 package no.sintef.xtext.dsl.operator.realop.impl;
 
 import no.sintef.xtext.dsl.operator.realop.Expression;
+import no.sintef.xtext.dsl.operator.realop.Logic;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 import no.sintef.xtext.dsl.operator.realop.Predicate;
+import no.sintef.xtext.dsl.operator.realop.Predicates;
 import no.sintef.xtext.dsl.operator.realop.Realop;
 import no.sintef.xtext.dsl.operator.realop.RealopFactory;
 import no.sintef.xtext.dsl.operator.realop.RealopPackage;
@@ -59,7 +61,21 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass logicEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass predicateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass predicatesEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -229,9 +245,9 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTerminalExpression_Op()
+  public EReference getTerminalExpression_Op()
   {
-    return (EAttribute)terminalExpressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)terminalExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -249,6 +265,46 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getLogic()
+  {
+    return logicEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLogic_And()
+  {
+    return (EAttribute)logicEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLogic_Or()
+  {
+    return (EAttribute)logicEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLogic_Xor()
+  {
+    return (EAttribute)logicEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getPredicate()
   {
     return predicateEClass;
@@ -259,7 +315,7 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPredicate_Negate()
+  public EAttribute getPredicate_Negated()
   {
     return (EAttribute)predicateEClass.getEStructuralFeatures().get(0);
   }
@@ -269,9 +325,9 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPredicate_Predicate()
+  public EReference getPredicate_Predicate()
   {
-    return (EAttribute)predicateEClass.getEStructuralFeatures().get(1);
+    return (EReference)predicateEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -282,6 +338,46 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
   public EAttribute getPredicate_Name()
   {
     return (EAttribute)predicateEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPredicates()
+  {
+    return predicatesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPredicates_Realised()
+  {
+    return (EAttribute)predicatesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPredicates_Positive()
+  {
+    return (EAttribute)predicatesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPredicates_Negative()
+  {
+    return (EAttribute)predicatesEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -327,13 +423,23 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
     createEReference(expressionEClass, EXPRESSION__RHS);
 
     terminalExpressionEClass = createEClass(TERMINAL_EXPRESSION);
-    createEAttribute(terminalExpressionEClass, TERMINAL_EXPRESSION__OP);
+    createEReference(terminalExpressionEClass, TERMINAL_EXPRESSION__OP);
     createEReference(terminalExpressionEClass, TERMINAL_EXPRESSION__RHS);
 
+    logicEClass = createEClass(LOGIC);
+    createEAttribute(logicEClass, LOGIC__AND);
+    createEAttribute(logicEClass, LOGIC__OR);
+    createEAttribute(logicEClass, LOGIC__XOR);
+
     predicateEClass = createEClass(PREDICATE);
-    createEAttribute(predicateEClass, PREDICATE__NEGATE);
-    createEAttribute(predicateEClass, PREDICATE__PREDICATE);
+    createEAttribute(predicateEClass, PREDICATE__NEGATED);
+    createEReference(predicateEClass, PREDICATE__PREDICATE);
     createEAttribute(predicateEClass, PREDICATE__NAME);
+
+    predicatesEClass = createEClass(PREDICATES);
+    createEAttribute(predicatesEClass, PREDICATES__REALISED);
+    createEAttribute(predicatesEClass, PREDICATES__POSITIVE);
+    createEAttribute(predicatesEClass, PREDICATES__NEGATIVE);
   }
 
   /**
@@ -380,13 +486,23 @@ public class RealopPackageImpl extends EPackageImpl implements RealopPackage
     initEReference(getExpression_Rhs(), this.getTerminalExpression(), null, "rhs", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(terminalExpressionEClass, TerminalExpression.class, "TerminalExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTerminalExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, TerminalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTerminalExpression_Op(), this.getLogic(), null, "op", null, 0, 1, TerminalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTerminalExpression_Rhs(), this.getExpression(), null, "rhs", null, 0, 1, TerminalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(logicEClass, Logic.class, "Logic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLogic_And(), ecorePackage.getEBoolean(), "and", null, 0, 1, Logic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLogic_Or(), ecorePackage.getEBoolean(), "or", null, 0, 1, Logic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLogic_Xor(), ecorePackage.getEBoolean(), "xor", null, 0, 1, Logic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(predicateEClass, Predicate.class, "Predicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPredicate_Negate(), ecorePackage.getEBoolean(), "negate", null, 0, 1, Predicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPredicate_Predicate(), ecorePackage.getEString(), "predicate", null, 0, 1, Predicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPredicate_Negated(), ecorePackage.getEBoolean(), "negated", null, 0, 1, Predicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPredicate_Predicate(), this.getPredicates(), null, "predicate", null, 0, 1, Predicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPredicate_Name(), ecorePackage.getEString(), "name", null, 0, 1, Predicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(predicatesEClass, Predicates.class, "Predicates", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPredicates_Realised(), ecorePackage.getEBoolean(), "realised", null, 0, 1, Predicates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPredicates_Positive(), ecorePackage.getEBoolean(), "positive", null, 0, 1, Predicates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPredicates_Negative(), ecorePackage.getEBoolean(), "negative", null, 0, 1, Predicates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

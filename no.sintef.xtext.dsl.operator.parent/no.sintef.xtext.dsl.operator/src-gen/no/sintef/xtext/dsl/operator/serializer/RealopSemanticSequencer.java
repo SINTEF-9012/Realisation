@@ -6,8 +6,10 @@ package no.sintef.xtext.dsl.operator.serializer;
 import com.google.inject.Inject;
 import java.util.Set;
 import no.sintef.xtext.dsl.operator.realop.Expression;
+import no.sintef.xtext.dsl.operator.realop.Logic;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 import no.sintef.xtext.dsl.operator.realop.Predicate;
+import no.sintef.xtext.dsl.operator.realop.Predicates;
 import no.sintef.xtext.dsl.operator.realop.Realop;
 import no.sintef.xtext.dsl.operator.realop.RealopPackage;
 import no.sintef.xtext.dsl.operator.realop.TerminalExpression;
@@ -39,11 +41,17 @@ public class RealopSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case RealopPackage.EXPRESSION:
 				sequence_Expression(context, (Expression) semanticObject); 
 				return; 
+			case RealopPackage.LOGIC:
+				sequence_Logic(context, (Logic) semanticObject); 
+				return; 
 			case RealopPackage.OPERATOR:
 				sequence_Operator(context, (Operator) semanticObject); 
 				return; 
 			case RealopPackage.PREDICATE:
 				sequence_Predicate(context, (Predicate) semanticObject); 
+				return; 
+			case RealopPackage.PREDICATES:
+				sequence_Predicates(context, (Predicates) semanticObject); 
 				return; 
 			case RealopPackage.REALOP:
 				sequence_Realop(context, (Realop) semanticObject); 
@@ -64,6 +72,18 @@ public class RealopSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     (lhs=Predicate rhs=TerminalExpression?)
 	 */
 	protected void sequence_Expression(ISerializationContext context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Logic returns Logic
+	 *
+	 * Constraint:
+	 *     (and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN)
+	 */
+	protected void sequence_Logic(ISerializationContext context, Logic semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -97,9 +117,21 @@ public class RealopSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Predicate returns Predicate
 	 *
 	 * Constraint:
-	 *     (negate?=NOT_TOKEN? predicate=Predicates name=ID)
+	 *     (negated?=NOT_TOKEN? predicate=Predicates name=ID)
 	 */
 	protected void sequence_Predicate(ISerializationContext context, Predicate semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Predicates returns Predicates
+	 *
+	 * Constraint:
+	 *     (realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN)
+	 */
+	protected void sequence_Predicates(ISerializationContext context, Predicates semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

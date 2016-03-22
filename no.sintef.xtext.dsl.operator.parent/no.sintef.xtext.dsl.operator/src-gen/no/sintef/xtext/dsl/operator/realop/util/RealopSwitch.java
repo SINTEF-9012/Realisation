@@ -101,10 +101,24 @@ public class RealopSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RealopPackage.LOGIC:
+      {
+        Logic logic = (Logic)theEObject;
+        T result = caseLogic(logic);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RealopPackage.PREDICATE:
       {
         Predicate predicate = (Predicate)theEObject;
         T result = casePredicate(predicate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RealopPackage.PREDICATES:
+      {
+        Predicates predicates = (Predicates)theEObject;
+        T result = casePredicates(predicates);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -177,6 +191,22 @@ public class RealopSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Logic</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Logic</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLogic(Logic object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Predicate</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -188,6 +218,22 @@ public class RealopSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePredicate(Predicate object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Predicates</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Predicates</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePredicates(Predicates object)
   {
     return null;
   }
