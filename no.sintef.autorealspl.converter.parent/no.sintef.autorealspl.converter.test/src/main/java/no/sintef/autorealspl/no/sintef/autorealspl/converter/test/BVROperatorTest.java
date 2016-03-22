@@ -14,11 +14,13 @@ import org.junit.Test;
 
 import bvr.BVRModel;
 import bvr.BvrPackage;
+import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverter;
 import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverterStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeatureStatus;
 import no.sintef.autorealspl.converter.interfaces.parser.IParserStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
+import no.sintef.autorealspl.converter.main.IConverter;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.Expression;
@@ -30,8 +32,10 @@ public class BVROperatorTest {
 	IVariabilityModelParser parser;
 	String path_to_model = "src/main/resources/testparsing.bvr";
 	
-	IFeatureOperatorConverterStrategy positiveConveter;
-	IFeatureOperatorConverterStrategy negativeConverer;
+	IFeatureOperatorConverterStrategy positiveConveterStrategy;
+	IFeatureOperatorConverterStrategy negativeConvererStrategy;
+	IFeatureOperatorConverter featureConverter;
+	IConverter converter;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -47,7 +51,10 @@ public class BVROperatorTest {
 		BVRModel bvr_model = (BVRModel) resource.getContents().get(0);
 		assertNotNull("cannot find bvr model", bvr_model);
 		
-		IParserStrategy parser_strategy = new BVRModelParserStrategy(bvr_model, 0);
+		IParserStrategy parser_strategy = new BVRModelParserStrategy();
+		((BVRModelParserStrategy) parser_strategy).setBVRModel(bvr_model);
+		((BVRModelParserStrategy) parser_strategy).setResolution(bvr_model.getResolutionModels().get(0));
+		
 		parser = new VariabiltiyModelParser(parser_strategy);
 	}
 
@@ -118,7 +125,7 @@ public class BVROperatorTest {
 		assertNotNull(positive);
 		
 		
-		Operator operator = positiveConveter.convertIFeatureToOperator(positive);
+		Operator operator = positiveConveterStrategy.convertIFeatureToOperator(positive);
 		assertNotNull(operator);
 		
 		Expression pre_exp = operator.getExp_pre();
@@ -145,7 +152,7 @@ public class BVROperatorTest {
 		assertNotNull(positive);
 		
 		
-		Operator operator = negativeConverer.convertIFeatureToOperator(positive);
+		Operator operator = negativeConvererStrategy.convertIFeatureToOperator(positive);
 		assertNotNull(operator);
 		
 		Expression pre_exp = operator.getExp_pre();
@@ -162,6 +169,42 @@ public class BVROperatorTest {
 		assertTrue("should be positive predicate", lhs.getPredicate().isNegative());
 		assertEquals("SPpositive", lhs.getName());
 	}
+	
+	@Test
+	public void testOperatorConverter() {
+		featureConverter.addConverterStrategy(positiveConveterStrategy);
+		featureConverter.addConverterStrategy(negativeConvererStrategy);
+		
+		List<IFeature> features = parser.parse();
+		assertNotNull(features);
+		
+		IFeature positive = getFeatureByName(features, "SPpositive");
+		assertNotNull(positive);
+		
+		List<Operator> list = featureConverter.convertToOperators(positive);
+		
+		assertTrue(2 == list.size());
+		
+	}
+	
+	@Test
+	public void testConverter() {
+		
+		converter.readVariabilityModelFromFile("src/main/resources/simple.bvr");
+		converter.setVariabityModelParser(parser);
+		converter.setFeaturerOperatorConverter(featureConverter);
+		
+		converter.convertVariabilityModelToOperators();
+		
+		List<Operator> operators = converter.getGeneratodOperators();
+		
+		assertNotNull(operators);
+		assertTrue(2 == operators.size());
+		
+		converter.writeOperatorsToFile("src/main/resources/simple.realop");
+	}
+	
+	
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
 		

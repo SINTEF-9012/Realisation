@@ -21,13 +21,19 @@ import no.sintef.autorealspl.converter.interfaces.parser.IFeatureFactory;
 public class BVRModelParserStrategy implements IParserStrategy {
 	
 	private BVRModel model;
-	private int res_index;
 	private IFeatureFactory feature_factory;
+	private CompoundResolution resolution;
 
-	public BVRModelParserStrategy(BVRModel _model, int _resolution_index) {
-		model = _model;
-		res_index = _resolution_index;
+	public BVRModelParserStrategy() {
 		feature_factory = new BVRFeatureFactory();
+	}
+	
+	public void setBVRModel(BVRModel _model) {
+		model = _model;
+	}
+	
+	public void setResolution(CompoundResolution _resolution) {
+		resolution = _resolution;
 	}
 
 	public List<IFeature> getFeatures() {
@@ -39,7 +45,6 @@ public class BVRModelParserStrategy implements IParserStrategy {
 		List<IFeature> features = new ArrayList<IFeature>();
 		List<VSpec> vspecs = flattenVSpecModel(model);
 		
-		CompoundResolution resolution = model.getResolutionModels().get(res_index);
 		List<VSpecResolution> resolutions = flattenResolutionModel(resolution);
 		
 		for(VSpecResolution res_node: resolutions) {
