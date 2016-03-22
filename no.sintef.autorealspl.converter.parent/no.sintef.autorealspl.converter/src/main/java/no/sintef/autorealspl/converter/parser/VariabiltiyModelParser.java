@@ -18,4 +18,8 @@ public class VariabiltiyModelParser implements IVariabilityModelParser {
 		return strategy.getFeatures();
 	}
 
+	public IParserStrategy getParserStrategy() {
+		return strategy;
+	}
+
 }

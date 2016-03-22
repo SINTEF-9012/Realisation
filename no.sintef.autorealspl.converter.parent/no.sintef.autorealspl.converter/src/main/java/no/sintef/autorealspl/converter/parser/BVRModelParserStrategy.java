@@ -45,27 +45,25 @@ public class BVRModelParserStrategy implements IParserStrategy {
 		List<IFeature> features = new ArrayList<IFeature>();
 		List<VSpec> vspecs = flattenVSpecModel(model);
 		
-		List<VSpecResolution> resolutions = flattenResolutionModel(resolution);
-		
-		for(VSpecResolution res_node: resolutions) {
-			VSpec vspec = res_node.getResolvedVSpec();
-			vspecs.remove(vspec);
-			String name = vspec.getName();
-			
-			IFeature feature = (res_node instanceof PosResolution) ? feature_factory.createPosResolved(name) : feature_factory.createNegResolved(name);
-			features.add(feature);
+		if(resolution != null) {
+			List<VSpecResolution> resolutions = flattenResolutionModel(resolution);
+			for(VSpecResolution res_node: resolutions) {
+				VSpec vspec = res_node.getResolvedVSpec();
+				vspecs.remove(vspec);
+				String name = vspec.getName();
+				
+				IFeature feature = (res_node instanceof PosResolution) ? feature_factory.createPosResolved(name) : feature_factory.createNegResolved(name);
+				features.add(feature);
+			}
 		}
 		
 		for(VSpec vspec : vspecs) {
 			String name = vspec.getName();
-			
 			IFeature feature = feature_factory.createNotResolved(name);
 			features.add(feature);
-		}
-		
+		}	
 		return features;
 	}
-	
 	
 	private List<VSpecResolution> flattenResolutionModel(CompoundResolution resolution) {
 		List<VSpecResolution> list = new ArrayList<VSpecResolution>();

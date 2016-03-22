@@ -7,7 +7,6 @@ import no.sintef.xtext.dsl.operator.realop.Operator;
 public class NegativeOperatorConverter implements IFeatureOperatorConverterStrategy {
 
 	public Operator convertIFeatureToOperator(IFeature feature) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

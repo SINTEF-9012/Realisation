@@ -20,7 +20,9 @@ import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeatureStatus;
 import no.sintef.autorealspl.converter.interfaces.parser.IParserStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
+import no.sintef.autorealspl.converter.main.BVREcoreVarModelToOperatorConverter;
 import no.sintef.autorealspl.converter.main.IConverter;
+import no.sintef.autorealspl.converter.operconverter.FeatureOperatorConvertor;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.Expression;
@@ -35,7 +37,6 @@ public class BVROperatorTest {
 	IFeatureOperatorConverterStrategy positiveConveterStrategy;
 	IFeatureOperatorConverterStrategy negativeConvererStrategy;
 	IFeatureOperatorConverter featureConverter;
-	IConverter converter;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -190,9 +191,15 @@ public class BVROperatorTest {
 	@Test
 	public void testConverter() {
 		
+		IConverter converter = new BVREcoreVarModelToOperatorConverter();
+		
 		converter.readVariabilityModelFromFile("src/main/resources/simple.bvr");
-		converter.setVariabityModelParser(parser);
-		converter.setFeaturerOperatorConverter(featureConverter);
+		converter.setVariabityModelParser(new VariabiltiyModelParser(new BVRModelParserStrategy()));
+		
+		IFeatureOperatorConverter feature_converter = new FeatureOperatorConvertor();
+		feature_converter.addConverterStrategy(positiveConveterStrategy);
+		feature_converter.addConverterStrategy(negativeConvererStrategy);
+		converter.setFeaturerOperatorConverter(feature_converter);
 		
 		converter.convertVariabilityModelToOperators();
 		

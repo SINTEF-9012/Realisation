@@ -5,5 +5,7 @@ import java.util.List;
 public interface IVariabilityModelParser {
 
 	List<IFeature> parse();
+	
+	public IParserStrategy getParserStrategy();
 
 }
