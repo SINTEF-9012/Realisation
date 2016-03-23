@@ -15,6 +15,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import no.sintef.autorealspl.converter.interfaces.operconverter.IOperatorSerializer;
+import no.sintef.xtext.dsl.operator.RealopStandaloneSetupGenerated;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 
 public class XtextFileSrcOperatorSerializer implements IOperatorSerializer {
@@ -22,11 +23,14 @@ public class XtextFileSrcOperatorSerializer implements IOperatorSerializer {
 	@Override
 	public void serialize(List<Operator> operators, String dest) {
 		
-		if (!Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().containsKey("xtextbin"))
+		/*if (!Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().containsKey("xtextbin"))
 			  Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
 			                "xtextbin", new BinaryGrammarResourceFactoryImpl());
 		
-		Injector injector = Guice.createInjector(new no.sintef.xtext.dsl.operator.RealopRuntimeModule());
+		Injector injector = Guice.createInjector(new no.sintef.xtext.dsl.operator.RealopRuntimeModule());*/
+		RealopStandaloneSetupGenerated standalone = new RealopStandaloneSetupGenerated();
+		Injector injector = standalone.createInjectorAndDoEMFRegistration();
+		
 		Serializer serializer = injector.getInstance(Serializer.class);
 		
 		String contents = new String();
