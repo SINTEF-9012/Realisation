@@ -17,3 +17,6 @@ hs_err_pid*
 build.properties
 .settings
 /Planner/target/
+
+#Mac
+.DS_Store
