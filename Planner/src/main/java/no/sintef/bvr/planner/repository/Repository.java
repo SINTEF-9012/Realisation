@@ -5,7 +5,6 @@
  */
 package no.sintef.bvr.planner.repository;
 
-import no.sintef.bvr.planner.ui.Display;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.State;
@@ -18,36 +17,28 @@ import no.sintef.bvr.planner.ui.Arguments;
 public class Repository {
 
     private final Factory factory;
-    private Arguments arguments;
 
     public Repository(Factory factory) {
         this.factory = factory;
     }
-
-    public State getOrigin() throws ReaderException {
-        final String location = arguments.getOriginLocation(); 
+  
+    public State getOrigin(String location) throws ReaderException {
         final StateReader origin = factory.getStateReaderFor(location);
         return origin.read();
     }
     
-    public State getGoal() throws ReaderException {
-        final String location = arguments.getGoalLocation();
+    public State getGoal(String location) throws ReaderException {
         final StateReader goal = factory.getStateReaderFor(location);
         return goal.read();
     }
     
-    public Operators getOperators() throws ReaderException {
+    public Operators getOperators(String location) throws ReaderException {
         final OperatorsReader operators = factory.getOperatorsReader();
         return operators.read();
     }
 
-    public void configureFor(Arguments arguments) {
-        this.arguments = arguments;
-    }
-
-    public void store(Plan plan) {
-        final String planLocation = arguments.getPlanLocation();
-        final PlanWriter writer = factory.getPlanWriter(planLocation);
+    public void store(Plan plan, String location) {
+        final PlanWriter writer = factory.getPlanWriter(location);
         writer.write(plan);
     }
 

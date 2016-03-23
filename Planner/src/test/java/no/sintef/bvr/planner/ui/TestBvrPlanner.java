@@ -1,6 +1,5 @@
 package no.sintef.bvr.planner.ui;
 
-import no.sintef.bvr.planner.ui.Controller;
 import no.sintef.bvr.planner.repository.Repository;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -8,16 +8,13 @@ package no.sintef.bvr.planner.ui;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import no.sintef.bvr.planner.repository.ReaderException;
-import no.sintef.bvr.planner.ui.Arguments;
-import no.sintef.bvr.planner.ui.InvalidArgumentException;
-import no.sintef.bvr.planner.ui.UnknownArgumentException;
 
 /**
  *
  */
 public class Display {
 
-    public static final String COPYRIGHT = "Copyright (C) SINTEF ICT 2016";
+    public static final String COPYRIGHT = "Copyright (C) 2016 SINTEF ICT";
     public static final String VERSION = "BVR Planner v%1$s";
     public static final String ORIGIN_SUCCESSFULLY_LOADED = "Initial state loaded from '%1$s'.";
     public static final String GOAL_SUCCESSFULLY_LOADED = "Goal state loaded from %1$s";
@@ -47,16 +44,16 @@ public class Display {
         format(UNKNOWN_ARGUMENT, error.getUnknownArgument());
     }
 
-    void reportOriginLoaded(Arguments arguments) {
-        format(ORIGIN_SUCCESSFULLY_LOADED, arguments.getOriginLocation());
+    void reportOriginLoaded(String location) {
+        format(ORIGIN_SUCCESSFULLY_LOADED, location);
     }
 
-    void reportGoalLoaded(Arguments arguments) {
-        format(GOAL_SUCCESSFULLY_LOADED, arguments.getGoalLocation());
+    void reportGoalLoaded(String location) {
+        format(GOAL_SUCCESSFULLY_LOADED, location);
     }
 
-    void reportOperatorsLoaded(Arguments arguments) {
-        format(OPERATORS_SUCCESSFULLY_LOADED, arguments.getOperatorsLocation());
+    void reportOperatorsLoaded(String location) {
+        format(OPERATORS_SUCCESSFULLY_LOADED, location);
     }
 
     private void format(String pattern, Object... values) {
@@ -64,8 +61,8 @@ public class Display {
         output.println(message);
     }
 
-    void reportPlanStored(Arguments arguments) {
-        format(PLAN_STORED, arguments.getPlanLocation());
+    void reportPlanStored(String location) {
+        format(PLAN_STORED, location);
     }
 
     void opening() {

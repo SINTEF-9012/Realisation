@@ -50,19 +50,19 @@ public class PlanningProblem {
     }
     
     public Plan solve() {
+        Set<Solution> explored = new HashSet<>();
         Set<Solution> frontier = new HashSet<>();
         frontier.add(new Solution(new Plan(), origin));
-        Set<Solution> explored = new HashSet<>();
         while (!frontier.isEmpty()) {
             Set<Solution> newFrontier = new HashSet<>();
             for (Solution eachSolution: frontier) {
                 explored.add(eachSolution);
-                for(Solution eachRefinement: eachSolution.refineWith(operators)) {
-                    if (eachRefinement.satisfies(goal)) {
-                        return eachRefinement.getPlan();
+                for(Solution anyRefinement: eachSolution.refineWith(operators)) {
+                    if (anyRefinement.satisfies(goal)) {
+                        return anyRefinement.getPlan();
                     }
-                    if (!explored.contains(eachRefinement)) {
-                        newFrontier.add(eachRefinement);
+                    if (!explored.contains(anyRefinement)) {
+                        newFrontier.add(anyRefinement);
                     }
                 }
             }
@@ -72,3 +72,4 @@ public class PlanningProblem {
     }
     
 }
+

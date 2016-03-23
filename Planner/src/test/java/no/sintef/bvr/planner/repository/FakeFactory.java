@@ -5,13 +5,6 @@
  */
 package no.sintef.bvr.planner.repository;
 
-import no.sintef.bvr.planner.repository.FakePlanWriter;
-import no.sintef.bvr.planner.repository.FakeStateReader;
-import no.sintef.bvr.planner.repository.FakeOperatorsReader;
-import no.sintef.bvr.planner.repository.Factory;
-import no.sintef.bvr.planner.repository.PlanWriter;
-import no.sintef.bvr.planner.repository.OperatorsReader;
-import no.sintef.bvr.planner.repository.StateReader;
 import no.sintef.bvr.planner.ui.Display;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -19,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.State;
-import no.sintef.bvr.planner.repository.ReaderException;
 
 /**
  * 
@@ -57,7 +49,6 @@ public class FakeFactory implements Factory {
         return planWriter;
     }
     
-    @Override
     public Display getDisplay() {
         return display;
     }

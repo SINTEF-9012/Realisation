@@ -6,7 +6,6 @@
 package no.sintef.bvr.planner.repository;
 
 import no.sintef.bvr.planner.State;
-import no.sintef.bvr.planner.repository.ReaderException;
 
 /**
  *

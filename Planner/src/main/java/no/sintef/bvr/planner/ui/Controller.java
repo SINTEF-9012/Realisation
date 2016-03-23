@@ -20,13 +20,14 @@ public class Controller {
     void execute(String... commandLine) {
         try {
             display.opening();
-            Arguments arguments = parse(commandLine);
-            PlanningProblem problem = new PlanningProblem(
-                    loadOperators(arguments), 
-                    loadOrigin(arguments), 
-                    loadGoal(arguments));
+            Arguments arguments = Arguments.extractFrom(commandLine);
+            PlanningProblem problem
+                    = new PlanningProblem(
+                            loadOperators(arguments.getOperatorsLocation()),
+                            loadOrigin(arguments.getOriginLocation()),
+                            loadGoal(arguments.getGoalLocation()));
             Plan plan = problem.solve();
-            storePlan(plan, arguments);
+            storePlan(plan, arguments.getPlanLocation());
             display.closing();
 
         } catch (UnknownArgumentException error) {
@@ -40,32 +41,26 @@ public class Controller {
         }
     }
 
-    private Arguments parse(String[] commandLine) throws InvalidArgumentException, UnknownArgumentException {
-        final Arguments arguments = Arguments.extractFrom(commandLine);
-        repository.configureFor(arguments);
-        return arguments;
+    private void storePlan(Plan plan, String location) {
+        repository.store(plan, location);
+        display.reportPlanStored(location);
     }
 
-    private void storePlan(Plan plan, final Arguments arguments) {
-        repository.store(plan);
-        display.reportPlanStored(arguments);
-    }
-
-    private Operators loadOperators(final Arguments arguments) throws ReaderException {
-        Operators operators = repository.getOperators();
-        display.reportOperatorsLoaded(arguments);
+    private Operators loadOperators(String location) throws ReaderException {
+        Operators operators = repository.getOperators(location);
+        display.reportOperatorsLoaded(location);
         return operators;
     }
 
-    private State loadGoal(final Arguments arguments) throws ReaderException {
-        State goal = repository.getGoal();
-        display.reportGoalLoaded(arguments);
+    private State loadGoal(String location) throws ReaderException {
+        State goal = repository.getGoal(location);
+        display.reportGoalLoaded(location);
         return goal;
     }
 
-    private State loadOrigin(final Arguments arguments) throws ReaderException {
-        State origin = repository.getOrigin();
-        display.reportOriginLoaded(arguments);
+    private State loadOrigin(String location) throws ReaderException {
+        State origin = repository.getOrigin(location);
+        display.reportOriginLoaded(location);
         return origin;
     }
 

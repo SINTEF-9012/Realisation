@@ -4,6 +4,7 @@ import java.util.BitSet;
 import java.util.Objects;
 import static no.sintef.bvr.planner.Status.*;
 
+
 public class State {
 
     private static final String INCONSISTENT_INDEXES_AND_STATUSES = "Inconsistent indexes and statuses (%1$d statuses but %2$d features)";

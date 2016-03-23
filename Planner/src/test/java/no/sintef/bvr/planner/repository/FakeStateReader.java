@@ -1,9 +1,8 @@
 
 package no.sintef.bvr.planner.repository;
 
+import java.io.InputStream;
 import no.sintef.bvr.planner.State;
-import no.sintef.bvr.planner.repository.StateReader;
-import no.sintef.bvr.planner.repository.ReaderException;
 
 
 public class FakeStateReader implements StateReader {

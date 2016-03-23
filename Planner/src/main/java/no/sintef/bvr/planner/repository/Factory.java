@@ -5,20 +5,18 @@
  */
 package no.sintef.bvr.planner.repository;
 
-import no.sintef.bvr.planner.ui.Display;
+import java.io.InputStream;
 
 /**
  *
  * @author franckc
  */
 public interface Factory {
-    
+        
     public StateReader getStateReaderFor(String location);
     
     public OperatorsReader getOperatorsReader();
     
     public PlanWriter getPlanWriter(String location);
-
-    public Display getDisplay();
     
 }
