@@ -25,6 +25,7 @@ import no.sintef.autorealspl.converter.main.IConverter;
 import no.sintef.autorealspl.converter.operconverter.FeatureOperatorConvertor;
 import no.sintef.autorealspl.converter.operconverter.NegativeOperatorConverter;
 import no.sintef.autorealspl.converter.operconverter.PositiveOperatorConverter;
+import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSerializer;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.Expression;
@@ -202,6 +203,7 @@ public class BVROperatorTest {
 		
 		converter.readVariabilityModelFromFile("src/main/resources/simple.bvr");
 		converter.setVariabityModelParser(new VariabiltiyModelParser(new BVRModelParserStrategy()));
+		converter.setOperatorSerializer(new XtextFileSrcOperatorSerializer());
 		
 		IFeatureOperatorConverter feature_converter = new FeatureOperatorConvertor();
 		feature_converter.addConverterStrategy(positiveConveterStrategy);

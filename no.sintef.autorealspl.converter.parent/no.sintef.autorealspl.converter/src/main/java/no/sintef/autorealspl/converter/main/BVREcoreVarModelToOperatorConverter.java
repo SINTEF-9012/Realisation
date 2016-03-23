@@ -1,30 +1,16 @@
 package no.sintef.autorealspl.converter.main;
 
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.xtext.impl.XtextFactoryImpl;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.resource.impl.BinaryGrammarResourceFactoryImpl;
-import org.eclipse.xtext.serializer.impl.Serializer;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 
 import bvr.BVRModel;
 import bvr.BvrPackage;
@@ -34,8 +20,7 @@ import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.xtext.dsl.operator.realop.Operator;
-import no.sintef.xtext.dsl.operator.realop.RealopPackage;
-import no.sintef.xtext.dsl.operator.realop.impl.RealopFactoryImpl;
+
 
 public class BVREcoreVarModelToOperatorConverter implements IConverter {
 
@@ -93,7 +78,6 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 	@Override
 	public void setOperatorSerializer(IOperatorSerializer serializer) {
 		operatorSerializer = serializer;
-		
 	}
 
 }
