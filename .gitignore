@@ -16,3 +16,4 @@ hs_err_pid*
 .project
 build.properties
 .settings
+/Planner/target/
