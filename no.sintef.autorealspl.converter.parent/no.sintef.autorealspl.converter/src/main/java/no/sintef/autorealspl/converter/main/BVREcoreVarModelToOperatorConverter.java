@@ -29,6 +29,7 @@ import com.google.inject.Injector;
 import bvr.BVRModel;
 import bvr.BvrPackage;
 import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverter;
+import no.sintef.autorealspl.converter.interfaces.operconverter.IOperatorSerializer;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
@@ -42,6 +43,7 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 	private IVariabilityModelParser parser;
 	private IFeatureOperatorConverter operatorConverter;
 	private List<Operator> operators;
+	private IOperatorSerializer operatorSerializer;
 	
 	public BVREcoreVarModelToOperatorConverter() {};
 
@@ -72,57 +74,7 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 	}
 
 	public void writeOperatorsToFile(String str) {
-		//RealopPackage.eINSTANCE.eClass();
-		
-		Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
-		registry.getExtensionToFactoryMap().put("realop", new XMIResourceFactoryImpl());
-		//registry.getExtensionToFactoryMap().put("realop", new XtextFactoryImpl());
-		
-		if (!Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().containsKey("xtextbin"))
-			  Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-			                "xtextbin", new BinaryGrammarResourceFactoryImpl());
-		
-		//XtextResourceSet resourceSet = new XtextResourceSet();
-		//ResourceSet resourceSet = new ResourceSetImpl();
-		//Resource resource = resourceSet.createResource(URI.createURI(str));
-		//resource.
-		
-		Injector injector = Guice.createInjector(new no.sintef.xtext.dsl.operator.RealopRuntimeModule());
-		Serializer serializer = injector.getInstance(Serializer.class);
-		
-		String contents = new String();
-		for(Operator operator : operators)
-			contents += serializer.serialize(operator) + "\n";
-		
-		System.out.println(contents);
-		
-		try {
-			File file = new File(str);
-			FileOutputStream file_output = new FileOutputStream(file);
-			OutputStreamWriter output_writer = new OutputStreamWriter(file_output);
-			BufferedWriter writer = new BufferedWriter(output_writer);
-			writer.write(contents);
-			writer.close();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		
-		/*
-		resource.getContents().addAll(operators);
-		
-		Map<Object, Object> options = new HashMap<Object, Object>();
-		options.put(XtextResource.OPTION_ENCODING, "UTF-8");
-		
-		try {
-			resource.save(options);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}  */
-		
-
+		operatorSerializer.serialize(operators, str);
 	}
 
 	public List<Operator> getGeneratodOperators() {
@@ -136,6 +88,12 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 
 	public void setFeaturerOperatorConverter(IFeatureOperatorConverter _operatorConverter) {
 		operatorConverter = _operatorConverter;
+	}
+
+	@Override
+	public void setOperatorSerializer(IOperatorSerializer serializer) {
+		operatorSerializer = serializer;
+		
 	}
 
 }
