@@ -7,7 +7,7 @@ Realop:
 	
 Operator:
 	OP_TOKEN name=ID OPEN_OP_TOKEN 
-			PRE_TOKEN COND_ST_TOKEN expr_pre=Expression  COND_END_TOKEN 
+			PRE_TOKEN COND_ST_TOKEN exp_pre=Expression  COND_END_TOKEN 
 			POST_TOKEN COND_ST_TOKEN exp_post=Expression COND_END_TOKEN 
 		CLOSE_OP_TOKEN
 	;
@@ -23,15 +23,15 @@ TerminalExpression:
 
 	
 Logic :
-	AND_TOKEN | OR_TOKEN | XOR_TOKEN
+	and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN
 	;
 	
 Predicate : 
-	negate?=NOT_TOKEN? predicate=Predicates '(' name=ID ')'
+	negated?=NOT_TOKEN? predicate=Predicates '(' name=ID ')'
 	;
 	
 Predicates :
-	PRED_REALISED_TOKEN | PRED_POSITIVE_TOKEN | PRED_NEGATIVE_TOKEN
+	realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN
 	;
 
 

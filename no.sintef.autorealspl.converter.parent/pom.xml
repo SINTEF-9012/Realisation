@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+  
+    <groupId>no.sintef.autorealspl</groupId>
+    <artifactId>no.sintef.autorealspl.converter.root</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+  
+    <name>Converter BVR to AutoRealSPL</name>
+  
+    <description>
+        Converter from BVR to operators of the automated realisation in SPL
+    </description>
+  
+    <repositories>
+        <repository>
+            <id>thirdparty</id>
+            <name>thingml-thridparty</name>
+            <url>http://maven.thingml.org/thirdparty/</url>
+        </repository>
+    </repositories>
+ 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+ 
+    <modules>
+        <module>no.sintef.autorealspl.converter</module>
+        <module>no.sintef.autorealspl.converter.interfaces</module>
+		<module>no.sintef.autorealspl.converter.test</module>
+    </modules>
+</project>

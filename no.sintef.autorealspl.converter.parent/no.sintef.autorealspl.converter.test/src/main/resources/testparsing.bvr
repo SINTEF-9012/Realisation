@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bvr:BVRModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bvr="http:///bvr.ecore/2.0.0" xsi:schemaLocation="http:///bvr.ecore/2.0.0 BVRMetamodel5.ecore" name="test">
+  <variabilityModel xsi:type="bvr:Choice" name="Choice0" target="//@variabilityModel/@ownedTargets.0" isImpliedByParent="true">
+    <member xsi:type="bvr:Choice" name="SPpositive" target="//@variabilityModel/@ownedTargets.1">
+      <note name="comment" kind="comment" expr=""/>
+    </member>
+    <member xsi:type="bvr:Choice" name="SPnegative" target="//@variabilityModel/@ownedTargets.2" isImpliedByParent="true">
+      <groupMultiplicity upper="1" lower="1"/>
+      <member xsi:type="bvr:Choice" name="Choice3" target="//@variabilityModel/@ownedTargets.3"/>
+      <member xsi:type="bvr:Choice" name="SPnotresolved" target="//@variabilityModel/@ownedTargets.4">
+        <note name="comment" kind="comment" expr=""/>
+      </member>
+      <note name="comment" kind="comment" expr=""/>
+    </member>
+    <ownedTargets name="Choice0"/>
+    <ownedTargets name="SPpositive"/>
+    <ownedTargets name="SPnegative"/>
+    <ownedTargets name="Choice3"/>
+    <ownedTargets name="SPnotresolved"/>
+  </variabilityModel>
+  <resolutionModels xsi:type="bvr:PosResolution" name="Choice0[1]" resolvedVSpec="//@variabilityModel" resolvedChoice="//@variabilityModel">
+    <members xsi:type="bvr:PosResolution" name="SPpositive" resolvedVSpec="//@variabilityModel/@member.0" resolvedChoice="//@variabilityModel/@member.0"/>
+    <members xsi:type="bvr:NegResolution" name="SPnegative" resolvedVSpec="//@variabilityModel/@member.1" resolvedChoice="//@variabilityModel/@member.1"/>
+  </resolutionModels>
+</bvr:BVRModel>

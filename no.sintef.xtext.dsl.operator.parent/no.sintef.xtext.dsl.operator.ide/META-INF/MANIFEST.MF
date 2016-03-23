@@ -9,3 +9,6 @@ Require-Bundle: no.sintef.xtext.dsl.operator,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: no.sintef.xtext.dsl.operator.ide.contentassist.antlr,
+ no.sintef.xtext.dsl.operator.ide.contentassist.antlr.internal
+

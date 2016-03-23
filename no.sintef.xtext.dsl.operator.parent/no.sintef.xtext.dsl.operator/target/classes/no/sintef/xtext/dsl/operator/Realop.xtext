@@ -1,9 +1,0 @@
-grammar no.sintef.xtext.dsl.operator.Realop with org.eclipse.xtext.common.Terminals
-
-generate realop "http://www.sintef.no/xtext/dsl/operator/Realop"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
