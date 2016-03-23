@@ -1,0 +1,2 @@
+operator Choice0Pos { pre : not realised ( Choice0 ) ; post : positive ( Choice0 ) ; }
+operator Choice0Neg { pre : not realised ( Choice0 ) ; post : negative ( Choice0 ) ; }

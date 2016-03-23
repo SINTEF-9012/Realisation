@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import bvr.BVRModel;
 import bvr.BvrPackage;
 import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverter;
+import no.sintef.autorealspl.converter.interfaces.operconverter.IOperatorDeserializer;
 import no.sintef.autorealspl.converter.interfaces.operconverter.IOperatorSerializer;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.autorealspl.converter.interfaces.parser.IVariabilityModelParser;
@@ -78,6 +79,18 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 	@Override
 	public void setOperatorSerializer(IOperatorSerializer serializer) {
 		operatorSerializer = serializer;
+	}
+
+	@Override
+	public List<Operator> readOperatorsFromFile(String str) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setOperatorDeserializer(IOperatorDeserializer deserialize) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

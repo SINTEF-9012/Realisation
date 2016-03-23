@@ -2,8 +2,3 @@ operator SPpositivePos {
 	pre : not realised(SPpositive);
 	post : positive(SPpositive);
 }
-
-operator SPpositiveNeg {
-	pre : not realised(SPpositive);
-	post : negative(SPpositive);
-}
