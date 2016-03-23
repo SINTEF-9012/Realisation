@@ -12,7 +12,7 @@ public class NegativeOperatorConverter implements IFeatureOperatorConverterStrat
 
 	public Operator convertIFeatureToOperator(IFeature feature) {
 		Operator operator = RealopFactory.eINSTANCE.createOperator();
-		operator.setName(feature.getName()+"Pos");
+		operator.setName(feature.getName()+"Neg");
 		
 		Expression pre_exp = RealopFactory.eINSTANCE.createExpression();
 		
