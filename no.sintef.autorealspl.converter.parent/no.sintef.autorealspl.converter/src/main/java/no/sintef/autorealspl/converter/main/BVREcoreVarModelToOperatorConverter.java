@@ -30,6 +30,7 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 	private IFeatureOperatorConverter operatorConverter;
 	private List<Operator> operators;
 	private IOperatorSerializer operatorSerializer;
+	private IOperatorDeserializer operatorDeserializer;
 	
 	public BVREcoreVarModelToOperatorConverter() {};
 
@@ -83,14 +84,12 @@ public class BVREcoreVarModelToOperatorConverter implements IConverter {
 
 	@Override
 	public List<Operator> readOperatorsFromFile(String str) {
-		// TODO Auto-generated method stub
-		return null;
+		return operatorDeserializer.deserialize(str);
 	}
 
 	@Override
 	public void setOperatorDeserializer(IOperatorDeserializer deserialize) {
-		// TODO Auto-generated method stub
-		
+		operatorDeserializer = deserialize;
 	}
 
 }

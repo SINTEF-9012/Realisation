@@ -26,6 +26,7 @@ import no.sintef.autorealspl.converter.operconverter.FeatureOperatorConvertor;
 import no.sintef.autorealspl.converter.operconverter.NegativeOperatorConverter;
 import no.sintef.autorealspl.converter.operconverter.PositiveOperatorConverter;
 import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSerializer;
+import no.sintef.autorealspl.converter.operconverter.XtextFilsSrcOperatorDeserializer;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.Expression;
@@ -218,6 +219,7 @@ public class BVROperatorTest {
 		assertTrue(2 == operators.size());
 		converter.writeOperatorsToFile("src/main/resources/simple.realop");
 		
+		converter.setOperatorDeserializer(new XtextFilsSrcOperatorDeserializer());
 		operators = converter.readOperatorsFromFile("src/main/resources/simple.realop");
 		assertNotNull(operators);
 		assertTrue(2 == operators.size());
@@ -225,8 +227,8 @@ public class BVROperatorTest {
 	
 	@Test
 	public void testOperatorParsing() {
-		
 		IConverter converter = new BVREcoreVarModelToOperatorConverter();
+		converter.setOperatorDeserializer(new XtextFilsSrcOperatorDeserializer());
 		List<Operator> operators = converter.readOperatorsFromFile("src/main/resources/test.realop");
 		
 		assertNotNull(operators);
@@ -246,13 +248,7 @@ public class BVROperatorTest {
 		
 		assertTrue(pred_pre.getPredicate().isRealised());
 		assertTrue(pred_post.getPredicate().isPositive());
-		
-		
-		
-		
 	}
-	
-	
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
 		
