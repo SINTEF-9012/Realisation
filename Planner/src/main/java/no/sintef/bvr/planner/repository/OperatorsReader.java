@@ -5,8 +5,8 @@
  */
 package no.sintef.bvr.planner.repository;
 
+import java.io.InputStream;
 import no.sintef.bvr.planner.Operators;
-import no.sintef.bvr.planner.repository.ReaderException;
 
 /**
  *
@@ -14,6 +14,6 @@ import no.sintef.bvr.planner.repository.ReaderException;
  */
 public interface OperatorsReader {
     
-    Operators read() throws ReaderException;
+    Operators readFrom(InputStream source) throws ReaderException;
     
 }

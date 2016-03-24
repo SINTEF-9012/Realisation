@@ -9,11 +9,10 @@ package no.sintef.bvr.planner.repository;
  *
  * @author franckc
  */
-public class ReaderException extends Exception {
-    
-    public ReaderException(String location, Throwable cause) {
-        super(location, cause);
-    }    
-    
+public class WriterException extends Exception {
+
+    public WriterException(String message, Throwable cause) {
+        super(message, cause);
+    }
     
 }

@@ -1,5 +1,7 @@
 package no.sintef.bvr.planner.ui;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import no.sintef.bvr.planner.repository.Repository;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,24 +10,37 @@ import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.PlanningProblemBuilder;
 import static no.sintef.bvr.planner.ui.Display.*;
 import static no.sintef.bvr.planner.Status.*;
+import no.sintef.bvr.planner.repository.FakeOperatorsReader;
+import no.sintef.bvr.planner.repository.FakePlanWriter;
+import no.sintef.bvr.planner.repository.FakeStateReader;
+import no.sintef.bvr.planner.repository.OperatorsReader;
+import no.sintef.bvr.planner.repository.PlanWriter;
+import no.sintef.bvr.planner.repository.StateReader;
 import static no.sintef.bvr.planner.ui.Parameter.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class TestBvrPlanner {
+public class TestController {
 
     private final FakeFactory factory;
+    private final OutputStream console;
     private final Controller planner;
     private final PlanningProblem problem; 
     
-    public TestBvrPlanner() {
-        this.factory = new FakeFactory();
+    public TestController() {
+        factory = new FakeFactory();
+        factory.define(GOAL.defaultValue(), FakeStateReader.GOAL_MARKER);
+        factory.define(ORIGIN.defaultValue(), FakeStateReader.ORIGIN_MARKER);
+        factory.define(OPERATORS.defaultValue(), "whatever");
         problem = prepareProblem();
-        factory.define(ORIGIN.defaultValue(), problem.getOrigin());
-        factory.define(GOAL.defaultValue(), problem.getGoal());
-        factory.defineOperators(OPERATORS.defaultValue(), problem.getOperators());
-        Repository repository = new Repository(factory);
-        planner = new Controller(repository, factory.getDisplay());
+        console = new ByteArrayOutputStream();
+        
+        StateReader states = new FakeStateReader(problem.getOrigin(), problem.getGoal());
+        OperatorsReader operators = new FakeOperatorsReader(problem.getOperators());
+        PlanWriter plan = new FakePlanWriter();
+        
+        Repository repository = new Repository(factory, states, operators, plan);
+        planner = new Controller(repository, new Display(console));
     }
     
     private PlanningProblem prepareProblem() {
@@ -49,7 +64,7 @@ public class TestBvrPlanner {
     @Test
     public void shouldReportLoadingTheOrigin() {
         final String originLocation = "start.state";
-        factory.define(originLocation, problem.getOrigin());
+        factory.define(originLocation, FakeStateReader.ORIGIN_MARKER);
         
         executeWith(ORIGIN.shortName(), originLocation);
 
@@ -59,8 +74,8 @@ public class TestBvrPlanner {
     @Test
     public void shouldReportLoadingTheGoal() {
         final String goalLocation = "goal.state";
-        factory.define(goalLocation, problem.getGoal());
-        
+        factory.define(goalLocation, FakeStateReader.GOAL_MARKER);
+
         executeWith(GOAL.shortName(), goalLocation);
 
         verifyOutputContains(GOAL_SUCCESSFULLY_LOADED, goalLocation);
@@ -69,8 +84,8 @@ public class TestBvrPlanner {
     @Test
     public void shouldReportLoadingOperators() {
         final String operatorLocation = "my-operators.txt";
-        factory.defineOperators(operatorLocation, problem.getOperators());
-
+        factory.define(operatorLocation, "whatever");
+    
         executeWith(OPERATORS.shortName(), operatorLocation);
 
         verifyOutputContains(OPERATORS_SUCCESSFULLY_LOADED, operatorLocation);
@@ -106,8 +121,8 @@ public class TestBvrPlanner {
     private void verifyOutputContains(String format, Object... values) {
         String patternText = String.format(format, values);
         Pattern pattern = Pattern.compile(patternText);
-        Matcher matcher = pattern.matcher(factory.getDisplayedOutput());
-        String error = String.format("Could not match pattern '%s' in text '%s'", patternText, factory.getDisplayedOutput());
+        Matcher matcher = pattern.matcher(console.toString());
+        String error = String.format("Could not match pattern '%s' in text '%s'", patternText, console.toString());
         assertTrue(error, matcher.find());
     }
 }

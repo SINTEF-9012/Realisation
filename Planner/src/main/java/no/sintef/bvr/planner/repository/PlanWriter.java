@@ -5,6 +5,7 @@
  */
 package no.sintef.bvr.planner.repository;
 
+import java.io.OutputStream;
 import no.sintef.bvr.planner.Plan;
 
 /**
@@ -13,6 +14,8 @@ import no.sintef.bvr.planner.Plan;
  */
 public interface PlanWriter {
 
-    public void write(Plan plan);
+    void write(Plan plan);
+    
+    void write(Plan plan, OutputStream destination) throws WriterException ;
     
 }

@@ -5,7 +5,9 @@
  */
 package no.sintef.bvr.planner.repository;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  *
@@ -13,10 +15,8 @@ import java.io.InputStream;
  */
 public interface Factory {
         
-    public StateReader getStateReaderFor(String location);
+    InputStream asInput(String location) throws IOException;
     
-    public OperatorsReader getOperatorsReader();
-    
-    public PlanWriter getPlanWriter(String location);
-    
+    OutputStream asOutput(String location) throws IOException;
+        
 }

@@ -6,12 +6,13 @@ import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.repository.Repository;
 import no.sintef.bvr.planner.repository.ReaderException;
+import no.sintef.bvr.planner.repository.WriterException;
 
 public class Controller {
 
     private final Repository repository;
     private final Display display;
-
+    
     public Controller(Repository repository, Display display) {
         this.repository = repository;
         this.display = display;
@@ -38,10 +39,13 @@ public class Controller {
 
         } catch (ReaderException error) {
             display.reportReaderException(error);
+        
+        } catch (WriterException error) {
+            display.reportWriterException(error);
         }
     }
 
-    private void storePlan(Plan plan, String location) {
+    private void storePlan(Plan plan, String location) throws WriterException {
         repository.store(plan, location);
         display.reportPlanStored(location);
     }

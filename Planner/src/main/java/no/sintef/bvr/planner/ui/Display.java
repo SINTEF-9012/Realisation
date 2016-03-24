@@ -8,6 +8,7 @@ package no.sintef.bvr.planner.ui;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import no.sintef.bvr.planner.repository.ReaderException;
+import no.sintef.bvr.planner.repository.WriterException;
 
 /**
  *
@@ -20,9 +21,10 @@ public class Display {
     public static final String GOAL_SUCCESSFULLY_LOADED = "Goal state loaded from %1$s";
     public static final String OPERATORS_SUCCESSFULLY_LOADED = "Operators loaded from '%1$s'";
     public static final String PLAN_STORED = "Plan stored in '%1$s'";
-    public static final String UNABLE_TO_LOAD_FILE = "Error: Unable to load file '%1$s'.";
+    public static final String UNABLE_TO_LOAD_FILE = "Error: Unable to load state. %1$s";
     public static final String UNKNOWN_ARGUMENT = "Error: Unknown argument '%1$s'";
     public static final String MISSING_ARGUMENT = "Error: Missing argument '%1$s' value";
+    public static final String UNABLE_TO_WRITE_PLAN = "Error: Unable to write plan. %1$s";
 
     private final PrintStream output;
 
@@ -32,7 +34,7 @@ public class Display {
 
     public void reportReaderException(ReaderException error) {
         if (error instanceof ReaderException) {
-            format(UNABLE_TO_LOAD_FILE, error.getLocation());
+            format(UNABLE_TO_LOAD_FILE, error.getMessage());
         }
     }
 
@@ -56,13 +58,17 @@ public class Display {
         format(OPERATORS_SUCCESSFULLY_LOADED, location);
     }
 
-    private void format(String pattern, Object... values) {
-        final String message = String.format(pattern, values);
-        output.println(message);
+    void reportWriterException(WriterException error) {
+        format(UNABLE_TO_WRITE_PLAN, error.getMessage());
     }
 
     void reportPlanStored(String location) {
         format(PLAN_STORED, location);
+    }
+
+    private void format(String pattern, Object... values) {
+        final String message = String.format(pattern, values);
+        output.println(message);
     }
 
     void opening() {
