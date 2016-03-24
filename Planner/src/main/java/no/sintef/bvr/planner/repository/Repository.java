@@ -9,8 +9,6 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.State;
@@ -22,9 +20,12 @@ import no.sintef.bvr.planner.State;
 public class Repository {
 
     private final Factory factory;
+    
     private final StateReader state;
     private final OperatorsReader operators;
     private final PlanWriter plan;
+    
+    
 
     public Repository(Factory factory) {
         this(factory, null, null, null);

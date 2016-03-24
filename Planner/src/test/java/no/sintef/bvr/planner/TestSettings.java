@@ -1,15 +1,18 @@
-package no.sintef.bvr.planner.ui;
+package no.sintef.bvr.planner;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import no.sintef.bvr.planner.ui.InvalidArgumentException;
+import no.sintef.bvr.planner.ui.Parameter;
+import no.sintef.bvr.planner.ui.UnknownArgumentException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class TestArguments {
+public class TestSettings {
 
     static final String NOT_THE_DEFAULT_VALUE = "foo_input.txt";
 
@@ -24,19 +27,19 @@ public class TestArguments {
 
     private final Parameter parameter;
 
-    public TestArguments(Parameter parameter) {
+    public TestSettings(Parameter parameter) {
         this.parameter = parameter;
     }
 
     @Test
     public void shouldSupportShortName() throws UnknownArgumentException, InvalidArgumentException {
-        Arguments argument = parse(parameter.shortName(), NOT_THE_DEFAULT_VALUE);
+        Settings argument = parse(parameter.shortName(), NOT_THE_DEFAULT_VALUE);
         verifyArguments(argument, parameter, NOT_THE_DEFAULT_VALUE);
     }
 
     @Test
     public void shouldSupportLongName() throws UnknownArgumentException, InvalidArgumentException {
-        Arguments argument = parse(parameter.longName(), NOT_THE_DEFAULT_VALUE);
+        Settings argument = parse(parameter.longName(), NOT_THE_DEFAULT_VALUE);
         verifyArguments(argument, parameter, NOT_THE_DEFAULT_VALUE);
     }
     
@@ -45,11 +48,11 @@ public class TestArguments {
         parse(parameter.longName());
     }
 
-    private Arguments parse(String... arguments) throws UnknownArgumentException, InvalidArgumentException {
-        return Arguments.extractFrom(arguments);
+    private Settings parse(String... arguments) throws UnknownArgumentException, InvalidArgumentException {
+        return Settings.extractFrom(arguments);
     }
 
-    private void verifyArguments(Arguments arguments, Parameter parameter, String expectedValue) {
+    private void verifyArguments(Settings arguments, Parameter parameter, String expectedValue) {
         for (Parameter eachParameter : Parameter.values()) {
             final String eachActualValue = arguments.valueOf(eachParameter);
             if (eachParameter.equals(parameter)) {

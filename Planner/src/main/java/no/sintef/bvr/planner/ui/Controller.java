@@ -1,5 +1,6 @@
 package no.sintef.bvr.planner.ui;
 
+import no.sintef.bvr.planner.Settings;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.PlanningProblem;
@@ -12,7 +13,7 @@ public class Controller {
 
     private final Repository repository;
     private final Display display;
-    
+
     public Controller(Repository repository, Display display) {
         this.repository = repository;
         this.display = display;
@@ -21,14 +22,14 @@ public class Controller {
     void execute(String... commandLine) {
         try {
             display.opening();
-            Arguments arguments = Arguments.extractFrom(commandLine);
+            Settings settings = parse(commandLine);
             PlanningProblem problem
                     = new PlanningProblem(
-                            loadOperators(arguments.getOperatorsLocation()),
-                            loadOrigin(arguments.getOriginLocation()),
-                            loadGoal(arguments.getGoalLocation()));
+                            loadOperators(settings.getOperatorsLocation()),
+                            loadOrigin(settings.getOriginLocation()),
+                            loadGoal(settings.getGoalLocation()));
             Plan plan = problem.solve();
-            storePlan(plan, arguments.getPlanLocation());
+            storePlan(plan, settings.getPlanLocation());
             display.closing();
 
         } catch (UnknownArgumentException error) {
@@ -39,10 +40,14 @@ public class Controller {
 
         } catch (ReaderException error) {
             display.reportReaderException(error);
-        
+
         } catch (WriterException error) {
             display.reportWriterException(error);
         }
+    }
+
+    private Settings parse(String[] commandLine) throws UnknownArgumentException, InvalidArgumentException {
+        return Settings.extractFrom(commandLine);
     }
 
     private void storePlan(Plan plan, String location) throws WriterException {

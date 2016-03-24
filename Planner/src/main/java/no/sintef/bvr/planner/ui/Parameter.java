@@ -29,7 +29,7 @@ public enum Parameter {
         return defaultValue;
     }
 
-    boolean match(String key) {
+    public boolean match(String key) {
         return key.equals(longName) || key.equals(shortName);
     }
 

@@ -1,18 +1,21 @@
-package no.sintef.bvr.planner.ui;
+package no.sintef.bvr.planner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import no.sintef.bvr.planner.ui.InvalidArgumentException;
+import no.sintef.bvr.planner.ui.Parameter;
+import no.sintef.bvr.planner.ui.UnknownArgumentException;
 
 
 
-public class Arguments {
+public class Settings {
 
     
-    public static Arguments extractFrom(String... commandLine) throws UnknownArgumentException, InvalidArgumentException {
-        final Arguments arguments = Arguments.defaultValues();
+    public static Settings extractFrom(String... commandLine) throws UnknownArgumentException, InvalidArgumentException {
+        final Settings arguments = Settings.defaultValues();
         final List<String> tokens = new ArrayList<>(Arrays.asList(commandLine));
         while (!tokens.isEmpty()) {
            Parameter parameter = matchNext(tokens);
@@ -21,7 +24,7 @@ public class Arguments {
         return arguments;
     }
 
-    private static void extract(final List<String> tokens, Parameter parameter, final Arguments arguments) throws InvalidArgumentException {
+    private static void extract(final List<String> tokens, Parameter parameter, final Settings arguments) throws InvalidArgumentException {
         final String parameterName = tokens.remove(0);        
         if (tokens.isEmpty()) throw new InvalidArgumentException(parameterName);
         arguments.define(parameter, tokens.remove(0));
@@ -37,8 +40,8 @@ public class Arguments {
         throw new UnknownArgumentException(key);
     }
     
-    public static Arguments defaultValues() {
-        Arguments arguments = new Arguments();
+    public static Settings defaultValues() {
+        Settings arguments = new Settings();
         for(Parameter eachParameter: Parameter.values()) {
             arguments.define(eachParameter, eachParameter.defaultValue());
         }
@@ -48,11 +51,11 @@ public class Arguments {
     private final Map<Parameter, String> values;
 
     
-    Arguments() {
+    Settings() {
         this.values = new HashMap<>();
     }
     
-    Arguments(String initialStateLocation, String goal) {
+    Settings(String initialStateLocation, String goal) {
         this();
         define(Parameter.ORIGIN, initialStateLocation);
     }
