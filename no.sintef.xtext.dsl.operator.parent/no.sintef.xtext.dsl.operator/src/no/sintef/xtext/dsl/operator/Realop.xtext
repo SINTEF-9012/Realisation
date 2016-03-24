@@ -3,7 +3,7 @@ grammar no.sintef.xtext.dsl.operator.Realop with org.eclipse.xtext.common.Termin
 generate realop "http://www.sintef.no/xtext/dsl/operator/Realop"
 
 Realop:
-	operator+=Operator*;
+	operators+=Operator*;
 	
 Operator:
 	OP_TOKEN name=ID OPEN_OP_TOKEN 

@@ -25,6 +25,8 @@ import no.sintef.autorealspl.converter.main.IConverter;
 import no.sintef.autorealspl.converter.operconverter.FeatureOperatorConvertor;
 import no.sintef.autorealspl.converter.operconverter.NegativeOperatorConverter;
 import no.sintef.autorealspl.converter.operconverter.PositiveOperatorConverter;
+import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSerializer;
+import no.sintef.autorealspl.converter.operconverter.XtextFilsSrcOperatorDeserializer;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.Expression;
@@ -202,6 +204,7 @@ public class BVROperatorTest {
 		
 		converter.readVariabilityModelFromFile("src/main/resources/simple.bvr");
 		converter.setVariabityModelParser(new VariabiltiyModelParser(new BVRModelParserStrategy()));
+		converter.setOperatorSerializer(new XtextFileSrcOperatorSerializer());
 		
 		IFeatureOperatorConverter feature_converter = new FeatureOperatorConvertor();
 		feature_converter.addConverterStrategy(positiveConveterStrategy);
@@ -214,11 +217,38 @@ public class BVROperatorTest {
 		
 		assertNotNull(operators);
 		assertTrue(2 == operators.size());
-		
 		converter.writeOperatorsToFile("src/main/resources/simple.realop");
+		
+		converter.setOperatorDeserializer(new XtextFilsSrcOperatorDeserializer());
+		operators = converter.readOperatorsFromFile("src/main/resources/simple.realop");
+		assertNotNull(operators);
+		assertTrue(2 == operators.size());
 	}
 	
-	
+	@Test
+	public void testOperatorParsing() {
+		IConverter converter = new BVREcoreVarModelToOperatorConverter();
+		converter.setOperatorDeserializer(new XtextFilsSrcOperatorDeserializer());
+		List<Operator> operators = converter.readOperatorsFromFile("src/main/resources/test.realop");
+		
+		assertNotNull(operators);
+		assertTrue(1 == operators.size());
+		
+		Operator operator = operators.get(0);
+		assertEquals("SPpositivePos", operator.getName());
+		
+		Expression pre_exp = operator.getExp_pre();
+		Expression post_exp = operator.getExp_post();
+		
+		Predicate pred_pre = pre_exp.getLhs();
+		assertTrue(pred_pre.isNegated());
+		
+		Predicate pred_post = post_exp.getLhs();
+		assertFalse(pred_post.isNegated());
+		
+		assertTrue(pred_pre.getPredicate().isRealised());
+		assertTrue(pred_post.getPredicate().isPositive());
+	}
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
 		

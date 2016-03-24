@@ -17,3 +17,7 @@ hs_err_pid*
 build.properties
 .settings
 /Planner/target/
+./no.sintef.autorealspl.converter.test/src/main/resources/simple.realop
+
+#Mac
+.DS_Store
