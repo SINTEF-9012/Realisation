@@ -1,11 +1,11 @@
 package no.sintef.bvr.planner;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
-
 public class PlanningProblem {
-    
+
     private State origin;
     private State goal;
     private Operators operators;
@@ -15,7 +15,7 @@ public class PlanningProblem {
         setGoal(goal);
         setOperators(operators);
     }
-    
+
     private void setOrigin(State state) {
         if (state == null) {
             throw new IllegalArgumentException("Invalid origin (null found)");
@@ -26,7 +26,7 @@ public class PlanningProblem {
     public State getOrigin() {
         return origin;
     }
-    
+
     private void setGoal(State state) {
         if (state == null) {
             throw new IllegalArgumentException("Invalid goal (null found)");
@@ -37,7 +37,7 @@ public class PlanningProblem {
     public State getGoal() {
         return goal;
     }
-    
+
     private void setOperators(Operators operators) {
         if (operators == null) {
             throw new IllegalArgumentException("Invalid operators (null found)");
@@ -48,28 +48,67 @@ public class PlanningProblem {
     public Operators getOperators() {
         return operators;
     }
-    
+
     public Plan solve() {
-        Set<Solution> explored = new HashSet<>();
-        Set<Solution> frontier = new HashSet<>();
-        frontier.add(new Solution(new Plan(), origin));
-        while (!frontier.isEmpty()) {
-            Set<Solution> newFrontier = new HashSet<>();
-            for (Solution eachSolution: frontier) {
-                explored.add(eachSolution);
-                for(Solution anyRefinement: eachSolution.refineWith(operators)) {
-                    if (anyRefinement.satisfies(goal)) {
-                        return anyRefinement.getPlan();
-                    }
-                    if (!explored.contains(anyRefinement)) {
-                        newFrontier.add(anyRefinement);
-                    }
-                }
+        for (Solution anySolution : solutionSpace()) {
+            if (anySolution.satisfies(goal)) {
+                return anySolution.getPlan();
             }
-            frontier = newFrontier;
         }
         return new Plan();
     }
-    
-}
 
+    private Iterable<Solution> solutionSpace() {
+        return new Iterable<Solution>() {
+            @Override
+            public Iterator<Solution> iterator() {
+                return new SolutionIterator();
+            }
+        };
+    }
+
+    private class SolutionIterator implements Iterator<Solution> {
+
+        private final Set<Solution> unknown;
+        private final Set<Solution> known;
+
+        public SolutionIterator() {
+            unknown = new HashSet<>();
+            unknown.add(new Solution(new Plan(), origin));
+            known = new HashSet<>();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !unknown.isEmpty();
+        }
+
+        @Override
+        public Solution next() {
+            Solution nextSolution = anyUnknown();
+            exploreRefinementOf(nextSolution);
+            return nextSolution;
+        }
+
+        private Solution anyUnknown() {
+            final Iterator<Solution> iterator = unknown.iterator();
+            final Solution selected = iterator.next();
+            iterator.remove();
+            return selected;
+        }
+
+        private void exploreRefinementOf(Solution solution) {
+            known.add(solution);
+            for (Solution anyRefinement : solution.refineWith(operators)) {
+                if (isUnknown(anyRefinement)) {
+                    unknown.add(anyRefinement);
+                }
+            }
+        }
+
+        private boolean isUnknown(Solution eachRefinement) {
+            return !known.contains(eachRefinement);
+        }
+    }
+
+}
