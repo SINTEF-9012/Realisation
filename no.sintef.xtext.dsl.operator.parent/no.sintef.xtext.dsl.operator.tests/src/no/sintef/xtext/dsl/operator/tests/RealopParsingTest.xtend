@@ -34,10 +34,10 @@ class RealopParsingTest{
 		''')
 		Assert.assertNotNull(result)
 		
-		var size = result.operator.size;
+		var size = result.operators.size;
 		Assert.assertEquals("should be 2 operators", 2, size);
 		
-		var operator = result.operator.get(0)
+		var operator = result.operators.get(0)
 		Assert.assertEquals("Name", operator.name);
 		
 		var pre_condition = operator.exp_post;
