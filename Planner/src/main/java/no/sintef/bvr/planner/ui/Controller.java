@@ -47,7 +47,8 @@ public class Controller {
     }
 
     private Settings parse(String[] commandLine) throws UnknownArgumentException, InvalidArgumentException {
-        return Settings.extractFrom(commandLine);
+        CommandLineParser parser = new CommandLineParser();
+        return parser.extractSettingsFrom(commandLine); 
     }
 
     private void storePlan(Plan plan, String location) throws WriterException {

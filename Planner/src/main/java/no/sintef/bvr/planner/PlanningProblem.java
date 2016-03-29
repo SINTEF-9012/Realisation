@@ -6,43 +6,43 @@ import java.util.Set;
 
 public class PlanningProblem {
 
-    private State origin;
-    private State goal;
-    private Operators operators;
+    private final State origin;
+    private final State goal;
+    private final Operators operators;
 
     public PlanningProblem(Operators operators, State origin, State goal) {
-        setOrigin(origin);
-        setGoal(goal);
-        setOperators(operators);
+        this.origin = validateOrigin(origin);
+        this.goal = validateGoal(goal);
+        this.operators = validateOperators(operators);
     }
 
-    private void setOrigin(State state) {
+    private State validateOrigin(State state) {
         if (state == null) {
             throw new IllegalArgumentException("Invalid origin (null found)");
         }
-        this.origin = state;
+        return state;
+    }
+
+    private State validateGoal(State state) {
+        if (state == null) {
+            throw new IllegalArgumentException("Invalid goal (null found)");
+        }
+        return state;
+    }
+
+    private Operators validateOperators(Operators operators) {
+        if (operators == null) {
+            throw new IllegalArgumentException("Invalid operators (null found)");
+        }
+        return operators;
     }
 
     public State getOrigin() {
         return origin;
     }
 
-    private void setGoal(State state) {
-        if (state == null) {
-            throw new IllegalArgumentException("Invalid goal (null found)");
-        }
-        this.goal = state;
-    }
-
     public State getGoal() {
         return goal;
-    }
-
-    private void setOperators(Operators operators) {
-        if (operators == null) {
-            throw new IllegalArgumentException("Invalid operators (null found)");
-        }
-        this.operators = operators;
     }
 
     public Operators getOperators() {
@@ -86,7 +86,7 @@ public class PlanningProblem {
         @Override
         public Solution next() {
             Solution nextSolution = anyUnknown();
-            exploreRefinementOf(nextSolution);
+            expand(nextSolution);
             return nextSolution;
         }
 
@@ -97,7 +97,7 @@ public class PlanningProblem {
             return selected;
         }
 
-        private void exploreRefinementOf(Solution solution) {
+        private void expand(Solution solution) {
             known.add(solution);
             for (Solution anyRefinement : solution.refineWith(operators)) {
                 if (isUnknown(anyRefinement)) {

@@ -33,9 +33,7 @@ public class Display {
     }
 
     public void reportReaderException(ReaderException error) {
-        if (error instanceof ReaderException) {
-            format(UNABLE_TO_LOAD_FILE, error.getMessage());
-        }
+        format(UNABLE_TO_LOAD_FILE, error.getMessage());
     }
 
     void reportInvalidArgument(InvalidArgumentException error) {

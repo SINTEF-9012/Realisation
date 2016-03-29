@@ -1,18 +1,16 @@
-package no.sintef.bvr.planner;
+package no.sintef.bvr.planner.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import no.sintef.bvr.planner.ui.InvalidArgumentException;
-import no.sintef.bvr.planner.ui.Parameter;
-import no.sintef.bvr.planner.ui.UnknownArgumentException;
+import no.sintef.bvr.planner.Settings;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class TestSettings {
+public class TestCommandLineParser {
 
     static final String NOT_THE_DEFAULT_VALUE = "foo_input.txt";
 
@@ -27,7 +25,7 @@ public class TestSettings {
 
     private final Parameter parameter;
 
-    public TestSettings(Parameter parameter) {
+    public TestCommandLineParser(Parameter parameter) {
         this.parameter = parameter;
     }
 
@@ -49,12 +47,12 @@ public class TestSettings {
     }
 
     private Settings parse(String... arguments) throws UnknownArgumentException, InvalidArgumentException {
-        return Settings.extractFrom(arguments);
+        return new CommandLineParser().extractSettingsFrom(arguments);
     }
 
     private void verifyArguments(Settings arguments, Parameter parameter, String expectedValue) {
         for (Parameter eachParameter : Parameter.values()) {
-            final String eachActualValue = arguments.valueOf(eachParameter);
+            final String eachActualValue = eachParameter.getFrom(arguments); 
             if (eachParameter.equals(parameter)) {
                 assertEquals(expectedValue, eachActualValue);
             } else {
