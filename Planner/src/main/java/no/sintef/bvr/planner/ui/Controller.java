@@ -5,6 +5,9 @@ import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.repository.FileFactory;
+import no.sintef.bvr.planner.repository.PlanWriter;
+import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
 import no.sintef.bvr.planner.repository.ReaderException;
 import no.sintef.bvr.planner.repository.WriterException;
@@ -75,7 +78,7 @@ public class Controller {
     }
 
     public static void main(String[] arguments) {
-        Repository repository = new Repository(null); // TODO to be updated
+        Repository repository = new Repository(new FileFactory(), new PropertiesStateReader(), null, new PlanWriter()); // TODO to be updated
         Controller controller = new Controller(repository, new Display(System.out));
         controller.execute(arguments);
     }

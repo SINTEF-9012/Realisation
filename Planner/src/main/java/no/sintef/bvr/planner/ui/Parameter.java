@@ -5,17 +5,19 @@ import no.sintef.bvr.planner.Settings;
 
 public enum Parameter {
 
-    OPERATORS("-op", "--operators"),
-    ORIGIN("-o", "--origin"),
-    GOAL("-g", "--goal"),
-    PLAN("-p", "--plan");
+    OPERATORS("-op", "--operators", "the list of operators available"),
+    ORIGIN("-o", "--origin", "the starting state of base-product"),
+    GOAL("-g", "--goal", "the product to realise"),
+    PLAN("-p", "--plan", "the place where to store the plan");
 
     private final String longName;
     private final String shortName;
+    private final String description;
 
-    private Parameter(String shortName, String longName) {
+    private Parameter(String shortName, String longName, String description) {
         this.shortName = shortName;
         this.longName = longName;
+        this.description = description;
     }
 
     public String longName() {
@@ -24,6 +26,10 @@ public enum Parameter {
 
     public String shortName() {
         return shortName;
+    }
+    
+    public String description() {
+        return description;
     }
 
     public boolean match(String key) {
