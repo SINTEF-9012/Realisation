@@ -11,7 +11,6 @@ import no.sintef.bvr.planner.PlanningProblemBuilder;
 import static no.sintef.bvr.planner.ui.Display.*;
 import static no.sintef.bvr.planner.Status.*;
 import no.sintef.bvr.planner.repository.FakeOperatorsReader;
-import no.sintef.bvr.planner.repository.FakePlanWriter;
 import no.sintef.bvr.planner.repository.FakeStateReader;
 import no.sintef.bvr.planner.repository.OperatorsReader;
 import no.sintef.bvr.planner.repository.PlanWriter;
@@ -37,7 +36,7 @@ public class TestController {
         
         StateReader states = new FakeStateReader(problem.getOrigin(), problem.getGoal());
         OperatorsReader operators = new FakeOperatorsReader(problem.getOperators());
-        PlanWriter plan = new FakePlanWriter();
+        PlanWriter plan = new PlanWriter();
         
         Repository repository = new Repository(factory, states, operators, plan);
         planner = new Controller(repository, new Display(console));

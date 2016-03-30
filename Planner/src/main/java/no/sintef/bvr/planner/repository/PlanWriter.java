@@ -5,6 +5,7 @@
  */
 package no.sintef.bvr.planner.repository;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import no.sintef.bvr.planner.Plan;
 
@@ -12,10 +13,15 @@ import no.sintef.bvr.planner.Plan;
  *
  * @author franckc
  */
-public interface PlanWriter {
+public class PlanWriter {
 
-    void write(Plan plan);
-    
-    void write(Plan plan, OutputStream destination) throws WriterException ;
-    
+    public void write(Plan plan, OutputStream destination) throws WriterException {
+        try {
+            destination.write(plan.toString().getBytes());
+
+        } catch (IOException error) {
+            throw new WriterException("Unable to write plan", error);
+        }
+    }
+
 }
