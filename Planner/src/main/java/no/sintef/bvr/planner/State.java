@@ -12,7 +12,7 @@ public class State {
     private final FeatureSet features;
     private final BitSet status;
 
-    State(FeatureSet features, Status... statuses) {
+    public State(FeatureSet features, Status... statuses) {
         if (statuses.length != features.count()) {
             final String error = String.format(INCONSISTENT_INDEXES_AND_STATUSES, statuses.length, features.count());
             throw new IllegalArgumentException(error);

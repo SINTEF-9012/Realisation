@@ -5,53 +5,31 @@
  */
 package no.sintef.bvr.planner;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- *
- * @author franckc
+ * Generate feature names based on the number of feature and a name pattern
  */
-public class FakeFeatureSet implements FeatureSet {
-    
+public class FakeFeatureSet extends FeatureSet {
+
     public static final String DEFAULT_FEATURE_NAME = "f%1$d";
-   
-    private final String pattern;
-    private final Map<String, Integer> indexes;
-    
-    
+
     public FakeFeatureSet(int count) {
         this(count, DEFAULT_FEATURE_NAME);
     }
-    
+
     public FakeFeatureSet(int count, String namePattern) {
-        pattern = namePattern;
-        indexes = new HashMap<>();
-        for (int index=0 ; index<count ;index++) {
-            indexes.put(at(index), index);
+        super(createNames(count, namePattern));
+    }
+
+    private static Iterable<String> createNames(int count, String pattern) {
+        final List<String> names = new ArrayList<>(count);
+        for (int index = 0; index < count; index++) {
+            final String featureName = String.format(pattern, index+1);
+            names.add(featureName);
         }
+        return names;
     }
 
-    @Override
-    public int count() {
-        return indexes.size();
-    }
-
-    @Override
-    public Iterable<String> names() {
-        return indexes.keySet();
-    }
-
-    @Override
-    public int indexOf(String featureName) {
-        return indexes.get(featureName);
-    }
-    
-    @Override
-    public final String at(int index) {
-        return  String.format(pattern, index+1);
-    }
-    
-    
-    
 }

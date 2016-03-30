@@ -5,18 +5,54 @@
  */
 package no.sintef.bvr.planner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- *
- * @author franckc
+ * Represent the set of features defined in the product line
  */
-public interface FeatureSet {
+public class FeatureSet {
 
-    public int count();
+    private final Map<String, Integer> indexes;
 
-    public Iterable<String> names();
+    public FeatureSet(Iterable<String> featureNames) {
+        indexes = new HashMap<>();
+        int featureIndex = 0;
+        for (String eachFeatureName : featureNames) {
+            indexes.put(eachFeatureName, featureIndex);
+            featureIndex++;
+        }
+    }
 
-    public int indexOf(String eachFeature);
-    
-    public String at(int index);
-    
+    public int count() {
+        return indexes.size();
+    }
+
+    public Iterable<String> names() {
+        return indexes.keySet();
+    }
+
+    public int indexOf(String eachFeature) {
+        return indexes.get(eachFeature);
+    }
+
+    public String at(int index) {
+        for (String anyFeature : names()) {
+            if (indexOf(anyFeature) == index) {
+                return anyFeature;
+            }
+        }
+        return null;
+    }
+
+    public String toString() {
+        final StringBuilder buffer = new StringBuilder();
+
+        for (Map.Entry<String, Integer> eachEntry : indexes.entrySet()) {
+            final String text = String.format("%1$s -> %2$d", eachEntry.getKey(), eachEntry.getValue());
+            buffer.append(text);
+        }
+
+        return buffer.toString();
+    }
 }
