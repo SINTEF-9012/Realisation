@@ -51,7 +51,7 @@ class RealopParsingTest{
 		var op = rhs.op;
 		Assert.assertEquals(true, op.and);
 		Assert.assertEquals(true, rhs.rhs.lhs.negated);
-		Assert.assertEquals(true, rhs.rhs.lhs.predicate.negative);
+		Assert.assertEquals(true, rhs.rhs.lhs.isExpression.negative);
 		Assert.assertEquals("SPR1", rhs.rhs.lhs.name);
 		
 		

@@ -13,7 +13,7 @@ Operator:
 	;
 
 Expression:
-	lhs=Predicate (rhs=TerminalExpression)?
+	lhs=BoolExpression (rhs=TerminalExpression)?
 	;
 
 
@@ -26,11 +26,11 @@ Logic :
 	and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN
 	;
 	
-Predicate : 
-	negated?=NOT_TOKEN? predicate=Predicates '(' name=ID ')'
+BoolExpression : 
+	negated?=NOT_TOKEN? isExpression=IsExpression '(' name=ID ')'
 	;
 	
-Predicates :
+IsExpression :
 	realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN
 	;
 

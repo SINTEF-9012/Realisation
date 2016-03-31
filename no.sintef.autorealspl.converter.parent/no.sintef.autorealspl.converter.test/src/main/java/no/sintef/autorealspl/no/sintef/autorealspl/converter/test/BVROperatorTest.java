@@ -29,6 +29,7 @@ import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSeriali
 import no.sintef.autorealspl.converter.operconverter.XtextFilsSrcOperatorDeserializer;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
+import no.sintef.xtext.dsl.operator.realop.BoolExpression;
 import no.sintef.xtext.dsl.operator.realop.Expression;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 import no.sintef.xtext.dsl.operator.realop.Predicate;
@@ -139,17 +140,17 @@ public class BVROperatorTest {
 		assertNotNull(operator);
 		
 		Expression pre_exp = operator.getExp_pre();
-		Predicate lhs = pre_exp.getLhs();
+		BoolExpression lhs = pre_exp.getLhs();
 		
 		assertTrue("should be negated", lhs.isNegated());
-		assertTrue("should be realised predicate", lhs.getPredicate().isRealised());
+		assertTrue("should be realised predicate", lhs.getIsExpression().isRealised());
 		assertEquals("SPpositive", lhs.getName());
 		
 		Expression post_exp = operator.getExp_post();
 		lhs = post_exp.getLhs();
 		
 		assertFalse("should not be negated", lhs.isNegated());
-		assertTrue("should be positive predicate", lhs.getPredicate().isPositive());
+		assertTrue("should be positive predicate", lhs.getIsExpression().isPositive());
 		assertEquals("SPpositive", lhs.getName());
 	}
 	
@@ -166,17 +167,17 @@ public class BVROperatorTest {
 		assertNotNull(operator);
 		
 		Expression pre_exp = operator.getExp_pre();
-		Predicate lhs = pre_exp.getLhs();
+		BoolExpression lhs = pre_exp.getLhs();
 		
 		assertTrue("should be negated", lhs.isNegated());
-		assertTrue("should be realised predicate", lhs.getPredicate().isRealised());
+		assertTrue("should be realised predicate", lhs.getIsExpression().isRealised());
 		assertEquals("SPpositive", lhs.getName());
 		
 		Expression post_exp = operator.getExp_post();
 		lhs = post_exp.getLhs();
 		
 		assertFalse("should not be negated", lhs.isNegated());
-		assertTrue("should be positive predicate", lhs.getPredicate().isNegative());
+		assertTrue("should be positive predicate", lhs.getIsExpression().isNegative());
 		assertEquals("SPpositive", lhs.getName());
 	}
 	
@@ -240,14 +241,14 @@ public class BVROperatorTest {
 		Expression pre_exp = operator.getExp_pre();
 		Expression post_exp = operator.getExp_post();
 		
-		Predicate pred_pre = pre_exp.getLhs();
+		BoolExpression pred_pre = pre_exp.getLhs();
 		assertTrue(pred_pre.isNegated());
 		
-		Predicate pred_post = post_exp.getLhs();
+		BoolExpression pred_post = post_exp.getLhs();
 		assertFalse(pred_post.isNegated());
 		
-		assertTrue(pred_pre.getPredicate().isRealised());
-		assertTrue(pred_post.getPredicate().isPositive());
+		assertTrue(pred_pre.getIsExpression().isRealised());
+		assertTrue(pred_post.getIsExpression().isPositive());
 	}
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
