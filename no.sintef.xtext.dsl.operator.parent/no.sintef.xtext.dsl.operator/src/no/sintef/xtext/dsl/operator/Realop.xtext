@@ -7,33 +7,55 @@ Realop:
 	
 Operator:
 	OP_TOKEN name=ID OPEN_OP_TOKEN 
-			PRE_TOKEN COND_ST_TOKEN exp_pre=Expression  COND_END_TOKEN 
-			POST_TOKEN COND_ST_TOKEN exp_post=Expression COND_END_TOKEN 
+			PRE_TOKEN COND_ST_TOKEN expPre=Expression  COND_END_TOKEN 
+			POST_TOKEN COND_ST_TOKEN expPost=Expression COND_END_TOKEN 
 		CLOSE_OP_TOKEN
 	;
 
 Expression:
-	lhs=BoolExpression (rhs=TerminalExpression)?
+	 TwoSideExpression | OneSideExpression | IsExpression
 	;
 
-
-TerminalExpression:
-	op=Logic rhs=Expression
+OneSideExpression returns Expression:
+	Not
 ;
 
-	
-Logic :
-	and?=AND_TOKEN | or?=OR_TOKEN | xor?=XOR_TOKEN
-	;
-	
-BoolExpression : 
-	negated?=NOT_TOKEN? isExpression=IsExpression '(' name=ID ')'
-	;
-	
-IsExpression :
-	realised?=PRED_REALISED_TOKEN | positive?=PRED_POSITIVE_TOKEN | negative?=PRED_NEGATIVE_TOKEN
-	;
+TwoSideExpression returns Expression:
+	OrExp| AndExp | XorExp
+;
 
+OrExp:
+	left=(IsExpression | Not) OR_TOKEN right=Expression
+;
+
+AndExp:
+	left=(IsExpression | Not) AND_TOKEN right=Expression
+;
+
+XorExp:
+	left=(IsExpression | Not) XOR_TOKEN right=Expression
+;
+
+
+Not: 
+	NOT_TOKEN exp=IsExpression
+;
+
+IsExpression returns Expression :
+	IsRealised | IsPositive | IsNegative
+	;
+	
+IsRealised :
+	PRED_REALISED_TOKEN '(' featureName=ID ')'
+;
+
+IsPositive :
+	PRED_POSITIVE_TOKEN '(' featureName=ID ')'
+;
+
+IsNegative :
+	PRED_NEGATIVE_TOKEN '(' featureName=ID ')'
+;
 
 NOT_TOKEN : 'not';
 

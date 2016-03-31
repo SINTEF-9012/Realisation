@@ -29,8 +29,11 @@ import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSeriali
 import no.sintef.autorealspl.converter.operconverter.XtextFilsSrcOperatorDeserializer;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
-import no.sintef.xtext.dsl.operator.realop.BoolExpression;
 import no.sintef.xtext.dsl.operator.realop.Expression;
+import no.sintef.xtext.dsl.operator.realop.IsNegative;
+import no.sintef.xtext.dsl.operator.realop.IsPositive;
+import no.sintef.xtext.dsl.operator.realop.IsRealised;
+import no.sintef.xtext.dsl.operator.realop.Not;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 
 
@@ -139,19 +142,17 @@ public class BVROperatorTest {
 		Operator operator = positiveConveterStrategy.convertIFeatureToOperator(positive);
 		assertNotNull(operator);
 		
-		Expression pre_exp = operator.getExp_pre();
-		BoolExpression lhs = pre_exp.getLhs();
+		Expression pre_exp = operator.getExpPre();
 		
-		assertTrue("should be negated", lhs.isNegated());
-		assertTrue("should be realised predicate", lhs.getIsExpression().isRealised());
-		assertEquals("SPpositive", lhs.getName());
+		assertTrue("should be negated", pre_exp instanceof Not);
+		Not not_exp = (Not) pre_exp;
+		assertTrue("should be realised predicate", not_exp.getExp() instanceof IsRealised);
+		assertEquals("SPpositive", ((IsRealised) not_exp.getExp()).getFeatureName());
 		
-		Expression post_exp = operator.getExp_post();
-		lhs = post_exp.getLhs();
+		Expression post_exp = operator.getExpPost();
 		
-		assertFalse("should not be negated", lhs.isNegated());
-		assertTrue("should be positive predicate", lhs.getIsExpression().isPositive());
-		assertEquals("SPpositive", lhs.getName());
+		assertTrue("should be positive predicate", post_exp instanceof IsPositive);
+		assertEquals("SPpositive", ((IsPositive) post_exp).getFeatureName());
 	}
 	
 	@Test
@@ -166,19 +167,19 @@ public class BVROperatorTest {
 		Operator operator = negativeConvererStrategy.convertIFeatureToOperator(positive);
 		assertNotNull(operator);
 		
-		Expression pre_exp = operator.getExp_pre();
-		BoolExpression lhs = pre_exp.getLhs();
+		Expression pre_exp = operator.getExpPre();
 		
-		assertTrue("should be negated", lhs.isNegated());
-		assertTrue("should be realised predicate", lhs.getIsExpression().isRealised());
-		assertEquals("SPpositive", lhs.getName());
 		
-		Expression post_exp = operator.getExp_post();
-		lhs = post_exp.getLhs();
+		assertTrue("should be negated", pre_exp instanceof Not);
+		Not not_exp = (Not) pre_exp;
+		assertTrue("should be realised predicate", not_exp.getExp() instanceof IsRealised);
+		assertEquals("SPpositive", ((IsRealised) not_exp.getExp()).getFeatureName());
 		
-		assertFalse("should not be negated", lhs.isNegated());
-		assertTrue("should be positive predicate", lhs.getIsExpression().isNegative());
-		assertEquals("SPpositive", lhs.getName());
+		Expression post_exp = operator.getExpPost();
+		
+		
+		assertTrue("should be negative predicate", post_exp instanceof IsNegative);
+		assertEquals("SPpositive", ((IsNegative) post_exp).getFeatureName());
 	}
 	
 	@Test
@@ -238,17 +239,15 @@ public class BVROperatorTest {
 		Operator operator = operators.get(0);
 		assertEquals("SPpositivePos", operator.getName());
 		
-		Expression pre_exp = operator.getExp_pre();
-		Expression post_exp = operator.getExp_post();
+		Expression pre_exp = operator.getExpPre();
+		Expression post_exp = operator.getExpPost();
 		
-		BoolExpression pred_pre = pre_exp.getLhs();
-		assertTrue(pred_pre.isNegated());
 		
-		BoolExpression pred_post = post_exp.getLhs();
-		assertFalse(pred_post.isNegated());
+		assertTrue(pre_exp instanceof Not);
+		Not not_exp = (Not) pre_exp;
 		
-		assertTrue(pred_pre.getIsExpression().isRealised());
-		assertTrue(pred_post.getIsExpression().isPositive());
+		assertTrue(not_exp.getExp() instanceof IsRealised);
+		assertTrue(post_exp instanceof IsPositive);
 	}
 	
 	private IFeature getFeatureByName(List<IFeature> features, String name) {
