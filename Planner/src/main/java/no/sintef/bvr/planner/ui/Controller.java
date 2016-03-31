@@ -13,6 +13,8 @@ import no.sintef.bvr.planner.repository.ReaderException;
 import no.sintef.bvr.planner.repository.WriterException;
 
 public class Controller {
+    
+    public static final String VERSION = Controller.class.getPackage().getImplementationVersion();
 
     private final Repository repository;
     private final Display display;

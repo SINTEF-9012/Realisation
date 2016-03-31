@@ -21,16 +21,15 @@ public class Display {
     public static final String GOAL_SUCCESSFULLY_LOADED = "Goal state loaded from %1$s";
     public static final String OPERATORS_SUCCESSFULLY_LOADED = "Operators loaded from '%1$s'";
     public static final String PLAN_STORED = "Plan stored in '%1$s'";
-    public static final String UNABLE_TO_LOAD_FILE = "Error: Unable to load state. %1$s";
+    public static final String UNABLE_TO_LOAD_FILE = "Error: Unable to load file '%1$s'";
     public static final String UNKNOWN_ARGUMENT = "Error: Unknown argument '%1$s'";
     public static final String MISSING_ARGUMENT = "Error: Missing argument '%1$s' value";
     public static final String UNABLE_TO_WRITE_PLAN = "Error: Unable to write plan. %1$s";
-    public static final String PARAMETER_DETAILS = " - [%1$s|%2$s] <path-to-file>, %3$s\n";
-    public static final String COMMAND_LINE_USAGE = "USAGE: 'java -jar planner.jar <parameters>' \n" + 
-                                                    "where <parameters> may include:\n";
+    public static final String PARAMETER_DETAILS = " * [%1$s|%2$s] <path-to-file>, %3$s";
+    public static final String COMMAND_LINE_USAGE = "\nUSAGE: 'java -jar planner.jar <parameters>' \n"
+            + "where <parameters> may include:";
     public static final String CLOSING_MESSAGE = "That's all folks!";
 
-    
     private final PrintStream output;
 
     public Display(OutputStream output) {
@@ -71,32 +70,29 @@ public class Display {
         format(PLAN_STORED, location);
     }
 
-    private void format(String pattern, Object... values) {
-        final String message = String.format(pattern, values);
-        output.println(message);
-    }
-
     void opening() {
-        format(VERSION, "v0.1");
+        format(VERSION, Controller.VERSION);
         format(COPYRIGHT);
+        output.println("\n");
     }
 
     void closing() {
         format(CLOSING_MESSAGE);
     }
 
+    private void format(String pattern, Object... values) {
+        final String message = String.format(pattern, values);
+        output.println(message);
+    }
+
     void showUsage() {
-        final StringBuilder buffer = new StringBuilder();
-        buffer.append(COMMAND_LINE_USAGE);
+        format(COMMAND_LINE_USAGE);
         for (Parameter eachParameter : Parameter.values()) {
-            String description
-                    = String.format(PARAMETER_DETAILS,
-                            eachParameter.shortName(),
-                            eachParameter.longName(),
-                            eachParameter.description());
-            buffer.append(description);
+            format(PARAMETER_DETAILS,
+                    eachParameter.shortName(),
+                    eachParameter.longName(),
+                    eachParameter.description());
         }
-        output.println(buffer.toString());
     }
 
 }
