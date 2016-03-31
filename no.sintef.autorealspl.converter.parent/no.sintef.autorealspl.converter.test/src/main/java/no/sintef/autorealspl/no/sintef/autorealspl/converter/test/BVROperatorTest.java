@@ -32,7 +32,7 @@ import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.xtext.dsl.operator.realop.BoolExpression;
 import no.sintef.xtext.dsl.operator.realop.Expression;
 import no.sintef.xtext.dsl.operator.realop.Operator;
-import no.sintef.xtext.dsl.operator.realop.Predicate;
+
 
 public class BVROperatorTest {
 

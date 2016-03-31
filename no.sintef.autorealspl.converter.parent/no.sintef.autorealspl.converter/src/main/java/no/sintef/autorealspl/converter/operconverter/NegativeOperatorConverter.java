@@ -2,11 +2,12 @@ package no.sintef.autorealspl.converter.operconverter;
 
 import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverterStrategy;
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
+import no.sintef.xtext.dsl.operator.realop.BoolExpression;
 import no.sintef.xtext.dsl.operator.realop.Expression;
+import no.sintef.xtext.dsl.operator.realop.IsExpression;
 import no.sintef.xtext.dsl.operator.realop.Operator;
-import no.sintef.xtext.dsl.operator.realop.Predicate;
-import no.sintef.xtext.dsl.operator.realop.Predicates;
 import no.sintef.xtext.dsl.operator.realop.RealopFactory;
+
 
 public class NegativeOperatorConverter implements IFeatureOperatorConverterStrategy {
 
@@ -16,14 +17,15 @@ public class NegativeOperatorConverter implements IFeatureOperatorConverterStrat
 		
 		Expression pre_exp = RealopFactory.eINSTANCE.createExpression();
 		
-		Predicate predicate_pre = RealopFactory.eINSTANCE.createPredicate();
+		BoolExpression predicate_pre = RealopFactory.eINSTANCE.createBoolExpression();
 		predicate_pre.setNegated(true);
 		predicate_pre.setName(feature.getName());
 		
-		Predicates realised_pre = RealopFactory.eINSTANCE.createPredicates();
-		realised_pre.setRealised(true);
+	
+		IsExpression realised = RealopFactory.eINSTANCE.createIsExpression();
+		realised.setRealised(true);
 		
-		predicate_pre.setPredicate(realised_pre);
+		predicate_pre.setIsExpression(realised);
 		
 		pre_exp.setLhs(predicate_pre);
 		operator.setExp_pre(pre_exp);
@@ -31,13 +33,13 @@ public class NegativeOperatorConverter implements IFeatureOperatorConverterStrat
 		
 		Expression post_exp = RealopFactory.eINSTANCE.createExpression();
 		
-		Predicate predicate_post = RealopFactory.eINSTANCE.createPredicate();
+		BoolExpression predicate_post = RealopFactory.eINSTANCE.createBoolExpression();
 		predicate_post.setName(feature.getName());
 		
-		Predicates positive_post = RealopFactory.eINSTANCE.createPredicates();
+		IsExpression positive_post = RealopFactory.eINSTANCE.createIsExpression();
 		positive_post.setNegative(true);
 		
-		predicate_post.setPredicate(positive_post);
+		predicate_post.setIsExpression(positive_post);
 		
 		post_exp.setLhs(predicate_post);
 		
