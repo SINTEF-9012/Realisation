@@ -17,7 +17,7 @@ Expression:
 	;
 
 OneSideExpression returns Expression:
-	Not
+	NotExp
 ;
 
 TwoSideExpression returns Expression:
@@ -25,19 +25,19 @@ TwoSideExpression returns Expression:
 ;
 
 OrExp:
-	left=(IsExpression | Not) OR_TOKEN right=Expression
+	left=(IsExpression | NotExp) OR_TOKEN right=Expression
 ;
 
 AndExp:
-	left=(IsExpression | Not) AND_TOKEN right=Expression
+	left=(IsExpression | NotExp) AND_TOKEN right=Expression
 ;
 
 XorExp:
-	left=(IsExpression | Not) XOR_TOKEN right=Expression
+	left=(IsExpression | NotExp) XOR_TOKEN right=Expression
 ;
 
 
-Not: 
+NotExp: 
 	NOT_TOKEN exp=IsExpression
 ;
 

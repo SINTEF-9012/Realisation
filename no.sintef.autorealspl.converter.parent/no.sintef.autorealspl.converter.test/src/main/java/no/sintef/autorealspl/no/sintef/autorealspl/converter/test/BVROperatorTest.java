@@ -33,7 +33,7 @@ import no.sintef.xtext.dsl.operator.realop.Expression;
 import no.sintef.xtext.dsl.operator.realop.IsNegative;
 import no.sintef.xtext.dsl.operator.realop.IsPositive;
 import no.sintef.xtext.dsl.operator.realop.IsRealised;
-import no.sintef.xtext.dsl.operator.realop.Not;
+import no.sintef.xtext.dsl.operator.realop.NotExp;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 
 
@@ -144,8 +144,8 @@ public class BVROperatorTest {
 		
 		Expression pre_exp = operator.getExpPre();
 		
-		assertTrue("should be negated", pre_exp instanceof Not);
-		Not not_exp = (Not) pre_exp;
+		assertTrue("should be negated", pre_exp instanceof NotExp);
+		NotExp not_exp = (NotExp) pre_exp;
 		assertTrue("should be realised predicate", not_exp.getExp() instanceof IsRealised);
 		assertEquals("SPpositive", ((IsRealised) not_exp.getExp()).getFeatureName());
 		
@@ -170,8 +170,8 @@ public class BVROperatorTest {
 		Expression pre_exp = operator.getExpPre();
 		
 		
-		assertTrue("should be negated", pre_exp instanceof Not);
-		Not not_exp = (Not) pre_exp;
+		assertTrue("should be negated", pre_exp instanceof NotExp);
+		NotExp not_exp = (NotExp) pre_exp;
 		assertTrue("should be realised predicate", not_exp.getExp() instanceof IsRealised);
 		assertEquals("SPpositive", ((IsRealised) not_exp.getExp()).getFeatureName());
 		
@@ -243,8 +243,8 @@ public class BVROperatorTest {
 		Expression post_exp = operator.getExpPost();
 		
 		
-		assertTrue(pre_exp instanceof Not);
-		Not not_exp = (Not) pre_exp;
+		assertTrue(pre_exp instanceof NotExp);
+		NotExp not_exp = (NotExp) pre_exp;
 		
 		assertTrue(not_exp.getExp() instanceof IsRealised);
 		assertTrue(post_exp instanceof IsPositive);

@@ -4,7 +4,7 @@ import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperator
 import no.sintef.autorealspl.converter.interfaces.parser.IFeature;
 import no.sintef.xtext.dsl.operator.realop.IsNegative;
 import no.sintef.xtext.dsl.operator.realop.IsRealised;
-import no.sintef.xtext.dsl.operator.realop.Not;
+import no.sintef.xtext.dsl.operator.realop.NotExp;
 import no.sintef.xtext.dsl.operator.realop.Operator;
 import no.sintef.xtext.dsl.operator.realop.RealopFactory;
 
@@ -15,7 +15,7 @@ public class NegativeOperatorConverter implements IFeatureOperatorConverterStrat
 		Operator operator = RealopFactory.eINSTANCE.createOperator();
 		operator.setName(feature.getName()+"Neg");
 		
-		Not not_pre = RealopFactory.eINSTANCE.createNot();
+		NotExp not_pre = RealopFactory.eINSTANCE.createNotExp();
 		IsRealised realised = RealopFactory.eINSTANCE.createIsRealised();
 		realised.setFeatureName(feature.getName());
 		not_pre.setExp(realised);
