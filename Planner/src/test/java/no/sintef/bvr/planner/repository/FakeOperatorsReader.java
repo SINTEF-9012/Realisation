@@ -1,7 +1,6 @@
 
 package no.sintef.bvr.planner.repository;
 
-import java.io.InputStream;
 import no.sintef.bvr.planner.Operators;
 
 /**
@@ -18,7 +17,7 @@ public class FakeOperatorsReader implements OperatorsReader {
     }
     
     @Override
-    public Operators readFrom(InputStream source) throws ReaderException {
+    public Operators read() throws ReaderException {
         return operators;
     }
  

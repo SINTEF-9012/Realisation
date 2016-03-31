@@ -7,6 +7,7 @@ package no.sintef.bvr.planner.ui;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import no.sintef.bvr.planner.Settings;
 import no.sintef.bvr.planner.repository.ReaderException;
 import no.sintef.bvr.planner.repository.WriterException;
 
@@ -15,6 +16,8 @@ import no.sintef.bvr.planner.repository.WriterException;
  */
 public class Display {
 
+
+    
     public static final String COPYRIGHT = "Copyright (C) 2016 SINTEF ICT";
     public static final String VERSION = "BVR Planner v%1$s";
     public static final String ORIGIN_SUCCESSFULLY_LOADED = "Initial state loaded from '%1$s'.";
@@ -31,8 +34,10 @@ public class Display {
     public static final String CLOSING_MESSAGE = "That's all folks!";
 
     private final PrintStream output;
+    private Settings settings;
 
     public Display(OutputStream output) {
+        this.settings = null;
         this.output = new PrintStream(output, true);
     }
 
@@ -50,28 +55,29 @@ public class Display {
         showUsage();
     }
 
-    void reportOriginLoaded(String location) {
-        format(ORIGIN_SUCCESSFULLY_LOADED, location);
+    void reportOriginLoaded() {
+        format(ORIGIN_SUCCESSFULLY_LOADED, settings.getOriginLocation());
     }
 
-    void reportGoalLoaded(String location) {
-        format(GOAL_SUCCESSFULLY_LOADED, location);
+    void reportGoalLoaded() {
+        format(GOAL_SUCCESSFULLY_LOADED, settings.getGoalLocation());
     }
 
-    void reportOperatorsLoaded(String location) {
-        format(OPERATORS_SUCCESSFULLY_LOADED, location);
+    void reportOperatorsLoaded() {
+        format(OPERATORS_SUCCESSFULLY_LOADED, settings.getOperatorsLocation());
     }
 
     void reportWriterException(WriterException error) {
         format(UNABLE_TO_WRITE_PLAN, error.getMessage());
     }
 
-    void reportPlanStored(String location) {
-        format(PLAN_STORED, location);
+    void reportPlanStored() {
+        format(PLAN_STORED, settings.getPlanLocation());
     }
 
     void opening() {
-        format(VERSION, Controller.VERSION);
+        final String currentVersion = Display.class.getPackage().getImplementationVersion();
+        format(VERSION, currentVersion);
         format(COPYRIGHT);
         output.println("\n");
     }
@@ -93,6 +99,10 @@ public class Display {
                     eachParameter.longName(),
                     eachParameter.description());
         }
+    }
+
+    void reportSettings(Settings settings) {
+        this.settings = settings;
     }
 
 }

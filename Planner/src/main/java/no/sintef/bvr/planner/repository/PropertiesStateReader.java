@@ -1,5 +1,6 @@
 package no.sintef.bvr.planner.repository;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -14,12 +15,11 @@ import no.sintef.bvr.planner.Status;
  */
 public class PropertiesStateReader implements StateReader {
 
-    public static final String UNABLE_TO_READ_INPUT_STREAM = "Unable to read input stream";
     public static final String INVALID_STATUS = "Invalid status '%2$s' for feature '%1$s'";
 
-    private final Map<String, Status> statuses;
+    private final static Map<String, Status> statuses;
 
-    public PropertiesStateReader() {
+    static {
         statuses = new HashMap<>();
         statuses.put("negative", Status.NEGATIVE);
         statuses.put("-", Status.NEGATIVE);
@@ -30,19 +30,32 @@ public class PropertiesStateReader implements StateReader {
         statuses.put("pending", Status.PENDING);
         statuses.put("?", Status.PENDING);
         statuses.put("0", Status.PENDING);
+    }
 
+    
+    private final String fileLocation;
+    private final FileSystem fileSystem;
+    
+    public PropertiesStateReader(String location) {
+        this(location, new FileSystem());
+    }
+    
+    public PropertiesStateReader(String location, FileSystem fileSystem) {
+        this.fileLocation = location;
+        this.fileSystem = fileSystem;
     }
 
     @Override
-    public State readFrom(InputStream source) throws ReaderException {
+    public State read() throws ReaderException {
         try {
+            InputStream source = fileSystem.asInput(fileLocation);
             Properties properties = readProperties(source);
             FeatureSet features = extractFeatureSet(properties);
             Status[] statuses = extractStatuses(properties);
             return new State(features, statuses);
 
         } catch (IOException ex) {
-            throw new ReaderException(UNABLE_TO_READ_INPUT_STREAM, ex);
+            throw new ReaderException(this.fileLocation, ex);
         }
     }
 

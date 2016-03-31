@@ -70,10 +70,13 @@ public class TestPropertiesStateReader {
     
 
     private void read(String text) throws ReaderException {
-        InputStream input = new ByteArrayInputStream(text.getBytes());
-        StateReader reader = new PropertiesStateReader();
-
-        result = reader.readFrom(input);
+        final String fileName = "my-file";
+     
+        final FakeFileSystem fileSystem = new FakeFileSystem();
+        fileSystem.define(fileName, text);
+        
+        final StateReader reader = new PropertiesStateReader(fileName, fileSystem);
+        result = reader.read();
     }
 
 }

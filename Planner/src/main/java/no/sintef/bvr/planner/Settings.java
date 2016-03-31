@@ -1,5 +1,16 @@
 package no.sintef.bvr.planner;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import no.sintef.bvr.planner.repository.OperatorsReader;
+import no.sintef.bvr.planner.repository.PlanWriter;
+import no.sintef.bvr.planner.repository.PropertiesStateReader;
+import no.sintef.bvr.planner.repository.Repository;
+import no.sintef.bvr.planner.repository.StateReader;
+import no.sintef.bvr.planner.ui.Controller;
+import no.sintef.bvr.planner.ui.Display;
+
 public class Settings {
 
     public static final String DEFAULT_PLAN_LOCATION = "plan.out";
@@ -60,6 +71,22 @@ public class Settings {
 
     public void setPlanLocation(String location) {
         plan = location;
+    }
+
+    public Repository getRepository(){
+        return new Repository(
+                new PropertiesStateReader(getOriginLocation()),
+                new PropertiesStateReader(getGoalLocation()),
+                null,
+                new PlanWriter(getPlanLocation()));
+    }
+
+    public Display getDisplay() {
+        return new Display(System.out);
+    }
+
+    public Controller buildController() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

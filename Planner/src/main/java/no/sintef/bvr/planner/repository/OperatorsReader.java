@@ -14,6 +14,6 @@ import no.sintef.bvr.planner.Operators;
  */
 public interface OperatorsReader {
     
-    Operators readFrom(InputStream source) throws ReaderException;
-    
+    Operators read() throws ReaderException;
+     
 }

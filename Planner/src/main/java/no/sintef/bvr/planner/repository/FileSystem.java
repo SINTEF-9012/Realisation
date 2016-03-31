@@ -8,16 +8,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Open input or output streams to files on local disk
+ * Abstract the dependence on the File System
  */
-public class FileFactory implements Factory {
-
-    @Override
+public class FileSystem {
+    
     public InputStream asInput(String location) throws IOException {
         return new FileInputStream(location);
     }
-
-    @Override
+    
     public OutputStream asOutput(String location) throws IOException {
         return new FileOutputStream(location);
     }
