@@ -3,6 +3,7 @@ package no.sintef.bvr.planner.repository.ecore;
 import java.util.List;
 
 import no.sintef.autorealspl.converter.main.IConverter;
+import no.sintef.autorealspl.converter.operconverter.XtextFilsSrcOperatorDeserializer;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.operators.interfaces.IOperator;
 import no.sintef.bvr.planner.repository.ReaderException;
@@ -17,6 +18,7 @@ public class EcoreOperatorReader implements IOperatorsReader {
 
 	public EcoreOperatorReader(IConverter _converter, String _file_path) {
 		converter = _converter;
+		converter.setOperatorDeserializer(new XtextFilsSrcOperatorDeserializer());
 		realop_file = _file_path;
 		operatorConverte = new EcoreOperatorConverter();
 	}
