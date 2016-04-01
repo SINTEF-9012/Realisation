@@ -76,8 +76,7 @@ public class Display {
     }
 
     void opening() {
-        //final String currentVersion = Display.class.getPackage().getImplementationVersion();
-        final String currentVersion = "ewjfjqewfr";
+        final String currentVersion = Display.class.getPackage().getImplementationVersion();
         format(VERSION, currentVersion);
         format(COPYRIGHT);
         output.println("\n");
