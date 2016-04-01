@@ -40,6 +40,7 @@
                     <archive>
                         <manifest>
                             <mainClass>no.sintef.bvr.planner.ui.Controller</mainClass>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                     </archive>
                     <descriptorRefs>
