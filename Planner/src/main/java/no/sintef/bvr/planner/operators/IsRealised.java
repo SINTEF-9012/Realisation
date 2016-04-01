@@ -7,12 +7,13 @@ package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.operators.interfaces.IExpression;
+import no.sintef.bvr.planner.operators.interfaces.IIsExpression;
 
 /**
  *
  * @author franckc
  */
-public class IsRealised implements IExpression {
+public class IsRealised implements IIsExpression {
     
     private final String featureName;
 
@@ -34,6 +35,11 @@ public class IsRealised implements IExpression {
     public String toString() {
         return "IsRealised(" + featureName + ')';
     }
+    
+	@Override
+	public String getFeatureName() {
+		return featureName;
+	}   
 
     
 }

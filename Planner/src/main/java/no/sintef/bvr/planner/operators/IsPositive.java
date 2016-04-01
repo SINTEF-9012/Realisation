@@ -6,7 +6,7 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
-import no.sintef.bvr.planner.operators.interfaces.IExpression;
+import no.sintef.bvr.planner.operators.interfaces.IIsExpression;
 
 import static no.sintef.bvr.planner.Status.POSITIVE;
 
@@ -14,7 +14,7 @@ import static no.sintef.bvr.planner.Status.POSITIVE;
  *
  * @author franckc
  */
-public class IsPositive implements IExpression {
+public class IsPositive implements IIsExpression {
     
     private final String featureName;
 
@@ -36,6 +36,11 @@ public class IsPositive implements IExpression {
     public String toString() {
         return "IsPositive(" + featureName + ')';
     }
+    
+	@Override
+	public String getFeatureName() {
+		return featureName;
+	}
 
     
 }
