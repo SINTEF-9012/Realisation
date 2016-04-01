@@ -4,7 +4,9 @@ import java.util.BitSet;
 import java.util.Objects;
 import static no.sintef.bvr.planner.Status.*;
 
-
+/**
+ * The state of a given realisation: maps each feature to its current status.
+ */
 public class State {
 
     private static final String INCONSISTENT_INDEXES_AND_STATUSES = "Inconsistent indexes and statuses (%1$d statuses but %2$d features)";
