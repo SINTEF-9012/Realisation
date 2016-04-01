@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import no.sintef.autorealspl.converter.main.BVREcoreVarModelToOperatorConverter;
 import no.sintef.autorealspl.converter.main.IConverter;
+import no.sintef.autorealspl.converter.operconverter.XtextFilsSrcOperatorDeserializer;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.operators.IsNegative;
 import no.sintef.bvr.planner.operators.IsPositive;
@@ -18,6 +19,7 @@ import no.sintef.bvr.planner.operators.interfaces.IIsExpression;
 import no.sintef.bvr.planner.operators.interfaces.INotExpression;
 import no.sintef.bvr.planner.operators.interfaces.IOperator;
 import no.sintef.bvr.planner.operators.interfaces.ITwoSideExpression;
+import no.sintef.bvr.planner.repository.ecore.EcoreOperatorReader;
 import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 
 
@@ -28,7 +30,8 @@ public class TestEcoreOperatorsReader {
 	@Before
 	public void setUp() throws Exception {
 		String realop_file = "src/test/resources/test.realop";
-		IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();		
+		IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();	
+		ecore_converter.setOperatorDeserializer(new XtextFilsSrcOperatorDeserializer());
 		operator_reader = new EcoreOperatorReader(ecore_converter, realop_file); 
 		
 	}

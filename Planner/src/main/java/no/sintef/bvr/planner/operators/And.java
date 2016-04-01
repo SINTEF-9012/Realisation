@@ -47,8 +47,4 @@ public class And implements IAndExpression {
 	public IExpression gerRightSide() {
 		return right;
 	}
-    
-      
-    
-    
 }

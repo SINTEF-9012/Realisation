@@ -7,12 +7,13 @@ package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.operators.interfaces.IExpression;
+import no.sintef.bvr.planner.operators.interfaces.INotExpression;
 
 /**
  *
  * @author franckc
  */
-public class Not implements IExpression {
+public class Not implements INotExpression {
 
     private final IExpression operand;
 
@@ -34,6 +35,11 @@ public class Not implements IExpression {
     public String toString() {
         return "(not " + operand.toString() + ')';
     }
+
+	@Override
+	public IExpression getExpression() {
+		return operand;
+	}
     
     
     

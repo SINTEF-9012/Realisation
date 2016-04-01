@@ -6,7 +6,6 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
-import no.sintef.bvr.planner.operators.interfaces.IExpression;
 import no.sintef.bvr.planner.operators.interfaces.IIsExpression;
 
 /**
