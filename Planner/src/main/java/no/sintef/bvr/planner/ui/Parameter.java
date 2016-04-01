@@ -8,7 +8,8 @@ public enum Parameter {
     OPERATORS("-op", "--operators", "the list of operators available"),
     ORIGIN("-o", "--origin", "the starting state of base-product"),
     GOAL("-g", "--goal", "the product to realise"),
-    PLAN("-p", "--plan", "the place where to store the plan");
+    PLAN("-p", "--plan", "the place where to store the plan"),
+	FEATURE("-f", "--feature", "the place with a feature model to generate operators");
 
     private final String longName;
     private final String shortName;
@@ -42,6 +43,7 @@ public enum Parameter {
             case GOAL: return settings.getGoalLocation();
             case OPERATORS: return settings.getOperatorsLocation();
             case PLAN: return settings.getPlanLocation();
+            case FEATURE : return settings.getFeatureModelLocation();
             default: throw new RuntimeException("Unknown command line parameter '" + this + "'");
         }
     }
@@ -63,6 +65,9 @@ public enum Parameter {
             case PLAN:
                 settings.setPlanLocation(value);
                 break;
+            case FEATURE :
+            	settings.setFeatureModelLocation(value);
+            	break;
             default: throw new RuntimeException("Unknown command line parameter '" + this + "'");
         }
     }
@@ -73,6 +78,7 @@ public enum Parameter {
             case GOAL: return Settings.DEFAULT_GOAL_LOCATION;
             case OPERATORS: return Settings.DEFAULT_OPERATORS_LOCATION;
             case PLAN: return Settings.DEFAULT_PLAN_LOCATION;
+            case FEATURE: return Settings.DEFAULT_FEATURE_LOCATION;
             default: throw new RuntimeException("Unknown command line parameter '" + this + "'");
         }
     }

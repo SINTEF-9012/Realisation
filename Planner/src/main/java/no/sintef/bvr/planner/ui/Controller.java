@@ -9,6 +9,7 @@ import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.repository.FileSystem;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorGenenerator;
 import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 import no.sintef.bvr.planner.repository.PlanWriter;
 import no.sintef.bvr.planner.repository.PropertiesStateReader;
@@ -38,11 +39,14 @@ public class Controller {
     void execute(String... commandLine) {
         try {
             display.opening();
-            repository = configureRepositoryWith(settingsFrom(commandLine));
-            PlanningProblem problem
-                    = new PlanningProblem(operators(), origin(), goal());
-            Plan solution = problem.solve();
-            store(solution);
+            Settings settings = settingsFrom(commandLine);
+           
+            repository = configureRepositoryWith(settings);
+	        PlanningProblem problem
+	                = new PlanningProblem(operators(), origin(), goal());
+	        Plan solution = problem.solve();
+	        store(solution);
+            
             display.closing();
 
         } catch (ReaderException error) {
@@ -70,12 +74,18 @@ public class Controller {
                 new PropertiesStateReader(settings.getOriginLocation(), fileSystem),
                 new PropertiesStateReader(settings.getGoalLocation(), fileSystem),
                 operatorsReader(settings),
-                new PlanWriter(settings.getPlanLocation(), fileSystem));
+                new PlanWriter(settings.getPlanLocation(), fileSystem),
+                operatorGenerator(settings));
     }
 
     protected IOperatorsReader operatorsReader(Settings settings) {
         IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
         return new EcoreOperatorReader(ecore_converter, settings.getOperatorsLocation());
+    }
+    
+    protected IOperatorGenenerator operatorGenerator(Settings settings) {
+    	IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
+    	return null;
     }
 
     private void store(Plan plan) throws WriterException {
