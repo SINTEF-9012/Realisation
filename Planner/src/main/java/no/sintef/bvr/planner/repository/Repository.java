@@ -3,6 +3,7 @@ package no.sintef.bvr.planner.repository;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 
 /**
  * Facade that exposes the needed data objects using getters and setters
@@ -11,10 +12,10 @@ public class Repository {
 
     private final StateReader origin;
     private final StateReader goal;
-    private final OperatorsReader operators;
+    private final IOperatorsReader operators;
     private final PlanWriter plan;
 
-    public Repository(StateReader origin, StateReader goal, OperatorsReader operators, PlanWriter plan) {
+    public Repository(StateReader origin, StateReader goal, IOperatorsReader operators, PlanWriter plan) {
         this.origin = origin;
         this.goal = goal;
         this.operators = operators;

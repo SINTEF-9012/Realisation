@@ -6,17 +6,19 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IAndExpression;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
 
 /**
  *
  * @author franckc
  */
-public class And implements Expression {
+public class And implements IAndExpression {
 
-    private final Expression left;
-    private final Expression right;
+    private final IExpression left;
+    private final IExpression right;
 
-    public And(Expression left, Expression right) {
+    public And(IExpression left, IExpression right) {
         this.left = left;
         this.right = right;
     }
@@ -35,8 +37,14 @@ public class And implements Expression {
     public String toString() {
         return "(" + left + " and " + right + ")";
     }
-    
-      
-    
-    
+
+	@Override
+	public IExpression getLeftSide() {
+		return left;
+	}
+
+	@Override
+	public IExpression gerRightSide() {
+		return right;
+	}
 }

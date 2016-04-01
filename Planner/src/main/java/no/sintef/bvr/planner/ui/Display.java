@@ -16,8 +16,6 @@ import no.sintef.bvr.planner.repository.WriterException;
  */
 public class Display {
 
-
-    
     public static final String COPYRIGHT = "Copyright (C) 2016 SINTEF ICT";
     public static final String VERSION = "BVR Planner v%1$s";
     public static final String ORIGIN_SUCCESSFULLY_LOADED = "Initial state loaded from '%1$s'.";
@@ -29,7 +27,9 @@ public class Display {
     public static final String MISSING_ARGUMENT = "Error: Missing argument '%1$s' value";
     public static final String UNABLE_TO_WRITE_PLAN = "Error: Unable to write plan. %1$s";
     public static final String PARAMETER_DETAILS = " * [%1$s|%2$s] <path-to-file>, %3$s";
-    public static final String COMMAND_LINE_USAGE = "\nUSAGE: 'java -jar planner.jar <parameters>' \n"
+    public static final String COMMAND_LINE_USAGE
+            = "\n"
+            + "USAGE: 'java -jar planner.jar <parameters>' \n"
             + "where <parameters> may include:";
     public static final String CLOSING_MESSAGE = "That's all folks!";
 
@@ -76,7 +76,8 @@ public class Display {
     }
 
     void opening() {
-        final String currentVersion = Display.class.getPackage().getImplementationVersion();
+        //final String currentVersion = Display.class.getPackage().getImplementationVersion();
+        final String currentVersion = "ewjfjqewfr";
         format(VERSION, currentVersion);
         format(COPYRIGHT);
         output.println("\n");

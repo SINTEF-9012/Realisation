@@ -6,11 +6,12 @@ import java.util.regex.Pattern;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.PlanningProblemBuilder;
+import no.sintef.bvr.planner.Settings;
 import static no.sintef.bvr.planner.ui.Display.*;
 import static no.sintef.bvr.planner.Status.*;
 import no.sintef.bvr.planner.repository.FakeFileSystem;
 import no.sintef.bvr.planner.repository.FakeOperatorsReader;
-import no.sintef.bvr.planner.repository.OperatorsReader;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 import static no.sintef.bvr.planner.ui.Parameter.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -26,8 +27,8 @@ class TestableController extends Controller {
         this.operators = operators;
     }
 
-    @Override
-    protected OperatorsReader operatorsReader() {
+    @Override 
+    protected IOperatorsReader operatorsReader(Settings settings) {
         return new FakeOperatorsReader(operators);
     }   
 

@@ -6,16 +6,18 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
+import no.sintef.bvr.planner.operators.interfaces.INotExpression;
 
 /**
  *
  * @author franckc
  */
-public class Not implements Expression {
+public class Not implements INotExpression {
 
-    private final Expression operand;
+    private final IExpression operand;
 
-    public Not(Expression operand) {
+    public Not(IExpression operand) {
         this.operand = operand;
     }
 
@@ -33,6 +35,11 @@ public class Not implements Expression {
     public String toString() {
         return "(not " + operand.toString() + ')';
     }
+
+	@Override
+	public IExpression getExpression() {
+		return operand;
+	}
     
     
     

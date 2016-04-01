@@ -1,0 +1,14 @@
+operator f1Pos {
+	pre : not realised(f1);
+	post : positive(f1);
+}
+
+operator f2Pos {
+	pre : not realised(f2);
+	post : positive(f2);
+}
+
+operator f3Neg {
+	pre : not realised(f3);
+	post : negative(f3);
+}

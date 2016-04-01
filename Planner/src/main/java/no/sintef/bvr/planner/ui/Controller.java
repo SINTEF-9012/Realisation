@@ -1,18 +1,21 @@
 package no.sintef.bvr.planner.ui;
 
 import java.io.OutputStream;
+import no.sintef.autorealspl.converter.main.BVREcoreVarModelToOperatorConverter;
+import no.sintef.autorealspl.converter.main.IConverter;
 import no.sintef.bvr.planner.Settings;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.repository.FileSystem;
-import no.sintef.bvr.planner.repository.OperatorsReader;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 import no.sintef.bvr.planner.repository.PlanWriter;
 import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
 import no.sintef.bvr.planner.repository.ReaderException;
 import no.sintef.bvr.planner.repository.WriterException;
+import no.sintef.bvr.planner.repository.ecore.EcoreOperatorReader;
 
 /**
  * Synchronize the resolution of the problem with the display
@@ -66,15 +69,14 @@ public class Controller {
         return new Repository(
                 new PropertiesStateReader(settings.getOriginLocation(), fileSystem),
                 new PropertiesStateReader(settings.getGoalLocation(), fileSystem),
-                operatorsReader(),
+                operatorsReader(settings),
                 new PlanWriter(settings.getPlanLocation(), fileSystem));
     }
 
-
-    protected OperatorsReader operatorsReader() {
-        return null; //TODO: Implement this
+    protected IOperatorsReader operatorsReader(Settings settings) {
+        IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
+        return new EcoreOperatorReader(ecore_converter, settings.getOperatorsLocation());
     }
-
 
     private void store(Plan plan) throws WriterException {
         repository.store(plan);

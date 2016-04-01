@@ -17,7 +17,7 @@ public class Operators implements Iterable<Operator> {
         operators = new HashMap<>();
     }
 
-    void add(Operator operator) {
+    public void add(Operator operator) {
         operators.put(operator.getName(), operator);
     }
 

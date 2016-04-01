@@ -6,18 +6,20 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
+import no.sintef.bvr.planner.operators.interfaces.IOperator;
 
 /**
  *
  * @author franckc
  */
-public class Operator {
+public class Operator implements IOperator {
 
     private final String name;
-    private final Expression preCondition;
-    private final Expression postCondition;
+    private final IExpression preCondition;
+    private final IExpression postCondition;
     
-    public Operator(String name, Expression preCondition, Expression postCondition) {
+    public Operator(String name, IExpression preCondition, IExpression postCondition) {
         this.name = name;
         this.preCondition = preCondition;
         this.postCondition = postCondition;
@@ -39,6 +41,16 @@ public class Operator {
     public String toString() {
         return name + " pre:" + preCondition + " post:" + postCondition;
     }
+
+	@Override
+	public IExpression getPreCondition() {
+		return preCondition;
+	}
+
+	@Override
+	public IExpression getPostCondition() {
+		return postCondition;
+	}
     
     
        

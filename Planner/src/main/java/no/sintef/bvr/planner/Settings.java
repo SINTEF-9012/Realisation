@@ -3,11 +3,12 @@ package no.sintef.bvr.planner;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import no.sintef.bvr.planner.repository.OperatorsReader;
+
 import no.sintef.bvr.planner.repository.PlanWriter;
 import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
 import no.sintef.bvr.planner.repository.StateReader;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 import no.sintef.bvr.planner.ui.Controller;
 import no.sintef.bvr.planner.ui.Display;
 

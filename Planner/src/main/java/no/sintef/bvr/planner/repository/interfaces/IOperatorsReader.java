@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package no.sintef.bvr.planner.repository;
+package no.sintef.bvr.planner.repository.interfaces;
+
 
 import no.sintef.bvr.planner.Operators;
+import no.sintef.bvr.planner.repository.ReaderException;
 
 /**
  *
  * @author franckc
  */
-public interface OperatorsReader {
+public interface IOperatorsReader {
     
     Operators read() throws ReaderException;
      
