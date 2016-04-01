@@ -17,7 +17,9 @@ import no.sintef.bvr.planner.operators.interfaces.IExpression;
 import no.sintef.bvr.planner.operators.interfaces.IIsExpression;
 import no.sintef.bvr.planner.operators.interfaces.INotExpression;
 import no.sintef.bvr.planner.operators.interfaces.IOperator;
+import no.sintef.bvr.planner.operators.interfaces.IOrExpression;
 import no.sintef.bvr.planner.operators.interfaces.ITwoSideExpression;
+import no.sintef.bvr.planner.operators.interfaces.IXorExpression;
 import no.sintef.bvr.planner.repository.ecore.EcoreOperatorReader;
 import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 
@@ -41,11 +43,19 @@ public class TestEcoreOperatorsReader {
 		assertNotNull(operator);
 		
 		IExpression pre_condition = operator.getPreCondition();
-		assertTrue(pre_condition instanceof INotExpression);
+		assertTrue(pre_condition instanceof IXorExpression);
 		
-		IExpression realised = ((INotExpression) pre_condition).getExpression();
-		assertTrue(realised instanceof IsRealised);
-		assertEquals("SPpositive", ((IIsExpression) realised).getFeatureName());
+		IXorExpression xor_exp = (IXorExpression) pre_condition;
+		
+		assertTrue(xor_exp.getLeftSide() instanceof INotExpression);
+		assertTrue(xor_exp.getRightSide() instanceof IsRealised);
+		
+		INotExpression inot_exp = (INotExpression) xor_exp.getLeftSide();
+		assertEquals("SPpositive", ((IIsExpression) inot_exp.getExpression()).getFeatureName());
+		
+		IExpression realised = (IsRealised) xor_exp.getRightSide();
+		assertEquals("SPpositive1", ((IIsExpression) realised).getFeatureName());
+		
 		
 		
 		IExpression post_condition = operator.getPostCondition();
@@ -55,9 +65,17 @@ public class TestEcoreOperatorsReader {
 		assertTrue(left instanceof IsPositive);
 		assertEquals("SPpositive", ((IIsExpression) left).getFeatureName());
 		
-		IExpression right = ((ITwoSideExpression) post_condition).gerRightSide();
-		assertTrue(right instanceof IsNegative);
-		assertEquals("SPnegative", ((IIsExpression) right).getFeatureName());
+		IExpression right = ((ITwoSideExpression) post_condition).getRightSide();
+		assertTrue(right instanceof IOrExpression);
+		
+		IOrExpression or_exp = (IOrExpression) right;
+		left = or_exp.getLeftSide();
+		right = or_exp.getRightSide();
+		assertTrue(left instanceof IsNegative);
+		assertTrue(right instanceof IsPositive);
+		
+		assertEquals("SPnegative2", ((IIsExpression) left).getFeatureName());
+		assertEquals("SPpositive3", ((IIsExpression) right).getFeatureName());
 	}
 
 }

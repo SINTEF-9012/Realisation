@@ -6,19 +6,19 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
-import no.sintef.bvr.planner.operators.interfaces.IAndExpression;
 import no.sintef.bvr.planner.operators.interfaces.IExpression;
+import no.sintef.bvr.planner.operators.interfaces.IOrExpression;
 
 /**
  *
  * @author franckc
  */
-public class And implements IAndExpression {
+public class Or implements IOrExpression {
 
     private final IExpression left;
     private final IExpression right;
 
-    public And(IExpression left, IExpression right) {
+    public Or(IExpression left, IExpression right) {
         this.left = left;
         this.right = right;
     }
@@ -30,12 +30,12 @@ public class And implements IAndExpression {
 
     @Override
     public State applyTo(State state) {
-        throw new RuntimeException("Cannot apply AND operator!");
+        throw new RuntimeException("Cannot apply OR operator!");
     }
 
     @Override
     public String toString() {
-        return "(" + left + " and " + right + ")";
+        return "(" + left + " or " + right + ")";
     }
 
 	@Override

@@ -2,6 +2,8 @@ package no.sintef.bvr.planner.repository.ecore;
 
 import no.sintef.bvr.planner.operators.And;
 import no.sintef.bvr.planner.operators.Not;
+import no.sintef.bvr.planner.operators.Or;
+import no.sintef.bvr.planner.operators.Xor;
 import no.sintef.bvr.planner.operators.interfaces.IExpression;
 import no.sintef.bvr.planner.operators.interfaces.IOperator;
 import no.sintef.bvr.planner.repository.ReaderException;
@@ -12,6 +14,8 @@ import no.sintef.xtext.dsl.operator.realop.IsPositive;
 import no.sintef.xtext.dsl.operator.realop.IsRealised;
 import no.sintef.xtext.dsl.operator.realop.NotExp;
 import no.sintef.xtext.dsl.operator.realop.Operator;
+import no.sintef.xtext.dsl.operator.realop.OrExp;
+import no.sintef.xtext.dsl.operator.realop.XorExp;
 
 public class EcoreOperatorConverter {
 	
@@ -41,6 +45,16 @@ public class EcoreOperatorConverter {
 			NotExp ecore_not = (NotExp) ecore_exp;
 			IExpression exp = convertExpression(ecore_not.getExp(), result);
 			result = new Not(exp);
+		} else if (ecore_exp instanceof OrExp) {
+			OrExp ecore_or = (OrExp) ecore_exp;
+			IExpression left = convertExpression(ecore_or.getLeft(), result);
+			IExpression right = convertExpression(ecore_or.getRight(), result);
+			result = new Or(left, right);
+		}else if (ecore_exp instanceof XorExp) {
+			XorExp ecore_xor = (XorExp) ecore_exp;
+			IExpression left = convertExpression(ecore_xor.getLeft(), result);
+			IExpression right = convertExpression(ecore_xor.getRight(), result);
+			result = new Xor(left, right);
 		} else {
 			throw new ReaderException("do not know how to conver " + ecore_exp);
 		}
