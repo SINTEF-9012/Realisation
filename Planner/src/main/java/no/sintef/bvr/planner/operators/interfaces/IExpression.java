@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package no.sintef.bvr.planner.repository;
+package no.sintef.bvr.planner.operators.interfaces;
 
-import java.io.InputStream;
-import no.sintef.bvr.planner.Operators;
+import no.sintef.bvr.planner.State;
 
 /**
  *
  * @author franckc
  */
-public interface OperatorsReader {
+public interface IExpression {
+
+    public boolean evaluateOn(State state);
+
+    public State applyTo(State state);
     
-    Operators read() throws ReaderException;
-     
 }

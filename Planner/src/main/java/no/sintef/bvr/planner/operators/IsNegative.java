@@ -7,12 +7,13 @@ package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.Status;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
 
 /**
  *
  * @author franckc
  */
-public class IsNegative implements Expression {
+public class IsNegative implements IExpression {
     
     private final String feature;
 

@@ -6,12 +6,13 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
 
 /**
  *
  * @author franckc
  */
-public class IsRealised implements Expression {
+public class IsRealised implements IExpression {
     
     private final String featureName;
 

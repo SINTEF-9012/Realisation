@@ -6,6 +6,7 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
 
 /**
  *
@@ -14,10 +15,10 @@ import no.sintef.bvr.planner.State;
 public class Operator {
 
     private final String name;
-    private final Expression preCondition;
-    private final Expression postCondition;
+    private final IExpression preCondition;
+    private final IExpression postCondition;
     
-    public Operator(String name, Expression preCondition, Expression postCondition) {
+    public Operator(String name, IExpression preCondition, IExpression postCondition) {
         this.name = name;
         this.preCondition = preCondition;
         this.postCondition = postCondition;

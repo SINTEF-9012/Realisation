@@ -6,13 +6,15 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
+
 import static no.sintef.bvr.planner.Status.POSITIVE;
 
 /**
  *
  * @author franckc
  */
-public class IsPositive implements Expression {
+public class IsPositive implements IExpression {
     
     private final String featureName;
 

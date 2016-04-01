@@ -6,16 +6,17 @@
 package no.sintef.bvr.planner.operators;
 
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.operators.interfaces.IExpression;
 
 /**
  *
  * @author franckc
  */
-public class Not implements Expression {
+public class Not implements IExpression {
 
-    private final Expression operand;
+    private final IExpression operand;
 
-    public Not(Expression operand) {
+    public Not(IExpression operand) {
         this.operand = operand;
     }
 
