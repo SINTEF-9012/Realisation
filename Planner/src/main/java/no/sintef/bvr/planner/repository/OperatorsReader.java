@@ -5,7 +5,6 @@
  */
 package no.sintef.bvr.planner.repository;
 
-import java.io.InputStream;
 import no.sintef.bvr.planner.Operators;
 
 /**

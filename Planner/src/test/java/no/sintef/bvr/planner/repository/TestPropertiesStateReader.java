@@ -73,7 +73,7 @@ public class TestPropertiesStateReader {
         final String fileName = "my-file";
      
         final FakeFileSystem fileSystem = new FakeFileSystem();
-        fileSystem.define(fileName, text);
+        fileSystem.defineFile(fileName, text);
         
         final StateReader reader = new PropertiesStateReader(fileName, fileSystem);
         result = reader.read();

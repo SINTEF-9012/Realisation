@@ -13,20 +13,41 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import no.sintef.bvr.planner.Settings;
 
 /**
- *
+ * In memory file system, as a map for string to input/output streams
  */
 public class FakeFileSystem extends FileSystem {
 
     public static final String OPERATOR_MARKER = "operators";
 
+    public static FakeFileSystem withDefaultFileSet(String originText, String goalText, String operatorText) {
+        FakeFileSystem fileSystem = new FakeFileSystem();
+        fileSystem.defineFile(Settings.DEFAULT_GOAL_LOCATION, goalText);
+        fileSystem.defineFile(Settings.DEFAULT_ORIGIN_LOCATION, originText);
+        fileSystem.defineFile(Settings.DEFAULT_OPERATORS_LOCATION, operatorText);
+        return fileSystem;
+    }
+    
     private final Map<String, InputStream> inputs;
     private final Map<String, OutputStream> outputs;
 
-    public FakeFileSystem() { 
+    public FakeFileSystem() {
         inputs = new HashMap<>();
         outputs = new HashMap<>();
+    }
+
+    public void setGoalFile(String location, String content) {
+        defineFile(location, content);
+    }
+
+    public void setOriginFile(String location, String content) {
+        defineFile(location, content);
+    }
+
+    public void setOperatorsFile(String location, String content) {
+        defineFile(location, content);
     }
 
     @Override
@@ -45,7 +66,7 @@ public class FakeFileSystem extends FileSystem {
         return outputs.get(location);
     }
 
-    public void define(String location, String contents) {
+    public void defineFile(String location, String contents) {
         inputs.put(location, new ByteArrayInputStream(contents.getBytes()));
     }
 

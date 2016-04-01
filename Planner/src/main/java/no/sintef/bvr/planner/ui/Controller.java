@@ -1,10 +1,13 @@
 package no.sintef.bvr.planner.ui;
 
+import java.io.OutputStream;
 import no.sintef.bvr.planner.Settings;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.repository.FileSystem;
+import no.sintef.bvr.planner.repository.OperatorsReader;
 import no.sintef.bvr.planner.repository.PlanWriter;
 import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
@@ -16,16 +19,27 @@ import no.sintef.bvr.planner.repository.WriterException;
  */
 public class Controller {
 
-    private Display display;
+    protected final FileSystem fileSystem;
+    private final Display display;
     private Repository repository;
 
+    public Controller() {
+        this(System.out, new FileSystem());
+    }
+
+    public Controller(OutputStream output, FileSystem fileSystem) {
+        this.display = new Display(output);
+        this.fileSystem = fileSystem;
+    }
 
     void execute(String... commandLine) {
         try {
-            display = configureDisplay();
+            display.opening();
             repository = configureRepositoryWith(settingsFrom(commandLine));
-            PlanningProblem problem = new PlanningProblem(operators(), origin(), goal());
-            storeSolution(problem.solve());
+            PlanningProblem problem
+                    = new PlanningProblem(operators(), origin(), goal());
+            Plan solution = problem.solve();
+            store(solution);
             display.closing();
 
         } catch (ReaderException error) {
@@ -42,27 +56,27 @@ public class Controller {
         }
     }
 
-    protected Display configureDisplay() {
-        display = new Display(System.out);
-        display.opening();
-        return display;
-    }
-
     private Settings settingsFrom(String[] commandLine) throws UnknownArgumentException, InvalidArgumentException {
         Settings settings = new CommandLineParser().extractSettingsFrom(commandLine);
         display.reportSettings(settings);
         return settings;
     }
 
-    protected Repository configureRepositoryWith(Settings settings) {
+    private Repository configureRepositoryWith(Settings settings) {
         return new Repository(
-                new PropertiesStateReader(settings.getOriginLocation()),
-                new PropertiesStateReader(settings.getGoalLocation()),
-                null,
-                new PlanWriter(settings.getPlanLocation()));
+                new PropertiesStateReader(settings.getOriginLocation(), fileSystem),
+                new PropertiesStateReader(settings.getGoalLocation(), fileSystem),
+                operatorsReader(),
+                new PlanWriter(settings.getPlanLocation(), fileSystem));
     }
 
-    private void storeSolution(Plan plan) throws WriterException {
+
+    protected OperatorsReader operatorsReader() {
+        return null; //TODO: Implement this
+    }
+
+
+    private void store(Plan plan) throws WriterException {
         repository.store(plan);
         display.reportPlanStored();
     }
