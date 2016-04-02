@@ -50,7 +50,9 @@ public class Controller {
             } else {
             	IOperatorGenenerator generator = operatorGenerator(settings);
             	generator.generate();
+            	display.reportBVRModelLoaded();
             	generator.commit();
+            	display.reportGeneratedOperatorsSaved();
             }
             
             display.closing();
