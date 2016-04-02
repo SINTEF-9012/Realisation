@@ -79,8 +79,7 @@ public class Settings {
                 new PropertiesStateReader(getOriginLocation()),
                 new PropertiesStateReader(getGoalLocation()),
                 null,
-                new PlanWriter(getPlanLocation()),
-                null);
+                new PlanWriter(getPlanLocation()));
     }
 
     public Display getDisplay() {

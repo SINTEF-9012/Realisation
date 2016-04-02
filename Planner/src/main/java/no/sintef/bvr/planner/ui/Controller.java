@@ -16,6 +16,7 @@ import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
 import no.sintef.bvr.planner.repository.ReaderException;
 import no.sintef.bvr.planner.repository.WriterException;
+import no.sintef.bvr.planner.repository.ecore.EcoreBVROperatorsGenerator;
 import no.sintef.bvr.planner.repository.ecore.EcoreOperatorReader;
 
 /**
@@ -40,12 +41,17 @@ public class Controller {
         try {
             display.opening();
             Settings settings = settingsFrom(commandLine);
-           
-            repository = configureRepositoryWith(settings);
-	        PlanningProblem problem
-	                = new PlanningProblem(operators(), origin(), goal());
-	        Plan solution = problem.solve();
-	        store(solution);
+            if(settings.getFeatureModelLocation() == null) {
+            	repository = configureRepositoryWith(settings);
+		        PlanningProblem problem
+		                = new PlanningProblem(operators(), origin(), goal());
+		        Plan solution = problem.solve();
+		        store(solution);
+            } else {
+            	IOperatorGenenerator generator = operatorGenerator(settings);
+            	generator.generate();
+            	generator.commit();
+            }
             
             display.closing();
 
@@ -74,8 +80,7 @@ public class Controller {
                 new PropertiesStateReader(settings.getOriginLocation(), fileSystem),
                 new PropertiesStateReader(settings.getGoalLocation(), fileSystem),
                 operatorsReader(settings),
-                new PlanWriter(settings.getPlanLocation(), fileSystem),
-                operatorGenerator(settings));
+                new PlanWriter(settings.getPlanLocation(), fileSystem));
     }
 
     protected IOperatorsReader operatorsReader(Settings settings) {
@@ -85,7 +90,7 @@ public class Controller {
     
     protected IOperatorGenenerator operatorGenerator(Settings settings) {
     	IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
-    	return null;
+    	return new EcoreBVROperatorsGenerator(ecore_converter, settings.getFeatureModelLocation(), settings.getOperatorsLocation());
     }
 
     private void store(Plan plan) throws WriterException {

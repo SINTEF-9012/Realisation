@@ -15,14 +15,12 @@ public class Repository {
     private final StateReader goal;
     private final IOperatorsReader reader;
     private final PlanWriter plan;
-	private IOperatorGenenerator generator;
 
-    public Repository(StateReader origin, StateReader goal, IOperatorsReader reader, PlanWriter plan, IOperatorGenenerator generator) {
+    public Repository(StateReader origin, StateReader goal, IOperatorsReader reader, PlanWriter plan) {
         this.origin = origin;
         this.goal = goal;
         this.reader = reader;
         this.plan = plan;
-        this.generator = generator;
     }
 
     public State getOrigin() throws ReaderException {
@@ -40,13 +38,4 @@ public class Repository {
     public void store(Plan plan) throws WriterException {
         this.plan.write(plan);
     }
-    
-    public Operators getGeneratedOperators() throws ReaderException {
-    	return generator.generate();
-    }
-    
-    public void storeGeneratedOperators() throws WriterException {
-    	generator.commit();
-    }
-
 }

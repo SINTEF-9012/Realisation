@@ -9,7 +9,7 @@ public enum Parameter {
     ORIGIN("-o", "--origin", "the starting state of base-product"),
     GOAL("-g", "--goal", "the product to realise"),
     PLAN("-p", "--plan", "the place where to store the plan"),
-	FEATURE("-f", "--feature", "the place with a feature model to generate operators");
+	FEATURE("-f", "--feature", "the place with a bvr model to generate operators (this option disables planner), -op is a location to store operators");
 
     private final String longName;
     private final String shortName;
