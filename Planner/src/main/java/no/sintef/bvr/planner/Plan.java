@@ -63,5 +63,14 @@ public class Plan {
         buffer.append(")");
         return buffer.toString();
     }
+    
+    public List<String> getInvokedOperators() {
+    	List<String> operators = new ArrayList<String>();
+    	for (Invoke eachInvocation : invocations)
+    		operators.add(eachInvocation.getOperatorName());
+    	
+    	return operators;
+    }
+    
 
 }
