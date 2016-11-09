@@ -7,11 +7,15 @@ package no.sintef.bvr.planner;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import static no.sintef.bvr.planner.Status.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import no.sintef.bvr.planner.utils.TestUtils;
 
 @RunWith(Parameterized.class)
 public class TestSolver {
@@ -27,7 +31,9 @@ public class TestSolver {
     @Test
     public void shouldFindTheOnlyAndSinglePlanThatExist() {
         Plan actualPlan = problem.solve();
-        assertEquals(expected, actualPlan);
+        List<String> actualOperators = actualPlan.getInvokedOperators();
+        List<String> expectedOperators = expected.getInvokedOperators();
+        assertTrue(TestUtils.listEqualsNoOrder(actualOperators, expectedOperators));
     }
 
     private static PlanFactory aPlan = new PlanFactory();
