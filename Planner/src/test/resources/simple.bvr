@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bvr:BVRModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bvr="http:///bvr.ecore/2.0.0" name="test">
+  <variabilityModel xsi:type="bvr:Choice" name="Choice0" target="//@variabilityModel/@ownedTargets.0" isImpliedByParent="true">
+    <ownedTargets name="Choice0"/>
+    <ownedTargets name="positive"/>
+    <ownedTargets name="negative"/>
+    <ownedTargets name="Choice3"/>
+    <ownedTargets name="notresolved"/>
+  </variabilityModel>
+</bvr:BVRModel>

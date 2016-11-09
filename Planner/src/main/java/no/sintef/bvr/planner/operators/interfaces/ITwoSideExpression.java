@@ -4,6 +4,6 @@ public interface ITwoSideExpression extends IExpression {
 	
 	public IExpression getLeftSide();
 	
-	public IExpression gerRightSide();
+	public IExpression getRightSide();
 
 }

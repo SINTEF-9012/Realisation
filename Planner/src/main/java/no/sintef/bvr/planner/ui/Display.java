@@ -32,6 +32,8 @@ public class Display {
             + "USAGE: 'java -jar planner.jar <parameters>' \n"
             + "where <parameters> may include:";
     public static final String CLOSING_MESSAGE = "That's all folks!";
+    public static final String FEATURE_MODEL_LOADED = "BVR feature model is loaded from '%1$s'";
+    public static final String OPERATORS_SAVED_SUCCESSFULLY = "Generated operators are save to '%1$s'";
 
     private final PrintStream output;
     private Settings settings;
@@ -73,6 +75,14 @@ public class Display {
 
     void reportPlanStored() {
         format(PLAN_STORED, settings.getPlanLocation());
+    }
+    
+    void reportBVRModelLoaded() {
+    	format(FEATURE_MODEL_LOADED, settings.getFeatureModelLocation());
+    }
+    
+    void reportGeneratedOperatorsSaved() {
+    	format(OPERATORS_SAVED_SUCCESSFULLY, settings.getOperatorsLocation());
     }
 
     void opening() {

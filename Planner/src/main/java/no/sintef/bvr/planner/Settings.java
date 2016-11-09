@@ -1,14 +1,9 @@
 package no.sintef.bvr.planner;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 import no.sintef.bvr.planner.repository.PlanWriter;
 import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
-import no.sintef.bvr.planner.repository.StateReader;
-import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 import no.sintef.bvr.planner.ui.Controller;
 import no.sintef.bvr.planner.ui.Display;
 
@@ -18,6 +13,8 @@ public class Settings {
     public static final String DEFAULT_GOAL_LOCATION = "goal.properties";
     public static final String DEFAULT_ORIGIN_LOCATION = "origin.properties";
     public static final String DEFAULT_OPERATORS_LOCATION = "operators.txt";
+    public static final String DEFAULT_FEATURE_LOCATION = null;
+    
 
     public static Settings defaultSettings() {
         return new Settings();
@@ -27,19 +24,22 @@ public class Settings {
     private String goal;
     private String operators;
     private String plan;
+    private String features;
 
     Settings() {
         this(DEFAULT_ORIGIN_LOCATION,
                 DEFAULT_GOAL_LOCATION,
                 DEFAULT_OPERATORS_LOCATION,
-                DEFAULT_PLAN_LOCATION);
+                DEFAULT_PLAN_LOCATION,
+                DEFAULT_FEATURE_LOCATION);
     }
 
-    Settings(String origin, String goal, String operators, String plan) {
+    Settings(String origin, String goal, String operators, String plan, String features) {
         this.origin = origin;
         this.goal = goal;
         this.operators = operators;
         this.plan = plan;
+        this.features = features;
     }
 
     public String getOriginLocation() {
@@ -89,5 +89,13 @@ public class Settings {
     public Controller buildController() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+	public String getFeatureModelLocation() {
+		return features;
+	}
+
+	public void setFeatureModelLocation(String value) {
+		features = value;
+	}
 
 }

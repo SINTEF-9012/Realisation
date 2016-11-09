@@ -1,4 +1,4 @@
 operator SPpositivePos {
-	pre : not realised(SPpositive);
-	post : positive(SPpositive) and negative(SPnegative);
+	pre : not realised(SPpositive) xor realised(SPpositive1);
+	post : positive(SPpositive) and negative(SPnegative2) or positive(SPpositive3);
 }

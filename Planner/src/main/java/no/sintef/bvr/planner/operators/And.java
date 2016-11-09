@@ -44,7 +44,7 @@ public class And implements IAndExpression {
 	}
 
 	@Override
-	public IExpression gerRightSide() {
+	public IExpression getRightSide() {
 		return right;
 	}
 }

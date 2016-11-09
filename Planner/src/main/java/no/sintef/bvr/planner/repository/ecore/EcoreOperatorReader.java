@@ -27,12 +27,15 @@ public class EcoreOperatorReader implements IOperatorsReader {
 	public Operators read() throws ReaderException {
 		Operators operators = new Operators();
 		
-		List<Operator> ecore_operators = converter.readOperatorsFromFile(realop_file);
-		for(Operator ecore_operator : ecore_operators) {
-			IOperator operator = operatorConverte.convert(ecore_operator);
-			operators.add((no.sintef.bvr.planner.operators.Operator) operator);
+		try {
+			List<Operator> ecore_operators = converter.readOperatorsFromFile(realop_file);
+			for(Operator ecore_operator : ecore_operators) {
+				IOperator operator = operatorConverte.convert(ecore_operator);
+				operators.add((no.sintef.bvr.planner.operators.Operator) operator);
+			}
+		} catch(Exception ex) {
+			throw new ReaderException(ex.getMessage(), ex);
 		}
-		
 		return operators;
 	}
 

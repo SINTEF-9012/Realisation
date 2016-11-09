@@ -3,6 +3,7 @@ package no.sintef.bvr.planner.repository;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.State;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorGenenerator;
 import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 
 /**
@@ -12,13 +13,13 @@ public class Repository {
 
     private final StateReader origin;
     private final StateReader goal;
-    private final IOperatorsReader operators;
+    private final IOperatorsReader reader;
     private final PlanWriter plan;
 
-    public Repository(StateReader origin, StateReader goal, IOperatorsReader operators, PlanWriter plan) {
+    public Repository(StateReader origin, StateReader goal, IOperatorsReader reader, PlanWriter plan) {
         this.origin = origin;
         this.goal = goal;
-        this.operators = operators;
+        this.reader = reader;
         this.plan = plan;
     }
 
@@ -31,11 +32,10 @@ public class Repository {
     }
 
     public Operators getOperators() throws ReaderException {
-        return operators.read();
+        return reader.read();
     }
 
     public void store(Plan plan) throws WriterException {
         this.plan.write(plan);
     }
-
 }

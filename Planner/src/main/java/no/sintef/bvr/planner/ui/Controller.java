@@ -9,12 +9,14 @@ import no.sintef.bvr.planner.Plan;
 import no.sintef.bvr.planner.PlanningProblem;
 import no.sintef.bvr.planner.State;
 import no.sintef.bvr.planner.repository.FileSystem;
+import no.sintef.bvr.planner.repository.interfaces.IOperatorGenenerator;
 import no.sintef.bvr.planner.repository.interfaces.IOperatorsReader;
 import no.sintef.bvr.planner.repository.PlanWriter;
 import no.sintef.bvr.planner.repository.PropertiesStateReader;
 import no.sintef.bvr.planner.repository.Repository;
 import no.sintef.bvr.planner.repository.ReaderException;
 import no.sintef.bvr.planner.repository.WriterException;
+import no.sintef.bvr.planner.repository.ecore.EcoreBVROperatorsGenerator;
 import no.sintef.bvr.planner.repository.ecore.EcoreOperatorReader;
 
 /**
@@ -38,11 +40,21 @@ public class Controller {
     void execute(String... commandLine) {
         try {
             display.opening();
-            repository = configureRepositoryWith(settingsFrom(commandLine));
-            PlanningProblem problem
-                    = new PlanningProblem(operators(), origin(), goal());
-            Plan solution = problem.solve();
-            store(solution);
+            Settings settings = settingsFrom(commandLine);
+            if(settings.getFeatureModelLocation() == null) {
+            	repository = configureRepositoryWith(settings);
+		        PlanningProblem problem
+		                = new PlanningProblem(operators(), origin(), goal());
+		        Plan solution = problem.solve();
+		        store(solution);
+            } else {
+            	IOperatorGenenerator generator = operatorGenerator(settings);
+            	generator.generate();
+            	display.reportBVRModelLoaded();
+            	generator.commit();
+            	display.reportGeneratedOperatorsSaved();
+            }
+            
             display.closing();
 
         } catch (ReaderException error) {
@@ -76,6 +88,11 @@ public class Controller {
     protected IOperatorsReader operatorsReader(Settings settings) {
         IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
         return new EcoreOperatorReader(ecore_converter, settings.getOperatorsLocation());
+    }
+    
+    protected IOperatorGenenerator operatorGenerator(Settings settings) {
+    	IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
+    	return new EcoreBVROperatorsGenerator(ecore_converter, settings.getFeatureModelLocation(), settings.getOperatorsLocation());
     }
 
     private void store(Plan plan) throws WriterException {
