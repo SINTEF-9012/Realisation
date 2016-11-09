@@ -31,6 +31,31 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>no.sintef.bvr.planner.ui.Controller</mainClass>
+                    <arguments>
+                        <argument>-o</argument>
+                        <argument>src/test/resources/windturbine/original.state</argument>
+                        <argument>-op</argument>   
+                        <argument>src/test/resources/windturbine/operators.realop</argument>
+                        <argument>-g</argument>
+                        <argument>src/test/resources/windturbine/product1.resolution</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            
+            <plugin>
                 <!-- NOTE: We don't need a groupId specification because the group is
                     org.apache.maven.plugins ...which is assumed by default.
                 -->

@@ -13,10 +13,6 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-/**
- *
- * @author franckc
- */
 @RunWith(Parameterized.class)
 public class TestSolver {
 
@@ -45,6 +41,7 @@ public class TestSolver {
         results.add(threeStepsChain());
         results.add(chainWithNegativeRealisation());
         results.add(noPossiblePlan());
+        results.add(windTurbine());
 
         return results;
     }
@@ -114,6 +111,22 @@ public class TestSolver {
         builder.addPositivelyRealise("f1");
 
         Plan expected = aPlan.empty();
+
+        final Object[] testCase = new Object[]{builder.getResult(), expected};
+        return testCase;
+    }
+
+    private static Object[] windTurbine() {
+        PlanningProblemBuilder builder = new PlanningProblemBuilder();
+        builder.setFeatureCount(6);
+        builder.setOrigin(PENDING, PENDING, PENDING, PENDING, PENDING, PENDING);
+        builder.setGoal(NEGATIVE, NEGATIVE, POSITIVE, POSITIVE, POSITIVE, NEGATIVE);
+        for(int index=1 ; index <= 6; index++) {
+            builder.addPositivelyRealise("f" + index);
+            builder.addNegativelyRealise("f" + index);
+        }
+
+        Plan expected = aPlan.with("-f1", "-f2", "+f3", "+f4", "+f5", "-f6");
 
         final Object[] testCase = new Object[]{builder.getResult(), expected};
         return testCase;

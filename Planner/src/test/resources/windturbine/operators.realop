@@ -1,0 +1,12 @@
+operator windturbinePos { pre : not realised ( windturbine ) ; post : positive ( windturbine ) ; }
+operator windturbineNeg { pre : not realised ( windturbine ) ; post : negative ( windturbine ) ; }
+operator SafetyProtectionRedundancyPos { pre : not realised ( SafetyProtectionRedundancy ) ; post : positive ( SafetyProtectionRedundancy ) ; }
+operator SafetyProtectionRedundancyNeg { pre : not realised ( SafetyProtectionRedundancy ) ; post : negative ( SafetyProtectionRedundancy ) ; }
+operator SupervisionPlussPos { pre : not realised ( SupervisionPluss ) ; post : positive ( SupervisionPluss ) ; }
+operator SupervisionPlussNeg { pre : not realised ( SupervisionPluss ) ; post : negative ( SupervisionPluss ) ; }
+operator SafetyLevelPos { pre : not realised ( SafetyLevel ) ; post : positive ( SafetyLevel ) ; }
+operator SafetyLevelNeg { pre : not realised ( SafetyLevel ) ; post : negative ( SafetyLevel ) ; }
+operator SIL2Pos { pre : not realised ( SIL2 ) ; post : positive ( SIL2 ) ; }
+operator SIL2Neg { pre : not realised ( SIL2 ) ; post : negative ( SIL2 ) ; }
+operator SIL3Pos { pre : not realised ( SIL3 ) ; post : positive ( SIL3 ) ; }
+operator SIL3Neg { pre : not realised ( SIL3 ) ; post : negative ( SIL3 ) ; }

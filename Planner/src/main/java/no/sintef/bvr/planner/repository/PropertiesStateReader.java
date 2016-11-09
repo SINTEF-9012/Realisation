@@ -2,7 +2,10 @@ package no.sintef.bvr.planner.repository;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import no.sintef.bvr.planner.FeatureSet;
@@ -50,7 +53,7 @@ public class PropertiesStateReader implements StateReader {
             InputStream source = fileSystem.asInput(fileLocation);
             Properties properties = readProperties(source);
             FeatureSet features = extractFeatureSet(properties);
-            Status[] statuses = extractStatuses(properties);
+            Status[] statuses = extractStatuses(features, properties);
             return new State(features, statuses);
 
         } catch (IOException ex) {
@@ -65,16 +68,16 @@ public class PropertiesStateReader implements StateReader {
     }
 
     private FeatureSet extractFeatureSet(Properties properties) {
-        return new FeatureSet(properties.stringPropertyNames());
+        List<String> featuresNames = new ArrayList<>(properties.stringPropertyNames());
+        Collections.sort(featuresNames);
+        return new FeatureSet(featuresNames);
     }
 
-    private Status[] extractStatuses(Properties properties) throws ReaderException {
-        Status[] statuses = new Status[properties.size()];
-        int featureIndex = 0;
-        for (String eachFeature : properties.stringPropertyNames()) {
+    private Status[] extractStatuses(FeatureSet features, Properties properties) throws ReaderException {
+        Status[] statuses = new Status[features.count()];
+        for (String eachFeature : features.names()) {
             String statusText = properties.getProperty(eachFeature);
-            statuses[featureIndex] = parseStatus(eachFeature, statusText);
-            featureIndex++;
+            statuses[features.indexOf(eachFeature)] = parseStatus(eachFeature, statusText);
         }
         return statuses;
     }
