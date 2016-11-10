@@ -4,11 +4,11 @@ import java.util.List;
 
 import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverter;
 import no.sintef.autorealspl.converter.interfaces.operconverter.IFeatureOperatorConverterStrategy;
+import no.sintef.autorealspl.converter.interfaces.operconverter.IOperatorSerializer;
 import no.sintef.autorealspl.converter.main.IConverter;
 import no.sintef.autorealspl.converter.operconverter.FeatureOperatorConvertor;
 import no.sintef.autorealspl.converter.operconverter.NegativeOperatorConverter;
 import no.sintef.autorealspl.converter.operconverter.PositiveOperatorConverter;
-import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSerializer;
 import no.sintef.autorealspl.converter.parser.BVRModelParserStrategy;
 import no.sintef.autorealspl.converter.parser.VariabiltiyModelParser;
 import no.sintef.bvr.planner.Operators;
@@ -25,13 +25,13 @@ public class EcoreBVROperatorsGenerator implements IOperatorGenenerator {
 	private String realop_file;
 	private EcoreOperatorConverter ecore_op_conv;
 
-	public EcoreBVROperatorsGenerator(IConverter _converter, String _bvr_model, String _realop_file) {
+	public EcoreBVROperatorsGenerator(IConverter _converter, IOperatorSerializer _serializer, String _bvr_model, String _realop_file) {
 		converter = _converter;
 		bvr_model = _bvr_model;
 		realop_file = _realop_file;
 		
 		converter.setVariabityModelParser(new VariabiltiyModelParser(new BVRModelParserStrategy()));
-		converter.setOperatorSerializer(new XtextFileSrcOperatorSerializer());
+		converter.setOperatorSerializer(_serializer);
 		
 		IFeatureOperatorConverter feature_converter = new FeatureOperatorConvertor();
 		IFeatureOperatorConverterStrategy positiveConveterStrategy = new PositiveOperatorConverter();

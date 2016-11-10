@@ -13,6 +13,7 @@ public class Settings {
     public static final String DEFAULT_GOAL_LOCATION = "goal.properties";
     public static final String DEFAULT_ORIGIN_LOCATION = "origin.properties";
     public static final String DEFAULT_OPERATORS_LOCATION = "operators.txt";
+    public static final String DEFAULT_MODEL_OPERATORS_LOCATION = "model_operators.txt";
     public static final String DEFAULT_FEATURE_LOCATION = null;
     
 
@@ -23,6 +24,7 @@ public class Settings {
     private String origin;
     private String goal;
     private String operators;
+    private String model_operators;
     private String plan;
     private String features;
 
@@ -30,14 +32,16 @@ public class Settings {
         this(DEFAULT_ORIGIN_LOCATION,
                 DEFAULT_GOAL_LOCATION,
                 DEFAULT_OPERATORS_LOCATION,
+                DEFAULT_MODEL_OPERATORS_LOCATION,
                 DEFAULT_PLAN_LOCATION,
                 DEFAULT_FEATURE_LOCATION);
     }
 
-    Settings(String origin, String goal, String operators, String plan, String features) {
+    Settings(String origin, String goal, String operators, String model_operators, String plan, String features) {
         this.origin = origin;
         this.goal = goal;
         this.operators = operators;
+        this.model_operators = model_operators;
         this.plan = plan;
         this.features = features;
     }
@@ -61,9 +65,17 @@ public class Settings {
     public String getOperatorsLocation() {
         return operators;
     }
+    
+    public String getModelOperatorsLocation() {
+    	return model_operators;
+    }
 
     public void setOperatorsLocation(String location) {
         operators = location;
+    }
+    
+    public void setModelOperatorsLocation(String location) {
+    	model_operators = location;
     }
 
     public String getPlanLocation() {

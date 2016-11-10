@@ -84,6 +84,10 @@ public class Display {
     void reportGeneratedOperatorsSaved() {
     	format(OPERATORS_SAVED_SUCCESSFULLY, settings.getOperatorsLocation());
     }
+    
+    void reportGeneratedOperatorsToModelSaved() {
+    	format(OPERATORS_SAVED_SUCCESSFULLY, settings.getModelOperatorsLocation());
+    }
 
     void opening() {
         final String currentVersion = Display.class.getPackage().getImplementationVersion();

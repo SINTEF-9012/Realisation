@@ -1,8 +1,12 @@
 package no.sintef.bvr.planner.ui;
 
 import java.io.OutputStream;
+
+import no.sintef.autorealspl.converter.interfaces.operconverter.IOperatorSerializer;
 import no.sintef.autorealspl.converter.main.BVREcoreVarModelToOperatorConverter;
 import no.sintef.autorealspl.converter.main.IConverter;
+import no.sintef.autorealspl.converter.operconverter.XMIOperatorSerializer;
+import no.sintef.autorealspl.converter.operconverter.XtextFileSrcOperatorSerializer;
 import no.sintef.bvr.planner.Settings;
 import no.sintef.bvr.planner.Operators;
 import no.sintef.bvr.planner.Plan;
@@ -48,11 +52,17 @@ public class Controller {
 		        Plan solution = problem.solve();
 		        store(solution);
             } else {
-            	IOperatorGenenerator generator = operatorGenerator(settings);
+            	IOperatorGenenerator generator = operatorGenerator(settings, new XtextFileSrcOperatorSerializer(), false);
             	generator.generate();
             	display.reportBVRModelLoaded();
             	generator.commit();
             	display.reportGeneratedOperatorsSaved();
+            	
+            	generator = operatorGenerator(settings, new XMIOperatorSerializer(), true);
+            	generator.generate();
+            	display.reportBVRModelLoaded();
+            	generator.commit();
+            	display.reportGeneratedOperatorsToModelSaved();
             }
             
             display.closing();
@@ -90,9 +100,10 @@ public class Controller {
         return new EcoreOperatorReader(ecore_converter, settings.getOperatorsLocation());
     }
     
-    protected IOperatorGenenerator operatorGenerator(Settings settings) {
+    protected IOperatorGenenerator operatorGenerator(Settings settings, IOperatorSerializer serializer, boolean ismodel) {
     	IConverter ecore_converter = new BVREcoreVarModelToOperatorConverter();
-    	return new EcoreBVROperatorsGenerator(ecore_converter, settings.getFeatureModelLocation(), settings.getOperatorsLocation());
+    	return new EcoreBVROperatorsGenerator(ecore_converter, serializer, 
+    			settings.getFeatureModelLocation(), (ismodel) ? settings.getModelOperatorsLocation() : settings.getOperatorsLocation());
     }
 
     private void store(Plan plan) throws WriterException {
